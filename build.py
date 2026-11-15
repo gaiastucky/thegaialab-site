@@ -327,7 +327,6 @@ def home():
               "From the laptop screen to the field, learn about our most recent contributions.",
               link("publications"), "Read more",
               art("https://thegaialab.files.wordpress.com/2022/09/perspective.png", ["https://thegaialab.files.wordpress.com/2021/11/screen-shot-2021-11-14-at-11.01.49-pm.png", "https://thegaialab.files.wordpress.com/2021/11/screen-shot-2021-11-14-at-11.32.15-pm.png"]), flip=True),
-        dots(),
         story("Fieldwork", "Excited about the great outdoors?",
               "So are we! We travel all over the globe to find interesting and unique places to answer questions about how and why landscapes look the way they do. Click the globe to see where we have been.",
               link("fieldwork"), "Follow our journeys", globe_block()),
@@ -357,6 +356,8 @@ def home():
 
 {stories}
 
+{dots()}
+
 <section class="section linkedin" data-reveal><a class="li-badge" href="{LAB_LINKEDIN}" aria-hidden="true" tabindex="-1">{ICONS["LinkedIn"]}</a>
 <h2 class="h2">Follow us on LinkedIn</h2>
 <div class="actions">{btn("Follow us", LAB_LINKEDIN)}</div></section>"""
@@ -383,7 +384,7 @@ def team():
     pi_extra = f'<div class="actions">{btn("Get in touch", link("contact-cv"))}</div>'
     titles = ["Postdoctoral Associates / Fellows", "Graduate Students", "Undergraduate Researchers"]
     groups = "".join(
-        f'<section class="section"><div class="group-head" data-reveal><h2>{e(t)}</h2></div><div class="stack-people">{"".join(person(m) for m in g["members"])}</div></section>{dots()}'
+        f'<section class="section"><div class="group-head" data-reveal><h2 class="h2">{e(t)}</h2></div><div class="stack-people">{"".join(person(m) for m in g["members"])}</div></section>'
         for g, t in zip(people["groups"], titles) if g["members"])
     def tier(a):
         r = a["role"].lower()
@@ -411,6 +412,8 @@ def team():
     alumni = "".join(rows)
     body = f"""{window(people['group_photo'], '<h1 data-hero>Introducing the <span class="wiggle" aria-label="Squad">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{ch}</span>' for k, ch in enumerate('Squad')) + '</span></h1>', h='78vh', cls='team-hero')}
 <section class="section">{person(pi, pi_extra)}</section>
+{groups}
+<section class="section"><div class="group-head" data-reveal><h2 class="h2">Group Mascot</h2></div>{person(people['mascot'])}</section>
 {dots()}
 <section class="opps-banner"><div class="ticker" aria-label="News"><span class="ticker-tag">Hiring</span><div class="ticker-win"><div class="ticker-track"><span>2026 update: we are hiring! We are searching for a graduate student for fall 2027 and a postdoctoral associate for 2026 (see <a href="https://mit-gaia-lab-postdoc-ad2026.tiiny.site">the advert</a>).</span><span aria-hidden="true">2026 update: we are hiring! We are searching for a graduate student for fall 2027 and a postdoctoral associate for 2026 (see <a href="https://mit-gaia-lab-postdoc-ad2026.tiiny.site">the advert</a>).</span></div></div></div><div class="opps-in" id="opportunities"><div class="opps-head" data-reveal><span class="kicker">Opportunities</span><h2 class="h2">Come work with us</h2><p>We are always looking for creative and motivated people to work with us. Have a look around and see if you find any projects interesting, and that overlap with your research goals.</p></div>
 <ul class="ways-pills">
@@ -418,10 +421,8 @@ def team():
 <li class="way" tabindex="0"><span class="way-btn">Postdoctoral research</span><div class="way-bubble"><p>There are a few options! EAPS has a <a href="https://eaps.mit.edu/education/postdoctoral-training/">Distinguished Postdoctoral Fellowship</a> and hosts the <a href="https://www.hsfoundation.org/programs/science/51-pegasi-b-fellowship/">51 Pegasi b Fellowship</a> or the MIT School of Science fellowship (applications due each fall). You can also reach out to collaborate on a NASA or NSF proposal (or any other sources)!</p><p><a href="https://docs.google.com/spreadsheets/d/1fpsPL2yb56wYmncEIYMf5oW-vTCRgzrtIYCPqF3P50o/edit?usp=sharing">Here is a sheet I made to help you find sources of funding to work with us!</a></p></div></li>
 <li class="way" tabindex="0"><span class="way-btn">Undergraduate research</span><div class="way-bubble"><p>Look through MIT's <a href="https://urop.mit.edu/">UROP</a> or <a href="https://oge.mit.edu/msrp/">MSRP</a> programs and contact me or any group member with your CV and interests.</p></div></li>
 </ul></div></section>
-{groups}
-<section class="section"><div class="group-head" data-reveal><h2>Group Mascot</h2></div>{person(people['mascot'])}</section>
 {dots()}
-<section class="section alumni-sec"><div class="group-head" data-reveal><h2>Alumni</h2><p class="alum-note">Past members of the group. Hover over a face to see more.</p></div><div class="alumni-tiers">{alumni}</div><div>
+<section class="section alumni-sec"><div class="group-head" data-reveal><h2 class="h2">Alumni</h2><p class="alum-note">Past members of the group. Hover over a face to see more.</p></div><div class="alumni-tiers">{alumni}</div><div>
 <div class="actions" style="justify-content:center;margin-top:72px">{btn('Join us', link('contact-cv'))}</div></div></section>"""
     page("team", "Team", body, "Meet the members and alumni of the Gaia Lab at MIT.")
 
@@ -562,8 +563,9 @@ def fieldwork():
     set_depth("fieldwork")
     trips = "".join(f"""<section class="trip-panel" id="{trip_slug(t['place'])}" hidden><div class="grid"><div class="c-1-8"><span class="kicker">Fieldwork, {t['year']}</span><h2 class="h2">{e(t['place'])}</h2><p>{FIELD_TEXT[t['place']]}</p></div></div>
 <div class="jg rect" data-gallery>{collage(t)}</div></section>""" for t in misc["fieldwork"])
-    body = f"""<section class="story intro field-intro">
-<div class="story-text" data-reveal><span class="kicker">Gallery</span><h1 class="h2" style="font-size:var(--fs-xl)">In the field</h1>
+    body = f"""{window(U + '2022/01/img_0429.jpg', '<h1 data-hero>Gallery</h1>', h='56vh', cls='shift', pos='60%')}
+<section class="story intro field-intro">
+<div class="story-text" data-reveal><span class="kicker">Fieldwork</span><h2 class="h2">In the field</h2>
 <p>Our most recent adventures. Spin the globe and click a pin to open the photos from that trip. Hopefully, many more to come!</p></div>
 <div class="story-art" data-reveal="1">{globe_block(big=True)}<span class="globe-hint">Click on a location!</span></div>
 </section>
@@ -602,6 +604,7 @@ def resources():
 <p>Play around with some of our surface models in <strong>SketchFab</strong>. Here's Parana Basin on Mars, with mapped valleys and a paleolake. Press play and explore!</p></div>
 <div class="c-7-13" data-reveal="1">{sketch}</div>
 </div></section>
+{dots()}
 <section class="section"><div class="grid">
 <div class="c-1-6 self-center" data-reveal><span class="kicker">Data</span><h2 class="h2">MESA</h2>
 <p>Check back for when it is available for download (coming soon, where soon = when my back-up drives start working).</p></div>
@@ -614,8 +617,9 @@ def resources():
 def contact():
     set_depth("contact-cv")
     osm = "https://www.openstreetmap.org/export/embed.html?bbox=-71.0935%2C42.3586%2C-71.0852%2C42.3622&amp;layer=mapnik&amp;marker=42.360401%2C-71.089331"
-    body = f"""<section class="section contact"><div class="grid contact-grid">
-<div class="c-1-7" data-reveal><span class="kicker">Contact</span><p class="mail">Get in touch</p>
+    body = f"""{window(U + '2022/01/img_6108-1.jpg', '<h1 data-hero>Contact</h1>', h='56vh', cls='shift', pos='55%')}
+<section class="section contact"><div class="grid contact-grid">
+<div class="c-1-7" data-reveal><span class="kicker">Email</span><h2 class="h2">Get in touch</h2>
 <div class="actions"><a class="btn" href="#" data-m="dWRlLnRpbUBzYWlhZw==">Send me an email <span class="arr" aria-hidden="true">→</span></a><button class="btn line" type="button" id="copy-email" data-m="dWRlLnRpbUBzYWlhZw==">Copy address</button></div>
 <div class="contact-row"><div><span class="kicker">Office</span><p>Room 54-510, Green Building<br>Massachusetts Institute of Technology<br>21 Ames Street, Cambridge, MA 02139</p></div>
 <div><span class="kicker">CV</span><p>My most up-to-date CV.</p>{btn('View & download', media(misc['cv']), 'line')}</div></div></div>

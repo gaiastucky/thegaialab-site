@@ -431,7 +431,7 @@ dialog.lb button:hover { color: var(--maroon); }
 .story.intro { grid-template-columns: 5fr 6fr; }
 .story-art.gif { max-width: 560px; }
 .story-art.gif img { width: 100%; height: auto; display: block; }
-.hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); max-width: 20ch; }
+.hero h1 { font-size: var(--fs-hero); max-width: 16ch; }
 .hero .sub { max-width: 46ch; font-size: var(--fs-b); line-height: 1.6; }
 .story.alt .story-art { order: 2; }
 .story-art { position: relative; width: 100%; max-width: 400px; justify-self: center; }
