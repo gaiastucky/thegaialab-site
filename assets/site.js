@@ -291,6 +291,47 @@
     tex.src = marsCanvas.dataset.tex;
   }
 
+  /* ---------- Data & code banner: perspective wireframe of Mars topography ---------- */
+  var meshCanvas = document.querySelector("canvas.mesh");
+  if (meshCanvas) {
+    fetch(meshCanvas.dataset.src).then(function (r) { return r.json(); }).then(function (g) {
+      var W = g.w, H = g.h, Z = g.z, ctx = meshCanvas.getContext("2d"), zmax = Math.max.apply(null, Z);
+      function draw() {
+        var box = meshCanvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var cw = Math.round(box.width * dpr), ch = Math.round(box.height * dpr);
+        if (meshCanvas.width !== cw || meshCanvas.height !== ch) { meshCanvas.width = cw; meshCanvas.height = ch; }
+        var scrolled = Math.max(0, Math.min(1, -box.top / Math.max(1, box.height)));
+        var yaw = -0.25 + (reduceMotion ? 0 : scrolled * 0.45), cy = Math.cos(yaw), sy = Math.sin(yaw);
+        var t = 0.62, ct = Math.cos(t), st = Math.sin(t), D = 70, F = Math.max(cw * 0.62, ch * 1.6), ex = 8 * g.unit / 4000;
+        function P(i, j) {
+          var x = i - W / 2, y = j - H / 2, z = Z[j * W + i] * ex - 6;
+          var X = x * cy - y * sy, Y = x * sy + y * cy;
+          var vx = X, vy = Y - D * ct, vz = z - D * st;
+          var depth = -(vy * ct + vz * st), up = -vy * st + vz * ct;
+          return [cw / 2 + vx * F / depth, ch * 0.42 - up * F / depth];
+        }
+        ctx.clearRect(0, 0, cw, ch);
+        ctx.lineWidth = Math.max(0.6, 0.7 * dpr);
+        var pts = [], i, j, k;
+        for (j = 0; j < H; j++) for (i = 0; i < W; i++) pts.push(P(i, j));
+        for (j = 0; j < H; j++) {
+          ctx.beginPath();
+          for (i = 0; i < W; i++) { k = pts[j * W + i]; if (i) ctx.lineTo(k[0], k[1]); else ctx.moveTo(k[0], k[1]); }
+          ctx.strokeStyle = "rgba(255,255,255," + (0.18 + 0.4 * (1 - j / H)).toFixed(3) + ")"; ctx.stroke();
+        }
+        ctx.strokeStyle = "rgba(255,255,255,.22)";
+        for (i = 0; i < W; i += 1) {
+          ctx.beginPath();
+          for (j = 0; j < H; j++) { k = pts[j * W + i]; if (j) ctx.lineTo(k[0], k[1]); else ctx.moveTo(k[0], k[1]); }
+          ctx.stroke();
+        }
+      }
+      var queued = false;
+      function req() { if (!queued) { queued = true; requestAnimationFrame(function () { queued = false; draw(); }); } }
+      draw(); window.addEventListener("resize", req); if (!reduceMotion) window.addEventListener("scroll", req, { passive: true });
+    });
+  }
+
   /* ---------- Flip circles: tap to turn over on touch screens ---------- */
   document.querySelectorAll(".flip-in").forEach(function (b) {
     b.addEventListener("click", function () { b.parentNode.classList.toggle("on"); });

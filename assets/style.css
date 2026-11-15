@@ -556,7 +556,7 @@ dialog.lb button:hover { color: var(--maroon); }
 .alum-face:hover .alum-flip > .af-back, .alum-face:focus .alum-flip > .af-back { transform: rotateY(0); opacity: 1; transition: transform .28s ease-out .28s, opacity 0s .28s; }
 
 /* ---------- Research themes: circle, three drawn lines, numbered questions */
-.window.shift { background-attachment: scroll; background-position: center calc(50% + var(--by, 0px)); }
+.window.shift { background-attachment: scroll; background-position: center calc(var(--bp, 50%) + var(--by, 0px)); }
 .theme-row { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(48px, 8vw, 120px); align-items: center; max-width: var(--max, 1180px); margin-inline: auto; padding-inline: var(--gutter); }
 .theme-row.alt { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
 .theme-row.alt .theme-art { order: 2; }
@@ -722,3 +722,9 @@ dialog.lb button:hover { color: var(--maroon); }
 .li-badge { width: 96px; height: 96px; border-radius: 50%; background: var(--rose); color: var(--maroon); display: grid; place-items: center; transition: transform .4s; }
 .li-badge:hover { transform: scale(1.06); }
 .li-badge svg { width: 42px; height: 42px; }
+
+/* Data & code banner: live wireframe of MOLA topography (Gale crater) */
+.window.meshwin { background: #2b2a30; }
+.window.meshwin::before { background: linear-gradient(180deg, rgba(40,34,44,0) 45%, rgba(40,34,44,.6)); z-index: 0; }
+.window.meshwin .mesh { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
+.window.meshwin h1 { position: relative; }

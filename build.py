@@ -75,8 +75,8 @@ def pic(url, alt="", cls="", style="", drift=0, eager=False, grow=False):
     return f'<div class="pic {cls}"{s}{d}>{img(url, alt, eager)}</div>'
 
 
-def window(photo, inner="", h=None, cls="", tag=""):
-    style = f"--img:url('{media(photo)}');" + (f"--h:{h};" if h else "")
+def window(photo, inner="", h=None, cls="", tag="", pos=None):
+    style = (f"--img:url('{media(photo)}');" if photo else "") + (f"--h:{h};" if h else "") + (f"--bp:{pos};" if pos else "")
     t = f'<span class="tag">{tag}</span>' if tag else ""
     return f'<section class="window {cls}" style="{style}"><div class="in">{inner}</div>{t}</section>'
 
@@ -447,7 +447,7 @@ def themes_page():
 <div class="theme-art">{pic(t['img'], t['name'], 'round')}<p class="cap">Image credit: <a href="{e(t['credit_url'])}">{e(t['credit'])}</a></p></div>
 <div class="theme-txt"><h2 class="h2" data-reveal>{e(t['name'])}</h2><ol class="tq">{qs}</ol></div>
 </div></article>""")
-    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h='78vh', cls='shift')}
+    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h='78vh', cls='shift', pos='78%')}
 <section class="section"><div class="grid">
 <p class="lede c-2-12" data-reveal>These are the four <strong>main areas</strong> of our research. For each one, I have listed three broad research questions I am interested in addressing. I am always open to learning new ways to answer these, or, even better, answering newer and better research questions!</p>
 </div></section>
@@ -597,7 +597,7 @@ def resources():
     sketch = "".join(
         f'<div class="{c}" data-reveal="{i}">{embed("https://sketchfab.com/models/" + m["url"].rsplit("-", 1)[-1] + "/embed?autostart=1", "", m["title"])}<p class="cap">{e(m["title"])}. <a href="{e(m["url"])}">Open on Sketchfab</a></p></div>'
         for i, (m, c) in enumerate(zip(r["models"], ["c-1-7", "c-7-13"])))
-    body = f"""{window(misc['covers']['resources'], '<h1>Resources</h1>', h='56vh')}
+    body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1>', h='56vh', cls='meshwin')}
 <section class="section"><div class="grid">
 <div class="c-2-8" data-reveal><span class="kicker">Visualization</span><h2 class="h2">Explore our surfaces in 3D</h2>
 <p>Play around with some of our surface models in <strong>SketchFab</strong>. Here's Parana Basin on Mars, with mapped valleys and a paleolake, and Fogo Island. Press play and explore!</p></div>
@@ -621,7 +621,7 @@ def resources():
 <div class="row" style="grid-template-columns:minmax(0,1fr)"><h3>LPSC 2022 Notes</h3><p class="small">Notes on Paper App. Please make sure to give credit if you download the video or PDF! <a href="{e(media(r['notes'][0]['url']))}">Download the PDF</a>.</p></div>
 </div></div>
 </div></div></section>"""
-    page("resources", "Resources", body, "Data, code and 3D models from the Gaia Lab.")
+    page("resources", "Data & code", body, "Data, code and 3D models from the Gaia Lab.")
 
 
 # ======================================================================= Contact / CV
