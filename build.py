@@ -530,7 +530,15 @@ def outreach():
         if c.get("images"):
             return '<div class="course-logos">' + "".join(img(u, a) for u, a in c["images"]) + "</div>"
         return ""
-    courses = "".join(f'<div class="course-row grid" data-reveal="{i % 2}"><div class="course c-1-7"><span class="code">{e(c["code"])}</span><div class="course-body"><h3>{e(c["name"])}</h3><p class="small muted">MIT EAPS, taught {e(c["taught"])}</p><p class="course-desc">{e(c["desc"])}</p><a class="course-link" href="{e(c["url"])}">MIT course catalog</a></div></div><div class="course-media c-7-13">{course_media(c)}</div></div>' for i, c in enumerate(misc["courses"]))
+    def course(i, c):
+        m = course_media(c)
+        text = (f'<h3 class="sub"><span class="course-code">{e(c["code"])}</span> {e(c["name"])}</h3>'
+                f'<p class="small muted">MIT EAPS, taught {e(c["taught"])}</p><p>{e(c["desc"])}</p>'
+                f'<p><a href="{e(c["url"])}">MIT course catalog</a></p>')
+        if m:
+            return f'<div class="grid course-item"><div class="c-1-6 self-center" data-reveal>{text}</div><div class="c-7-13 self-center" data-reveal="1">{m}</div></div>'
+        return f'<div class="grid course-item"><div class="c-1-6" data-reveal>{text}</div></div>'
+    courses = "".join(course(i, c) for i, c in enumerate(misc["courses"]))
     out = [("Pt6uvfet2N8", 0, "News video on our work published in Nature on lake outflows."),
            ("vLDQRo_Qp6s", 0, "5 minute flash talk for an interview on my research."),
            ("JnODU5J767c", 0, "MIT Alumni Forum talk on decoding the mystery of water on Mars, 2025.")]
