@@ -26,7 +26,10 @@ Content lives in four JSON files under `data/`. Most updates are edits to those 
 - White pages, pastel palette with a rusty Mars red accent (`--maroon #b5654a`), river blue `#9cc8ea` and pale rose `#f3e0d4`.
 - Circles everywhere. Round photos, round map, numbered circles.
 - Scroll effects. Banners move on scroll, rivers draw between sections, elements reveal as they enter.
-- Galleries are collages of rectangles in different sizes. No uniform grids.
+- Galleries are masonry columns of tiles in mixed shapes (landscape, portrait, square). No uniform grids. Gaia approved this look.
+- Every inner page opens with a banner of one height (`BANNER_H` in build.py) and a big title. Home keeps its taller welcome hero. Contact has no banner. Gallery's banner is the light grey globe band; clicking a pin opens that trip's photos below on the same page.
+- Sections open with a small blue kicker and an h2. Rivers (`dots()`) go only between the main sections of a page, never inside one.
+- The Data & code banner is a live wireframe of real MOLA topography of Jezero crater (`assets/mars-mesh.json`).
 
 ## Pages
 
