@@ -43,7 +43,7 @@ Home, Team, Research (Themes, Publications, Resources), Engagement (teaching, ou
 ## Open items
 
 - Copy the roughly 200 hotlinked WordPress images, the Elsevier figures and the logo into `assets/` before the WordPress site closes.
-- Set up the preview site on GitHub Pages and later switch the domain.
+- Preview site is live at https://gaiastucky.github.io/thegaialab-site/ (GitHub Pages, main branch root, noindex via `NOINDEX` in build.py plus robots.txt). Images still load from WordPress until copied into `media/`. Domain switch waits for Gaia's approval.
 - Mars globe on Resources (done). Texture `assets/mars-mola.jpg` is MOLA MEGDR downsampled to 1024x512 (via SPECFEM3D_GLOBE's 4 arcmin grid), coloured in the site palette with hillshade. Caption wording is a draft for Gaia to confirm.
 - Home page "Follow us on LinkedIn" section links to the lab page https://www.linkedin.com/company/136993897/ (done). Latest-post embed still needs a post link. The header LinkedIn icon still points to Gaia's personal profile.
 - Tibetan lakes paper summary drafted by Claude at Gaia's request. Awaiting her approval or edits.
