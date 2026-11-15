@@ -561,17 +561,18 @@ FIELD_TEXT = {
 }
 
 
-COLLAGE = ["big", "", "tall", "", "wide", "", "", "tall", "", "", "wide", "big", "", "", "tall", "", "wide", ""]
+# Masonry tile shapes, cycled through each trip: aspect ratios as width/height
+COLLAGE = ["4/3", "3/4", "3/2", "1/1", "2/3", "4/3", "4/5", "16/10", "3/4", "1/1", "3/2", "2/3"]
 
 
 def collage(t):
-    return "".join(f'<button type="button" class="jg-item {COLLAGE[k % len(COLLAGE)]}" aria-label="Enlarge photo {k + 1}">{img(u, f"{t["place"]} {t["year"]}, photo {k + 1}")}</button>' for k, u in enumerate(t["photos"]))
+    return "".join(f'<button type="button" class="jg-item" style="aspect-ratio:{COLLAGE[k % len(COLLAGE)]}" aria-label="Enlarge photo {k + 1}">{img(u, f"{t["place"]} {t["year"]}, photo {k + 1}")}</button>' for k, u in enumerate(t["photos"]))
 
 
 def fieldwork():
     set_depth("fieldwork")
     trips = "".join(f"""<section class="trip-panel" id="{trip_slug(t['place'])}" hidden><div class="grid"><div class="c-1-8"><span class="kicker">Fieldwork, {t['year']}</span><h2 class="h2">{e(t['place'])}</h2><p>{FIELD_TEXT[t['place']]}</p></div></div>
-<div class="jg rect" data-gallery>{collage(t)}</div></section>""" for t in misc["fieldwork"])
+<div class="jg masonry" data-gallery>{collage(t)}</div></section>""" for t in misc["fieldwork"])
     body = f"""<section class="globe-hero"><div class="story intro field-intro">
 <div class="story-text" data-reveal><h1>Gallery</h1>
 <p>Our most recent adventures. Spin the globe and click a pin to open the photos from that trip. Hopefully, many more to come!</p></div>
@@ -584,7 +585,7 @@ def fieldwork():
         set_depth(sl)
         body = f"""<section class="section tight"><div class="grid"><div class="c-1-8" data-reveal><span class="kicker">Fieldwork, {t['year']}</span><h1 class="h2">{e(t['place'])}</h1><p>{FIELD_TEXT[t["place"]]}</p>
 <div class="actions">{btn("Back to the globe", link("fieldwork"), "line")}</div></div></div>
-<div class="jg rect" data-gallery>{collage(t)}</div></section>"""
+<div class="jg masonry" data-gallery>{collage(t)}</div></section>"""
         page(sl, t["place"], body, f"Photos from our {t['year']} fieldwork in {t['place']}.")
 
 

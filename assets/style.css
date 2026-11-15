@@ -740,3 +740,9 @@ dialog.lb button:hover { color: var(--maroon); }
 .globe-hero .story { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
 .globe-hero h1 { font-size: var(--fs-hero); letter-spacing: -0.035em; line-height: 0.95; margin-bottom: 18px; }
 .globe-hero .globe-wrap.big { width: min(100%, 420px); }
+
+/* Trip galleries: masonry of mixed shapes in three columns */
+.jg.masonry { width: auto; max-width: var(--max); margin: 36px auto 0; padding: 0 var(--gutter); column-count: 3; column-gap: 10px; }
+.jg.masonry .jg-item { width: 100%; margin: 0 0 10px; break-inside: avoid; border-radius: 2px; }
+.jg.masonry .jg-item img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 640px) { .jg.masonry { column-count: 2; column-gap: 6px; } .jg.masonry .jg-item { margin-bottom: 6px; } }
