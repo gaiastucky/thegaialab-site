@@ -200,7 +200,7 @@
         globeCanvas.addEventListener("click", function (ev) {
           var r = globeCanvas.getBoundingClientRect(), x = (ev.clientX - r.left) * size / r.width, y = (ev.clientY - r.top) * size / r.height;
           var hit = shown.filter(function (p) { return Math.hypot(p.x - x, p.y - y) < 28; })[0];
-          if (hit) { ev.preventDefault(); var m = /([\w-]+)\.html$/.exec(hit.href), sec = m && document.getElementById(m[1]); if (sec) { [].forEach.call(document.querySelectorAll(".trip-panel"), function (p) { p.hidden = p !== sec; }); sec.scrollIntoView({ behavior: "smooth", block: "start" }); } else if (!(m && window.glGo && window.glGo(m[1]))) location.href = hit.href; }
+          if (hit) { ev.preventDefault(); var m = /(fieldwork-[\w-]+)(?:\.html|\/(?:index\.html)?)?$/.exec(hit.href), sec = m && document.getElementById(m[1]); if (sec) { [].forEach.call(document.querySelectorAll(".trip-panel"), function (p) { p.hidden = p !== sec; }); sec.scrollIntoView({ behavior: "smooth", block: "start" }); } else if (!(m && window.glGo && window.glGo(m[1]))) location.href = hit.href; }
         });
         globeCanvas.addEventListener("mousemove", function (ev) {
           var r = globeCanvas.getBoundingClientRect(), x = (ev.clientX - r.left) * size / r.width, y = (ev.clientY - r.top) * size / r.height;
