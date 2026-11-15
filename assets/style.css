@@ -780,3 +780,8 @@ h3.sub { font-family: var(--head); font-size: var(--fs-l); font-weight: 700; col
   .jg.collage .cg { aspect-ratio: var(--mar); margin: -2px; }
   .jg.collage .jg-item { border-width: 2px; left: var(--mx); top: var(--my); width: var(--mw); height: var(--mh); }
 }
+
+/* Every inner banner is exactly BANNER_H tall (60vh), Gallery's globe band included */
+.window:not(.hero) { height: var(--h, 60vh); min-height: 0; }
+.globe-hero { height: 60vh; min-height: 0; overflow: hidden; padding: 0; }
+.globe-hero .globe-wrap.big { width: min(100%, 420px, calc(60vh - 90px)); }
