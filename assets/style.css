@@ -739,7 +739,7 @@ dialog.lb button:hover { color: var(--maroon); }
 .globe-hero { min-height: 60vh; display: grid; align-items: center; padding: 16px 0; color: #fff;
   background-color: #3a3940;
   background-image: radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.8) 50%, transparent 51%), radial-gradient(1px 1px at 27% 72%, rgba(255,255,255,.6) 50%, transparent 51%), radial-gradient(1.5px 1.5px at 41% 33%, rgba(255,255,255,.7) 50%, transparent 51%), radial-gradient(1px 1px at 55% 86%, rgba(255,255,255,.5) 50%, transparent 51%), radial-gradient(1px 1px at 63% 12%, rgba(255,255,255,.7) 50%, transparent 51%), radial-gradient(1.5px 1.5px at 78% 64%, rgba(255,255,255,.6) 50%, transparent 51%), radial-gradient(1px 1px at 88% 26%, rgba(255,255,255,.8) 50%, transparent 51%), radial-gradient(1px 1px at 94% 82%, rgba(255,255,255,.5) 50%, transparent 51%), radial-gradient(1px 1px at 6% 55%, rgba(255,255,255,.6) 50%, transparent 51%), radial-gradient(1px 1px at 35% 6%, rgba(255,255,255,.5) 50%, transparent 51%), radial-gradient(1.5px 1.5px at 18% 90%, rgba(255,255,255,.6) 50%, transparent 51%), radial-gradient(1px 1px at 70% 44%, rgba(255,255,255,.4) 50%, transparent 51%);
-  background-size: 420px 300px; }
+  background-size: 240px 180px; }
 .globe-hero h1 { color: #fff; }
 .globe-hero p { color: rgba(255,255,255,.86); }
 .globe-hero .story { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
