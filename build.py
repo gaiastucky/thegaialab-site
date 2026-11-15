@@ -595,7 +595,7 @@ def resources():
     set_depth("resources")
     r = misc["resources"]
     m = r["models"][0]
-    sketch = f'{embed("https://sketchfab.com/models/" + m["url"].rsplit("-", 1)[-1] + "/embed?autostart=1", "", m["title"])}'
+    sketch = f'{embed("https://sketchfab.com/models/" + m["url"].rsplit("-", 1)[-1] + "/embed?autostart=1", m.get("thumb", ""), m["title"])}'
     body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1>', h='56vh', cls='meshwin')}
 <section class="section"><div class="grid">
 <div class="c-1-6 self-center" data-reveal><span class="kicker">Visualization</span><h2 class="h2">Explore our surfaces in 3D</h2>
