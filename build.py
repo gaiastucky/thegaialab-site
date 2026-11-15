@@ -162,6 +162,9 @@ def slugify(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
+# Preview site must stay hidden from search engines. Set to False only when Gaia approves the domain switch.
+NOINDEX = True
+
 LAB_LINKEDIN = "https://www.linkedin.com/company/136993897/"
 
 
@@ -222,7 +225,8 @@ def page(slug, title, body, description):
     else:
         doc = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
                '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-               f"{head}</head>\n<body>\n{content}\n</body>\n</html>\n")
+               + ('<meta name="robots" content="noindex, nofollow">\n' if NOINDEX else '')
+               + f"{head}</head>\n<body>\n{content}\n</body>\n</html>\n")
     path = OUT / f"{slug or 'index'}.html" if FLAT else (OUT / slug / "index.html" if slug else OUT / "index.html")
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(doc)
