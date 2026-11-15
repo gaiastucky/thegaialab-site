@@ -218,7 +218,7 @@ def page(slug, title, body, description):
             f'<link rel="stylesheet" href="{FONTS}">\n{css}\n')
     content = f"""<a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="head-in">
-<a class="mark" href="{link('')}"><img class="mark-logo" src="{rel('assets/logo-mark.webp')}" alt="" width="63" height="48"><span class="mark-txt"><b>The Gaia Lab</b><span>Exploring landscapes across the Solar System</span></span></a>
+<a class="mark" href="{link('')}"><span class="mark-badge"><img class="mark-logo" src="{rel('assets/logo.webp')}" alt="" width="900" height="856"></span><span class="mark-txt"><b>The Gaia Lab</b><span>Exploring landscapes across the Solar System</span></span></a>
 <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="head-right">Menu</button>
 <div class="head-right" id="head-right"><nav class="nav" aria-label="Main">{nav}</nav><div class="icons">{icons}</div></div>
 </div></header>
