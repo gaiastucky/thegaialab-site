@@ -1,0 +1,145 @@
+[
+ {
+  "id": "fluvial",
+  "name": "Fluvial Systems",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/fluvial.jpeg",
+  "credit": "u/anywherebutarizona on Reddit",
+  "credit_url": "https://www.reddit.com/r/CampingandHiking/comments/bitogh/finally_made_it_to_reflection_canyon_ut/",
+  "q": [
+   "To what extent are rivers reliable tape recorders for external forcings, and at what spatial and/or temporal scales?",
+   "How can both erosional and depositional landforms provide quantitative constraints on large-scale driving forces, such as tectonism (river profiles, stream power) or climate (grain size, paleohydrology)?",
+   "When do other localized processes (lithology, faulting) control channel morphology?"
+  ],
+  "main": true
+ },
+ {
+  "id": "lakes",
+  "name": "Lakes & Hydrology",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/lakes-2.jpeg",
+  "credit": "Cronodon.com",
+  "credit_url": "https://cronodon.com/PlanetTech/Titan.html",
+  "q": [
+   "How much water was required to generate lake systems, and for how long did these aqueous systems persist?",
+   "What other processes are associated with these systems, such as catastrophic outflow, weathering, and biology?",
+   "What are the interactions between evaporation, precipitation, and groundwater of liquid flow on early Mars or present-day Titan, and how does this vary spatially?"
+  ],
+  "main": true
+ },
+ {
+  "id": "volcanic",
+  "name": "Volcanic Terrains",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/lava.jpeg",
+  "credit": "Wallup.net",
+  "credit_url": "https://wallup.net/lava-nature-photography-5/",
+  "q": [
+   "Where have volcanic processes created new topography that allows us to explore how surfaces form and evolve (i.e., the best <em>natural labs</em>)?",
+   "How can we use various dating techniques to provide accurate temporal constraints on surface evolution?",
+   "Where and how is drainage formed, and how can interaction with active volcanism affect their shape and evolution?"
+  ],
+  "main": false
+ },
+ {
+  "id": "glacial",
+  "name": "Glaciated Landforms",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/glacial-1.jpeg",
+  "credit": "Climb It Range blog",
+  "credit_url": "http://blog.climbitrange.co.uk/glacial-landforms/",
+  "q": [
+   "Post-glacial landscapes like Iceland contain strong signals of glacial modification: do rivers also play an important role in generating relief?",
+   "What is the relative importance of gradual erosion vs. catastrophic, subglacially sourced floods (e.g., <em>jökulhlaups</em>) in generating massive canyons?",
+   "How do hydro- and cryo-spheres interact and how can we better distinguish their erosional footprints?"
+  ],
+  "main": false
+ },
+ {
+  "id": "icy",
+  "name": "Icy Satellites",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/enceladus-1.jpeg",
+  "credit": "NASA / Warwick.ac.uk",
+  "credit_url": "https://warwick.ac.uk/newsandevents/pressreleases/santas_workshop_could/",
+  "q": [
+   "Further into the outer Solar System, how do icy moons such as Enceladus or Titan record vigorous geologic activity?",
+   "Can we use relationships between ubiquitous cratering records and other surface expressions that hint to planetary processes e.g., plumes or groundwater recharge?",
+   "How similar are processes in alien worlds and how far back can we deconvolve their history?"
+  ],
+  "main": false
+ },
+ {
+  "id": "uplift",
+  "name": "Uplift & Dynamic Support",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/uplift_andes.jpg",
+  "credit": "Rankin on Flickr",
+  "credit_url": "https://flic.kr/p/oGbZeQ",
+  "q": [
+   "How is mantle convection recorded in river systems, and can river geometries be used to probe processes such as plume evolution?",
+   "How do rivers adjust to rapid changes in vertical motion, either due to glacial isostatic adjustment or sea-level changes?",
+   "In complex locations such as Iceland, how can different, scale-dependent sources of uplift be deconvolved to isolate different contributions?"
+  ],
+  "main": false
+ },
+ {
+  "id": "climate",
+  "name": "Climate-Land Links",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/climate.jpeg",
+  "credit": "wallup.net",
+  "credit_url": "https://wallup.net/nature-landscape-clouds-sky-lightning-storm-rain-hill-mountain/",
+  "q": [
+   "What role does the climate play in constructing a landscape, and can we say something about future changes?",
+   "How is climate expressed in geological hazards such as landslides or coastal environments, among others?",
+   "How important is precipitation in determining how a surface evolves, and does rainfall intensity or variability dictate rates of modification over geological periods?"
+  ],
+  "main": true
+ },
+ {
+  "id": "landscape",
+  "name": "Landscape Evolution",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/landscape.jpg",
+  "credit": "Barnes (2019)",
+  "credit_url": "https://doi.org/10.1016/j.geomorph.2019.01.002",
+  "q": [
+   "What physical parameters are needed to describe a realistic watershed, and does this vary over different wavelengths?",
+   "How can we adapt these for other planetary bodies, e.g., Mars or Titan, which have potentially simpler, but poorly constrained, hydrospheres?",
+   "At smaller scales, how can sediment transport or block toppling models be calibrated and used to infer geomorphic histories?"
+  ],
+  "main": true
+ },
+ {
+  "id": "weathering",
+  "name": "Weathering & Alteration",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/weathering.jpeg",
+  "credit": "NASA/JPL-Caltech",
+  "credit_url": "https://pixels.com/featured/martian-rocks-nasajpl-caltechcornellscience-photo-library.html",
+  "q": [
+   "How can alteration of minerals in martian lake environments shed light on water quantities and timescales of aqueous processes?",
+   "How do processes such as soil formation and porosity reduction affect hydrology in new volcanic surfaces?",
+   "What is the relative contribution of physical vs. chemical weathering in setting modification rates, and how does this vary over different climates?"
+  ],
+  "main": false
+ },
+ {
+  "id": "remote",
+  "name": "Remote Sensing",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/dron3.jpeg",
+  "credit": "B&H Explora",
+  "credit_url": "https://www.bhphotovideo.com/explora/video/tips-and-solutions/how-prepare-2017-new-york-city-drone-film-festival",
+  "q": [
+   "Where can we detect changes in the surface, and how can instantaneous modification be used to inform process and rates?",
+   "Where can 3D, high-resolution drone models be built to inform our understanding, and how can this aid geomorphic and geological mapping?",
+   "How can we integrate different datasets, images, topography, spectrometry, to inform surface driving forces?"
+  ],
+  "main": false
+ },
+ {
+  "id": "dating",
+  "name": "Dating Tools",
+  "img": "https://thegaialab.files.wordpress.com/2022/01/geo_time.jpg",
+  "credit": "L. W. Yaggy / Smithsonian",
+  "credit_url": "https://airandspace.si.edu/multimedia-gallery/10096009jpg",
+  "q": [
+   "How do erosion rates (e.g., from cosmogenic dating) vary over space and time - and what sets them?",
+   "Can we use absolute temporal constraints to fine tune landscape evolution, and where are the best places to source these?",
+   "How can different dating techniques be reconciled to shed light on complementary processes (e.g., rates of deposition, waterfall retreat, incision, and burial)?"
+  ],
+  "main": false
+ }
+]

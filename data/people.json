@@ -1,0 +1,209 @@
+{
+ "pi": {
+  "name": "Gaia Stucky de Quay",
+  "role": "Principal Investigator",
+  "photo": "https://thegaialab.files.wordpress.com/2025/10/gaia-edited.jpg",
+  "photo2": "https://thegaialab.files.wordpress.com/2025/10/img_0736.jpg",
+  "bio": [
+   "Hi, I'm Gaia (she/her). I'm an <strong>Assistant Professor</strong> at the <strong>Department of Earth, Atmospheric and Planetary Sciences (EAPS) at MIT</strong>. Born in Brazil, with Spanish citizenship, and raised in Portugal, I feel right at home in the warm, tropical climate of Boston. Before I ended up here, I obtained my PhD from Imperial College London (with a UChicago internship), and an MSci from University College London where I first fell in love with Earth and Planetary Sciences. Following that, I completed postdocs at UT Austin and my Assistant Professorship at MIT in 2023 and I am looking forward to getting my new group and lab up and running. In general, I'm interested in why landscapes look the way they do. I've looked at channels buried below the seabed, canyons in Iceland, and lakes on Mars -- but I'm always looking for new places to explore! My weak spot is a waterfall, how can you not love them? Outside of work, I love tennis, triathlons, art, reading, and so many other things that I can't fit here. <strong>Check out the amazing members of our group below :)</strong>"
+  ]
+ },
+ "groups": [
+  {
+   "name": "Postdoctoral researchers",
+   "members": [
+    {
+     "name": "Mauricio Barcelos-Haag",
+     "since": "2025–2026",
+     "photo": "https://thegaialab.files.wordpress.com/2025/10/mauricio.jpg",
+     "photo2": "https://thegaialab.files.wordpress.com/2025/10/whatsapp-image-2025-07-14-at-12.27.28.jpeg",
+     "website": "https://mauriciobhaag.wordpress.com/",
+     "bio": "I’m Mauricio (he/him), a Molina Postdoctoral Fellow at MIT. I was born in Brazil and earned my Ph.D. in Earth Sciences from the University of Toronto (Canada). My research investigates how lithology and climate influence landscape evolution. I combine fieldwork, rock strength mapping, topographic analysis, and cosmogenic nuclide methods to understand the pace at which landscapes evolve. In my free time, I enjoy cycling, painting, playing guitar, and walking my dog, Pepita."
+    }
+   ]
+  },
+  {
+   "name": "Graduate students",
+   "members": [
+    {
+     "name": "Grace Fanson",
+     "since": "2023",
+     "photo": "https://thegaialab.files.wordpress.com/2025/10/grace.jpg",
+     "photo2": "https://thegaialab.files.wordpress.com/2023/08/gaialab2.jpg",
+     "website": "https://gracefanson.com/",
+     "bio": "Hi! I’m Grace (she/her). I'm a PhD candidate in Planetary Sciences at MIT. I study planetary surface evolution on Mars and Earth. My research integrates numerical modeling, remote sensing data analysis, and geomorphology to deepen our understanding of the water cycle on early Mars. I am also involved with various mentorship projects in the department with the goal of making EAPS an even more connected and supportive environment. Outside of the Green Building, I enjoy pottery, reading, cycling, and cooking."
+    },
+    {
+     "name": "Ze-Wen Koh",
+     "since": "2023",
+     "photo": "https://thegaialab.files.wordpress.com/2025/10/ze-wen.jpg",
+     "photo2": "https://thegaialab.files.wordpress.com/2023/08/img_0722_original.jpeg",
+     "website": "https://kohzewen.github.io/",
+     "bio": "Hi there! I’m Ze-Wen (she/her), a PhD student in Planetary Science. I’m interested in the formation and evolution of planetary landscapes, and how they relate to global climate mechanisms and habitability. Currently, my research focuses primarily on rivers and lakes on Earth, Mars and Titan, and how they reflect past or present hydrological cycles. Before this, I obtained a B.A. in Physics and Computer Science at Cornell University. I grew up in Malaysia, and I love spending my time cooking dishes from home, playing board games, and watercolor painting!"
+    },
+    {
+     "name": "Shaalin Sehra",
+     "since": "2024",
+     "photo": "https://thegaialab.files.wordpress.com/2025/10/shaalin.jpg",
+     "photo2": "https://thegaialab.files.wordpress.com/2025/10/goodfieldmecapeverde1.jpeg",
+     "website": "https://www.shaalinsehra.com/",
+     "bio": "I’m Shaalin (she/her), a second-year PhD student in Planetary Science. I explore water-driven surface processes on Mars and their analogs on Earth, using remote sensing and computer modeling, coupled with fieldwork/labwork. Currently, I am using remote sensing to analyze landslide deposits in the Valles Marineris of Mars and doing fieldwork and lab experiments to study stream geomorphology in Cape Verde, an analog for Mars. When I’m not studying rocks, I love to climb them and teach others to climb!"
+    },
+    {
+     "name": "Jensen Lawrence",
+     "since": "2024",
+     "photo": "https://thegaialab.files.wordpress.com/2024/09/portrait.png",
+     "photo2": "https://thegaialab.files.wordpress.com/2024/09/fieldwork.png",
+     "website": "https://jensenlawrence.github.io/",
+     "bio": "I’m Jensen (he/him), a PhD student in MIT’s Department of Earth, Atmospheric and Planetary Sciences. My scientific interests are summarized by two broad questions: how do planetary systems form and evolve, and how do the surfaces and climates of terrestrial planetary bodies change over time? To address the former question, I conduct research in Prof. Richard Teague’s <a href=\"https://pfl.mit.edu/\">Planet Formation Lab</a>. To address the latter question, I work with the Gaia Lab, using remote sensing data and computational models to study Mars’s geomorphic history. Previously, I obtained a BSc in mathematical physics from the University of Waterloo. In my free time I love to explore nature and study other languages."
+    }
+   ]
+  },
+  {
+   "name": "Undergraduate researchers",
+   "members": [
+    {
+     "name": "Noella Aldrich",
+     "photo": "assets/people/noella-2.jpg",
+     "photo2": "assets/people/noella-1.jpg",
+     "bio": "I’m Noella, a third year undergraduate at MIT majoring in Earth, Atmosphere, and Planetary Science with a minor in Political Science. I’m working with Grace to study volcanic island river valleys on Earth to better understand how precipitation rates impact valley incision depth, and apply this to Martian river valleys. In my free time, I like to explore Boston with my friends and work on various craft projects."
+    }
+   ]
+  }
+ ],
+ "mascot": {
+  "name": "Io Mitchell de Quay",
+  "since": "2024",
+  "photo": "https://thegaialab.files.wordpress.com/2025/10/io.jpg",
+  "photo2": "https://thegaialab.files.wordpress.com/2024/03/9655894b-0538-401f-8366-a546c524ba9d-edited.jpg",
+  "website": "",
+  "bio": "I don't know a lot about geomorphology or planetary science (despite my name), but I do enjoy sleeping, treats, chasing squirrels, and eating sticks. I can usually be found in my dad's office in 54-1022 or my mom's office in 54-510, if you ever want to stop by and discuss some ideas (= give me some attention)."
+ },
+ "alumni": [
+  {
+   "name": "Maurielle Noto",
+   "role": "Master's student (2025–2026)",
+   "project": "Global distribution of valley widths on Mars.",
+   "photo": "https://thegaialab.files.wordpress.com/2025/10/maurielle.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2023/08/img_7b7b48fb3432-1-edited.jpeg",
+   "is_bio": false
+  },
+  {
+   "name": "Amy Chen",
+   "role": "Undergrad (2025)",
+   "project": "Flow accumulation and fluvial processes in terrestrial landscapes as a record of early Mars surface evolution.",
+   "photo": "https://thegaialab.files.wordpress.com/2025/10/amy.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2025/10/dsc03165.jpg",
+   "is_bio": false
+  },
+  {
+   "name": "Charlotte Whitworth",
+   "role": "Undergrad (2024-2025)",
+   "project": "How impact cratering influences drainage density on Mars (UROP with Grace Fanson).",
+   "photo": "https://thegaialab.files.wordpress.com/2025/10/img-20250425-wa0012-2.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2025/10/fieldwork-1.jpg",
+   "is_bio": false
+  },
+  {
+   "name": "Peyton Musembi",
+   "role": "Undergrad/UROP (2025)",
+   "project": "Measuring and dating landslides in the Valles Marineris region of Mars to reconstruct the past climate.",
+   "photo": "https://thegaialab.files.wordpress.com/2025/08/img_3666.jpeg",
+   "photo2": "https://thegaialab.files.wordpress.com/2025/08/img_2212.jpeg",
+   "is_bio": false
+  },
+  {
+   "name": "Chuanqi He",
+   "role": "Postdoctoral Associate (2023 - 2025)",
+   "project": "Using flood outlets on Mars to constrain water cycles on Mars.",
+   "photo": "https://thegaialab.files.wordpress.com/2023/03/photo-21_chuanqi-edited.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2023/02/screen-shot-2023-02-26-at-11.16.13.png",
+   "is_bio": false,
+   "now": "Associate Professor at Sun Yat-sen University (China)."
+  },
+  {
+   "name": "Kyra Smith",
+   "role": "MSRP/Undergrad (2025)",
+   "project": "Researching Martian impact craters, specifically how they modify over time and space.",
+   "photo": "https://thegaialab.files.wordpress.com/2025/08/img_5046-preview68.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2025/08/img_8635.jpg",
+   "is_bio": false
+  },
+  {
+   "name": "Trent Thomas",
+   "role": "Visiting Student (2024)",
+   "project": "Machine learning based tools to automatically map alluvial fans on Earth and Mars.",
+   "photo": "https://thegaialab.files.wordpress.com/2024/03/photo_serious21-edited.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2024/03/photo_fun74.jpg",
+   "is_bio": false
+  },
+  {
+   "name": "Scout Painter",
+   "role": "Undergrad/UROP (2023-2024)",
+   "project": "Researching the relationship between climate and river morphology on volcanic islands in the Atlantic.",
+   "photo": "https://thegaialab.files.wordpress.com/2023/06/headshot6.jpeg",
+   "photo2": "https://thegaialab.files.wordpress.com/2023/06/great-unconformity-pic-228-edited.jpeg",
+   "is_bio": false
+  },
+  {
+   "name": "Lou Lahn",
+   "role": "Undergrad/UROP (2024)",
+   "project": "Analyzing the dry river beds of Lanzarote, Spain to determine the hydrological conditions necessary to form channel morphologies.",
+   "photo": "https://thegaialab.files.wordpress.com/2024/03/photo-edited.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2024/03/screenshot_20240219-121053.png.jpeg",
+   "is_bio": false
+  },
+  {
+   "name": "Vespera Luo",
+   "role": "Visiting Student (2023)",
+   "project": "Mapping hillslopes on Martian craters to determine early climate conditions (warm vs. cold).",
+   "photo": "https://thegaialab.files.wordpress.com/2023/05/image64-1-edited.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2023/05/image102-edited.jpg",
+   "is_bio": false
+  },
+  {
+   "name": "Olivia Avelino",
+   "role": "Undergrad/UROP (2023)",
+   "project": "Analyzing correlations between stream order and different environmental factors globally.",
+   "photo": "https://thegaialab.files.wordpress.com/2023/08/img_91796-1.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2023/08/img_86547-edited.jpg",
+   "is_bio": false
+  },
+  {
+   "name": "Gabriel Vargas",
+   "role": "Undergrad/UROP (2023)",
+   "project": "Modeling the relationship between biodiversity and catchment systems globally.",
+   "photo": "https://thegaialab.files.wordpress.com/2024/03/photo16.png",
+   "photo2": "https://thegaialab.files.wordpress.com/2024/03/img_145018.jpg",
+   "is_bio": false
+  },
+  {
+   "name": "Mariangel Albornoz",
+   "role": "Undergrad, MSRP intern (2026)",
+   "project": "Calculating the volume of rock eroded by inlet channels on Mars, to better understand conditions on early Mars.",
+   "photo": "assets/people/mariangel-1.jpg",
+   "photo2": "assets/people/mariangel-2.jpg",
+   "is_bio": false
+  },
+  {
+   "name": "Deepali Singh",
+   "role": "Visiting Postdoc",
+   "project": "Wet-dry cycles in Martian paleolakes.",
+   "photo": "assets/people/deepali-1.jpg",
+   "photo2": "assets/people/deepali-2.jpg",
+   "is_bio": false
+  }
+ ],
+ "group_photo": "https://thegaialab.files.wordpress.com/2025/10/group.jpg",
+ "group_members_for_bold": [
+  "Gaia Stucky de Quay",
+  "Chuanqi He",
+  "Grace Fanson",
+  "Ze-Wen Koh",
+  "Shaalin Sehra",
+  "Jensen Lawrence",
+  "Mauricio Barcelos-Haag",
+  "Maurielle Noto",
+  "Amy Chen"
+ ]
+}

@@ -1,0 +1,227 @@
+{
+ "press": [
+  {
+   "year": 2022,
+   "outlet": "The Harvard Gazette",
+   "title": "Back in days of great floods",
+   "author": "Juan Siliezar",
+   "url": "https://news.harvard.edu/gazette/story/2022/01/mars-surface-shaped-by-catastrophic-flooding/",
+   "img": "https://thegaialab.files.wordpress.com/2022/05/screen-shot-2022-05-25-at-3.15.14-pm-edited.png"
+  },
+  {
+   "year": 2022,
+   "outlet": "The Washington Post",
+   "title": "NOT REAL NEWS: A look at what didn't happen this week",
+   "author": "Associated Press",
+   "url": "https://www.washingtonpost.com/national/not-real-news-a-look-at-what-didnt-happen-this-week/2022/05/20/8e5add9c-d858-11ec-be17-286164974c54_story.html",
+   "img": "https://thegaialab.files.wordpress.com/2022/05/screen-shot-2022-05-25-at-2.52.45-pm-edited.png"
+  },
+  {
+   "year": 2022,
+   "outlet": "Voice of America",
+   "title": "\"Details\" with Andrey Derkach - February 5 (1:25 min)",
+   "author": "Andrey Derkach",
+   "url": "https://www.golosameriki.com/a/6427805.html",
+   "img": "https://thegaialab.files.wordpress.com/2022/05/screen-shot-2022-05-25-at-3.01.07-pm-1-edited.png"
+  },
+  {
+   "year": 2021,
+   "outlet": "New Scientist",
+   "title": "The deepest canyons on Mars were rapidly formed by devastating floods",
+   "author": "Leah Crane",
+   "url": "https://www.newscientist.com/article/2291632-the-deepest-canyons-on-mars-were-rapidly-formed-by-devastating-floods/",
+   "img": "https://thegaialab.files.wordpress.com/2022/01/new_sci-1-edited.jpeg"
+  },
+  {
+   "year": 2021,
+   "outlet": "Popular Science",
+   "title": "Catastrophic floods helped shape the unique landscape on Mars",
+   "author": "Kate Baggaley",
+   "url": "https://www.popsci.com/science/catastrophic-floods-mars-landscape",
+   "img": "https://thegaialab.files.wordpress.com/2022/01/screen-shot-2022-01-19-at-11.27.26-am-edited.png"
+  },
+  {
+   "year": 2021,
+   "outlet": "UT News",
+   "title": "Mars’ surface shaped by fast and furious floods from overflowing craters",
+   "author": "Monica Kortsha",
+   "url": "https://news.utexas.edu/2021/09/29/mars-surface-shaped-by-fast-and-furious-floods-from-overflowing-craters/",
+   "img": "https://thegaialab.files.wordpress.com/2022/01/screen-shot-2022-01-19-at-11.34.05-am-edited.png"
+  },
+  {
+   "year": 2020,
+   "outlet": "Forbes",
+   "title": "A blue ‘Red Planet’? Rain and snow storms may have soaked the Martian surface, say scientists",
+   "author": "Jamie Carter",
+   "url": "https://www.forbes.com/sites/jamiecartereurope/2020/08/21/a-blue-red-planet-rain-and-snow-storms-may-have-soaked-the-martian-surface-say-scientists/",
+   "img": "https://thegaialab.files.wordpress.com/2022/01/planet-edited.jpg"
+  },
+  {
+   "year": 2020,
+   "outlet": "Voice of America",
+   "title": "\"Rivers used to flow and it rained on Mars\" (Translated from Russian)",
+   "author": "Sergei Dogotar and Alexey Gorbachev",
+   "url": "https://www.golosameriki.com/a/the-landscape-of-mars-formed-by-ancient-rivers-and-rains-research-by-texas-university-at-austin/5577282.html",
+   "img": "https://thegaialab.files.wordpress.com/2022/01/screen-shot-2022-01-19-at-1.16.37-pm-edited.png"
+  },
+  {
+   "year": 2020,
+   "outlet": "UT News",
+   "title": "Sustained planetwide storms may have filled lakes, rivers on ancient Mars",
+   "author": "Anton Caputo",
+   "url": "https://news.utexas.edu/2020/08/18/sustained-planetwide-storms-may-have-filled-lakes-rivers-on-ancient-mars/",
+   "img": "https://thegaialab.files.wordpress.com/2022/01/mars_lakes-edited.jpeg"
+  },
+  {
+   "year": 2019,
+   "outlet": "National Geographic",
+   "title": "Rivers may have flowed on Mars for longer than anyone realized",
+   "author": "Maya Wei-Haas",
+   "url": "https://www.nationalgeographic.com/science/article/mars-rivers-lasted-longer-scientists-realized",
+   "img": "https://thegaialab.files.wordpress.com/2022/01/screen-shot-2022-01-19-at-1.31.04-pm-edited.png"
+  },
+  {
+   "year": 2019,
+   "outlet": "CNN",
+   "title": "Photos reveal the recent rivers that ran across Mars",
+   "author": "Ashley Strickland",
+   "url": "https://edition.cnn.com/2019/03/27/world/mars-rivers-study-scn/index.html",
+   "img": "https://thegaialab.files.wordpress.com/2022/01/rivers-edited.jpeg"
+  },
+  {
+   "year": 2019,
+   "outlet": "New Scientist",
+   "title": "Mars used to have massive flowing rivers twice as wide as Earth’s",
+   "author": "Yvaine Ye",
+   "url": "https://www.newscientist.com/article/2197973-mars-used-to-have-massive-flowing-rivers-twice-as-wide-as-earths/",
+   "img": "https://thegaialab.files.wordpress.com/2022/01/screen-shot-2022-01-19-at-1.34.59-pm-edited.png"
+  }
+ ],
+ "courses": [
+  {
+   "code": "12.013",
+   "name": "Planetary Explorations"
+  },
+  {
+   "code": "12.421",
+   "name": "Remote Sensing"
+  },
+  {
+   "code": "12.002",
+   "name": "Introduction to Geophysics and Planetary Science"
+  }
+ ],
+ "fieldwork": [
+  {
+   "place": "Azores",
+   "year": 2020,
+   "photos": [
+    "https://thegaialab.files.wordpress.com/2022/01/img_5879-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_5997-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_5576-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_5498-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6108-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6319-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6353-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6330-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6023-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6936-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6506-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_7079-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6683-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_7390-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_7156-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6818-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_5536-2.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_5696-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_5932-1.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6584-1.jpg"
+   ]
+  },
+  {
+   "place": "Northeast Iceland",
+   "year": 2017,
+   "photos": [
+    "https://thegaialab.files.wordpress.com/2022/01/img_0571.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_0429.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_0786.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_0770.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_0588.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_0903.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_0947.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_1022.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6020059.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/img_6778.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6020072.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6030387.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6030450-2.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6030403.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6030281.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6080796.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6030437.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6020113.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6030206.jpg",
+    "https://thegaialab.files.wordpress.com/2022/01/p6040550.jpg"
+   ]
+  }
+ ],
+ "gallery": [
+  {
+   "img": "https://thegaialab.files.wordpress.com/2022/01/enceladus_axe-1.jpg",
+   "cap": "Enceladus with an AXE (it's an inside joke, sorry not sorry)"
+  },
+  {
+   "img": "https://thegaialab.files.wordpress.com/2022/01/explorer_girl-1.jpg",
+   "cap": "Checking out a new place"
+  },
+  {
+   "img": "https://thegaialab.files.wordpress.com/2022/01/hopper.jpg",
+   "cap": "Prototype logo for HOPPER mission concept [Illustrator]"
+  },
+  {
+   "img": "https://thegaialab.files.wordpress.com/2022/01/axe_logo_draft.png",
+   "cap": "Logo for AXE mission concept [Illustrator]"
+  },
+  {
+   "img": "https://thegaialab.files.wordpress.com/2022/01/psp_logo_v1_dark-01.png",
+   "cap": "Logo for UT Austin PSP Group [Illustrator]"
+  },
+  {
+   "img": "https://thegaialab.files.wordpress.com/2022/01/img_2674-1.jpg",
+   "cap": "Some rocky bodies (Watercolor)"
+  },
+  {
+   "img": "https://thegaialab.files.wordpress.com/2022/01/eaps-1.jpg",
+   "cap": "Me and Rick (Watercolor)"
+  }
+ ],
+ "resources": {
+  "models": [
+   {
+    "title": "Parana Basin, Mars",
+    "url": "https://sketchfab.com/3d-models/parana-basin-mapped-mars-ec2bdff84e5c44339a457633366408d6"
+   },
+   {
+    "title": "Fogo Island",
+    "url": "https://sketchfab.com/3d-models/fogo-island-topography-5553041d173446658edfa4c0279f2c3c"
+   }
+  ],
+  "notes": [
+   {
+    "title": "LPSC 2022 notes",
+    "url": "https://thegaialab.files.wordpress.com/2022/03/lpsc_2022_2022-03-15_00.19.47.pdf"
+   }
+  ]
+ },
+ "cv": "https://thegaialab.files.wordpress.com/2022/01/gsdq_cv_2022-1.pdf",
+ "covers": {
+  "home": "https://thegaialab.files.wordpress.com/2021/10/iceland_jokulsa-1.jpg",
+  "themes": "https://thegaialab.files.wordpress.com/2022/01/fluvial.jpeg",
+  "media": "https://thegaialab.files.wordpress.com/2022/01/news_cover-4.png",
+  "fieldwork": "https://thegaialab.files.wordpress.com/2022/01/iceland-banner-clp-5.jpg",
+  "gallery": "https://thegaialab.files.wordpress.com/2022/01/map_of_maadim_flooding-1-e1642781108161.png",
+  "stars": "https://thegaialab.files.wordpress.com/2022/01/cover_stars.png",
+  "publications": "https://thegaialab.files.wordpress.com/2021/11/hd-library-wallpaper.jpeg",
+  "resources": "https://thegaialab.files.wordpress.com/2022/01/dron3.jpeg"
+ }
+}
