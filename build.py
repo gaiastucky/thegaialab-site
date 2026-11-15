@@ -444,7 +444,7 @@ def themes_page():
         qs = "".join(f'<li data-q><span class="qn">{k + 1}</span><span class="qt">{md(q)}</span></li>' for k, q in enumerate(t["q"]))
         rows.append(f"""<article class="theme" id="{t['id']}"><div class="theme-row{' alt' if i % 2 else ''}" data-theme>
 <svg class="theme-lines" aria-hidden="true"></svg>
-<div class="theme-art">{pic(t['img'], t['name'], 'round')}<p class="cap">Image credit: <a href="{e(t['credit_url'])}">{e(t['credit'])}</a></p></div>
+<div class="theme-art">{pic(t['img'], t['name'], 'round')}<a class="credit" href="{e(t['credit_url'])}">{e(t['credit'])}</a></div>
 <div class="theme-txt"><h2 class="h2" data-reveal>{e(t['name'])}</h2><ol class="tq">{qs}</ol></div>
 </div></article>""")
     body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h='78vh', cls='shift', pos='78%')}
@@ -594,33 +594,25 @@ def gallery():
 def resources():
     set_depth("resources")
     r = misc["resources"]
-    sketch = "".join(
-        f'<div class="{c}" data-reveal="{i}">{embed("https://sketchfab.com/models/" + m["url"].rsplit("-", 1)[-1] + "/embed?autostart=1", "", m["title"])}<p class="cap">{e(m["title"])}. <a href="{e(m["url"])}">Open on Sketchfab</a></p></div>'
-        for i, (m, c) in enumerate(zip(r["models"], ["c-1-7", "c-7-13"])))
+    m = r["models"][0]
+    sketch = f'{embed("https://sketchfab.com/models/" + m["url"].rsplit("-", 1)[-1] + "/embed?autostart=1", "", m["title"])}'
     body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1>', h='56vh', cls='meshwin')}
 <section class="section"><div class="grid">
-<div class="c-2-8" data-reveal><span class="kicker">Visualization</span><h2 class="h2">Explore our surfaces in 3D</h2>
-<p>Play around with some of our surface models in <strong>SketchFab</strong>. Here's Parana Basin on Mars, with mapped valleys and a paleolake, and Fogo Island. Press play and explore!</p></div>
-</div><div class="grid" style="margin-top:48px">{sketch}</div></section>
-{dots()}
-<section class="section"><div class="grid">
-<div class="c-1-6 self-center" data-reveal><span class="kicker">Codes</span><h2 class="h2">Cratering Notebook</h2>
-<p>A <strong>Jupyter notebook for simulating a population of impact craters</strong> on a given planetary surface, where the topography is a <a href="http://landlab.github.io/#/">LandLab</a> model grid object. Users go through a series of steps to construct realistic landscapes that also include hydrological evolution. Built by me and Emily Bamber (UT Austin) during the <a href="https://github.com/csdms/espin">ESPIn</a> Summer School.</p>
-<div class="actions">{btn('See the code', 'https://github.com/gaiastucky/Cratering')}{btn('All my GitHub', 'https://github.com/gaiastucky', 'line')}</div></div>
-<div class="c-7-13 gap-m"><div class="fig4">{pic(U + '2022/01/cratering_notebook_2-copy.jpeg', 'Cratering notebook output', 'r')}{pic(U + '2022/01/cratering_notebook-copy.jpeg', 'Cratered landscape', 'r')}</div></div>
+<div class="c-1-6 self-center" data-reveal><span class="kicker">Visualization</span><h2 class="h2">Explore our surfaces in 3D</h2>
+<p>Play around with some of our surface models in <strong>SketchFab</strong>. Here's Parana Basin on Mars, with mapped valleys and a paleolake. Press play and explore!</p></div>
+<div class="c-7-13" data-reveal="1">{sketch}</div>
 </div></section>
-<section class="panel"><div class="section"><div class="grid">
-<div class="c-1-5" data-reveal><span class="kicker">Data repositories</span><h2 class="h2">Download our data</h2>
-<p class="small muted">DEMs: check back for when there are any available for download (coming soon, where soon = when my back-up drives start working).</p>
-<figure class="mars-wrap"><canvas id="mars" width="400" height="400" data-tex="{rel('assets/mars-mola.jpg')}" role="img" aria-label="A turning globe of Mars coloured by elevation"></canvas>
-<figcaption class="small muted">MESA DEM, 18 m/px. Globe shows MOLA topography, downsampled.</figcaption></figure></div>
-<div class="c-6-13 gap-m" data-reveal="1">
-<div class="rows">
-<div class="row" style="grid-template-columns:minmax(0,1fr)"><h3>Coupled Lake Systems (Mars) and runoff</h3><p class="cite">Stucky de Quay, Gaia, 2021, "Replication Data for Stucky de Quay et al. (2021) in GRL", <a href="https://doi.org/10.18738/T8/XV7LGU">https://doi.org/10.18738/T8/XV7LGU</a>, Texas Data Repository, V1.</p><p class="small">Includes coupled lake + watershed shapefiles and extracted climate data.</p></div>
-<div class="row" style="grid-template-columns:minmax(0,1fr)"><h3>Channel and Fan Database</h3><p class="small">Supporting database for the global channel-fan systems mapped and analyzed in <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019JE006167">Stucky de Quay et al. (2019)</a>, including geometric parameters. <a href="https://uchicago.app.box.com/s/litjql88ra0a13zapodh8d48suq57kc3/file/458447656893">Download here</a>.</p></div>
-<div class="row" style="grid-template-columns:minmax(0,1fr)"><h3>LPSC 2022 Notes</h3><p class="small">Notes on Paper App. Please make sure to give credit if you download the video or PDF! <a href="{e(media(r['notes'][0]['url']))}">Download the PDF</a>.</p></div>
-</div></div>
-</div></div></section>"""
+<section class="section"><div class="grid">
+<div class="c-1-6 self-center" data-reveal><span class="kicker">Code</span><h2 class="h2">Cratering Notebook</h2>
+<p>A <strong>Jupyter notebook for simulating a population of impact craters</strong> on a given planetary surface, where the topography is a <a href="http://landlab.github.io/#/">LandLab</a> model grid object. Built by me and Emily Bamber (UT Austin) during the <a href="https://github.com/csdms/espin">ESPIn</a> Summer School.</p>
+<div class="actions">{btn('See the code', 'https://github.com/gaiastucky/Cratering')}</div></div>
+<div class="c-7-13" data-reveal="1">{pic(U + '2022/01/cratering_notebook_2-copy.jpeg', 'Cratering notebook output', 'r')}</div>
+</div></section>
+<section class="section"><div class="grid">
+<div class="c-1-6 self-center" data-reveal><span class="kicker">Data</span><h2 class="h2">MESA</h2>
+<p>Check back for when it is available for download (coming soon, where soon = when my back-up drives start working).</p></div>
+<div class="c-7-13" data-reveal="1"><div class="mars-wrap"><canvas id="mars" width="400" height="400" data-tex="{rel('assets/mars-mola.jpg')}" role="img" aria-label="A turning globe of Mars coloured by elevation"></canvas></div></div>
+</div></section>"""
     page("resources", "Data & code", body, "Data, code and 3D models from the Gaia Lab.")
 
 

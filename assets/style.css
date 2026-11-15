@@ -712,7 +712,7 @@ dialog.lb button:hover { color: var(--maroon); }
 @media (max-width: 640px) { .jg.rect { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 22vw; } .jg.rect .jg-item.big { grid-column: span 4; grid-row: span 3; } .jg.rect .jg-item.wide { grid-column: span 4; } }
 
 /* Mars globe on Resources */
-.mars-wrap { margin: 32px 0 0; width: min(100%, 340px); }
+.mars-wrap { width: min(100%, 380px); margin-inline: auto; }
 .mars-wrap canvas { display: block; width: 100%; height: auto; aspect-ratio: 1; }
 .mars-wrap figcaption { margin-top: 10px; }
 
@@ -728,3 +728,7 @@ dialog.lb button:hover { color: var(--maroon); }
 .window.meshwin::before { background: linear-gradient(180deg, rgba(40,34,44,0) 45%, rgba(40,34,44,.6)); z-index: 0; }
 .window.meshwin .mesh { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
 .window.meshwin h1 { position: relative; }
+
+/* Theme image credits: subtle, on hover only */
+.theme-art .credit { position: absolute; left: 50%; bottom: 8%; transform: translateX(-50%); font-size: 12px; font-family: var(--head); color: #fff; background: rgba(47,42,49,.45); padding: 3px 10px; border-radius: 999px; text-decoration: none; white-space: nowrap; opacity: 0; transition: opacity .3s; }
+.theme-art:hover .credit, .theme-art .credit:focus { opacity: 1; }
