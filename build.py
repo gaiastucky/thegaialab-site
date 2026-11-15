@@ -533,7 +533,7 @@ def outreach():
     def course(i, c):
         m = course_media(c)
         text = (f'<h3 class="sub"><span class="course-code">{e(c["code"])}</span> {e(c["name"])}</h3>'
-                f'<p class="small muted">MIT EAPS, taught {e(c["taught"])}</p><p>{e(c["desc"])}</p>'
+                f'<p class="small muted">{e(c["taught"])}</p><p>{e(c["desc"])}</p>'
                 f'<p><a href="{e(c["url"])}">MIT course catalog</a></p>')
         if m:
             return f'<div class="grid course-item"><div class="c-1-6 self-center" data-reveal>{text}</div><div class="c-7-13 self-center" data-reveal="1">{m}</div></div>'
