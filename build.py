@@ -56,7 +56,8 @@ def media(url):
     m = re.search(r"/(\d{4}/\d{2}/[^/?#]+)$", u.path)
     if not m:
         return url
-    if MODE == "pane":
+    # Until the WordPress images are copied into media/, load any missing file from WordPress.
+    if MODE == "pane" or not (ROOT / "media" / m.group(1)).exists():
         big = "" if m.group(1).endswith((".gif", ".pdf")) else "?w=1600"
         return f"https://thegaialab.com/wp-content/uploads/{m.group(1)}{big}"
     return rel(f"media/{m.group(1)}")
