@@ -769,3 +769,14 @@ h3.sub { font-family: var(--head); font-size: var(--fs-l); font-weight: 700; col
 /* When the header shrinks on scroll, only the logo badge stays on the left */
 .mark-txt { transition: opacity .3s; }
 .site-head.scrolled .mark-txt { opacity: 0; visibility: hidden; }
+
+/* Trip galleries: one packed collage. build.py cuts the block into nested rectangles that keep each photo's shape and end flush */
+.jg.collage { width: auto; max-width: var(--max); margin: 36px auto 0; padding: 0 var(--gutter); }
+.jg.collage .cg { position: relative; aspect-ratio: var(--ar); margin: -4px; }
+.jg.collage .jg-item { position: absolute; box-sizing: border-box; border: 4px solid #fff; border-radius: 6px; background: #fff;
+  left: var(--x); top: var(--y); width: var(--w); height: var(--h); }
+.jg.collage .jg-item img { border-radius: 2px; }
+@media (max-width: 640px) {
+  .jg.collage .cg { aspect-ratio: var(--mar); margin: -2px; }
+  .jg.collage .jg-item { border-width: 2px; left: var(--mx); top: var(--my); width: var(--mw); height: var(--mh); }
+}

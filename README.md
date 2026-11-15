@@ -30,7 +30,7 @@ Only the live build is published. `preview/` and `pane/` are scratch output and 
 
 - New member or alumni move. Edit `data/people.json`. Alumni use a `project` field in place of a bio. Tiers are set by the role text (postdoc, graduate, visiting, undergraduate).
 - New paper. Add an entry under its year in `data/publications.json`. Figures are a list of image URLs. More than four figures show a "+N" tag.
-- New fieldwork trip. Add the trip to `misc.fieldwork` and its coordinates to `FIELD_SITES` and its text to `FIELD_TEXT` in `build.py`.
+- New fieldwork trip. Run `python3 add_trip.py "Place" YEAR <photo folder> [--kind "Field trip"]`. It stores the photos in `assets/fieldwork/<slug>/` and adds the trip to `misc.fieldwork`. Then add its coordinates to `FIELD_SITES` and its text to `FIELD_TEXT` in `build.py`. Every trip album is drawn as a packed collage by `collage()`; keep it that way.
 - New course or press item. Edit `misc.courses` or `misc.press`.
 
 Run `python3 build.py` after every edit.

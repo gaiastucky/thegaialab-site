@@ -26,7 +26,8 @@ Content lives in four JSON files under `data/`. Most updates are edits to those 
 - White pages, pastel palette with a rusty Mars red accent (`--maroon #b5654a`), river blue `#9cc8ea` and pale rose `#f3e0d4`.
 - Circles everywhere. Round photos, round map, numbered circles.
 - Scroll effects. Banners move on scroll, rivers draw between sections, elements reveal as they enter.
-- Galleries are masonry columns of tiles in mixed shapes (landscape, portrait, square). No uniform grids. Gaia approved this look.
+- Rule for every trip album, existing and future: a packed collage. `collage_layout` in build.py splits one rectangle into nested rectangles of mixed sizes and shapes, keeps the photo order, and ends flush at the bottom. Phones get their own narrower layout. No grids, rows or columns. Gaia approved this look on 15 Nov 2026.
+- New albums: Gaia exports about 20 photos per trip from Apple Photos to a Desktop folder (JPEG, location unticked). Run `python3 add_trip.py "Place" YEAR <folder>`, add the pin and her text in build.py, build, check.
 - Every inner page opens with a banner of one height (`BANNER_H` in build.py) and a big title. Home keeps its taller welcome hero. Contact has no banner. Gallery's banner is the light grey globe band; clicking a pin opens that trip's photos below on the same page.
 - Each section has one big h2 heading and no small label above it. Small blocks inside a section (Office, CV, alumni tiers) use `h3.sub`. Rivers (`dots()`) go only between the main sections of a page, never inside one.
 - The Data & code banner is a live wireframe of real MOLA topography of Jezero crater (`assets/mars-mesh.json`).

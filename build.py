@@ -288,11 +288,15 @@ FIELD_SITES = [  # every place we have worked; shown as unlabelled pins that ope
     (38.39, -28.26, "Azores"),              # Lajes do Pico
     (38.60, -27.94, "Azores"),              # Fajã da Caldeira de Santo Cristo, São Jorge
     (36.97, -25.10, "Azores"),              # Santa Maria
+    (29.05, -13.65, "Lanzarote"),           # Lanzarote, Canary Islands
+    (16.60, -24.25, "São Nicolau"),         # São Nicolau, Cape Verde
+    (14.95, -24.38, "Fogo"),                # Fogo, Cape Verde
 ]
 
 
 def trip_slug(place):
-    return "fieldwork-" + slugify(place)
+    import unicodedata
+    return "fieldwork-" + slugify(unicodedata.normalize("NFKD", place).encode("ascii", "ignore").decode())
 
 
 def globe_block(big=False):
@@ -535,7 +539,7 @@ def outreach():
 <div><a class="btn" href="{e(p['url'])}">{e(p['outlet'])}</a><h3>“{e(p['title'])}”</h3><p class="muted">by {e(p['author'])}</p></div>
 </article>""")
     jump = '<nav class="sec-jump" aria-label="On this page"><a href="#teaching">Teaching</a><a href="#talks">Outreach</a><a href="#media">In the media</a></nav>'
-    body = f"""{window(U + '2022/01/iceland-banner-clp-5.jpg', '<h1 data-hero>Engagement</h1>' + jump, h=BANNER_H, cls='shift')}
+    body = f"""{window('assets/banners/engagement.webp', '<h1 data-hero>Engagement</h1>' + jump, h=BANNER_H, cls='shift')}
 <section class="section" id="teaching"><div class="grid">
 <div class="c-1-6" data-reveal><h2 class="h2">Teaching</h2><div class="courses">{courses}</div></div>
 <div class="c-7-13 self-end gap-m" data-reveal="1">{embed(v1, t1, '12.002 lecture on planetary moments of inertia')}<p class="cap">Sample of an online class on planetary moments of inertia for 12.002.</p></div>
@@ -557,6 +561,9 @@ def outreach():
 FIELD_TEXT = {
     "Azores": "Coastal mapping (drone and boulder analysis) of <strong><em>Lajes do Pico, Fajã da Caldeira de Santo Cristo</em></strong>, and <strong><em>Santa Maria</em></strong>.",
     "Northeast Iceland": "Drone mapping and cosmogenic He-3 dating of the <strong><em>Jökulsá á Fjöllum</em></strong> canyon. See publication <a href=\"https://doi.org/10.1016/j.epsl.2018.10.026\">here</a>.",
+    "Lanzarote": "Field trip with the NASA <a href=\"https://ssed.gsfc.nasa.gov/MajorRandAThemes/GIFT/index.html\">Goddard Instrument Field Team (GIFT)</a>.",
+    "São Nicolau": "Reconnaissance work on landscape evolution.",
+    "Fogo": "Fieldwork in <strong><em>Fogo island</em></strong> with MIT students/postdocs, including Shaalin Sehra's research on drainage initiation.",
 }
 
 
@@ -564,14 +571,83 @@ FIELD_TEXT = {
 COLLAGE = ["4/3", "3/4", "3/2", "1/1", "2/3", "4/3", "4/5", "16/10", "3/4", "1/1", "3/2", "2/3"]
 
 
+def _ratio(r):
+    a, b = r.split("/")
+    return float(a) / float(b)
+
+
+def _tree(seq, target, rnd):
+    """Random slicing tree over a run of photos, steered toward a target aspect ratio (w/h)."""
+    n = len(seq)
+    if n == 1:
+        return seq[0]
+    k = rnd.randint(1, n - 1)
+    horiz = rnd.random() < (0.8 if target > 1 else 0.2)  # side by side when the box is wide
+    if horiz:
+        return ("h", _tree(seq[:k], target * k / n, rnd), _tree(seq[k:], target * (n - k) / n, rnd))
+    return ("v", _tree(seq[:k], target * n / k, rnd), _tree(seq[k:], target * n / (n - k), rnd))
+
+
+def _ar(node, ars):
+    if isinstance(node, int):
+        return ars[node]
+    a, b = _ar(node[1], ars), _ar(node[2], ars)
+    return a + b if node[0] == "h" else 1 / (1 / a + 1 / b)
+
+
+def _place(node, ars, x, y, w, h, out):
+    if isinstance(node, int):
+        out[node] = (x, y, w, h)
+        return
+    a, b = _ar(node[1], ars), _ar(node[2], ars)
+    if node[0] == "h":
+        wa = w * a / (a + b)
+        _place(node[1], ars, x, y, wa, h, out); _place(node[2], ars, x + wa, y, w - wa, h, out)
+    else:
+        ha = h * (1 / a) / (1 / a + 1 / b)
+        _place(node[1], ars, x, y, w, ha, out); _place(node[2], ars, x, y + ha, w, h - ha, out)
+
+
+def collage_layout(ars, target, seed, tries=6000):
+    """Pack photos into one rectangle with no cropping: every tile keeps its photo's shape, the block ends flush.
+    Picks the tree closest to the target shape with a good spread of tile sizes."""
+    import math
+    import random
+    rnd = random.Random(seed)
+    n, best = len(ars), None
+    for _ in range(tries):
+        t = _tree(list(range(n)), target, rnd)
+        ar = _ar(t, ars)
+        out = [None] * n
+        _place(t, ars, 0, 0, 1, 1 / ar, out)
+        areas = [w * h for _, _, w, h in out]
+        mean = sum(areas) / n
+        logs = [math.log(a / mean) for a in areas]
+        spread = (sum(v * v for v in logs) / n) ** .5
+        score = 3 * abs(math.log(ar / target)) + 2 * abs(spread - .55) + 4 * sum(max(0, -v - 1.0) for v in logs) + 2 * sum(max(0, v - 1.5) for v in logs)
+        if best is None or score < best[0]:
+            best = (score, ar, out)
+    _, ar, out = best
+    return ar, [(x * 100, y * ar * 100, w * 100, h * ar * 100) for x, y, w, h in out]  # percent of container width / height
+
+
 def collage(t):
-    return "".join(f'<button type="button" class="jg-item" style="aspect-ratio:{COLLAGE[k % len(COLLAGE)]}" aria-label="Enlarge photo {k + 1}">{img(u, f"{t["place"]} {t["year"]}, photo {k + 1}")}</button>' for k, u in enumerate(t["photos"]))
+    ratios = t.get("ratios") or [COLLAGE[k % len(COLLAGE)] for k in range(len(t["photos"]))]
+    ars = [_ratio(r) for r in ratios]
+    ar, desk = collage_layout(ars, 0.78, t["place"])
+    mar, mob = collage_layout(ars, 0.32, t["place"] + "-m")
+    items = []
+    for k, u in enumerate(t["photos"]):
+        (x, y, w, h), (mx, my, mw, mh) = desk[k], mob[k]
+        st = f"--x:{x:.3f}%;--y:{y:.3f}%;--w:{w:.3f}%;--h:{h:.3f}%;--mx:{mx:.3f}%;--my:{my:.3f}%;--mw:{mw:.3f}%;--mh:{mh:.3f}%"
+        items.append(f'<button type="button" class="jg-item" style="{st}" aria-label="Enlarge photo {k + 1}">{img(u, f"{t["place"]} {t["year"]}, photo {k + 1}")}</button>')
+    return f'<div class="jg collage"><div class="cg" data-gallery style="--ar:{ar:.4f};--mar:{mar:.4f}">' + "".join(items) + "</div></div>"
 
 
 def fieldwork():
     set_depth("fieldwork")
-    trips = "".join(f"""<section class="trip-panel" id="{trip_slug(t['place'])}" hidden><div class="grid"><div class="c-1-8"><h2 class="h2">{e(t['place'])}</h2><p class="trip-year">Fieldwork, {t['year']}</p><p>{FIELD_TEXT[t['place']]}</p></div></div>
-<div class="jg masonry" data-gallery>{collage(t)}</div></section>""" for t in misc["fieldwork"])
+    trips = "".join(f"""<section class="trip-panel" id="{trip_slug(t['place'])}" hidden><div class="grid"><div class="c-1-8"><h2 class="h2">{e(t['place'])}</h2><p class="trip-year">{t.get('kind', 'Fieldwork')}, {t['year']}</p><p>{FIELD_TEXT[t['place']]}</p></div></div>
+{collage(t)}</section>""" for t in misc["fieldwork"])
     body = f"""<section class="globe-hero"><div class="story intro field-intro">
 <div class="story-text" data-reveal><h1>Gallery</h1>
 <p>Our most recent adventures. Spin the globe and click a pin to open the photos from that trip. Hopefully, many more to come!</p></div>
@@ -582,9 +658,9 @@ def fieldwork():
     for t in misc["fieldwork"]:
         sl = trip_slug(t["place"])
         set_depth(sl)
-        body = f"""<section class="section tight"><div class="grid"><div class="c-1-8" data-reveal><h1 class="h2">{e(t['place'])}</h1><p class="trip-year">Fieldwork, {t['year']}</p><p>{FIELD_TEXT[t["place"]]}</p>
+        body = f"""<section class="section tight"><div class="grid"><div class="c-1-8" data-reveal><h1 class="h2">{e(t['place'])}</h1><p class="trip-year">{t.get('kind', 'Fieldwork')}, {t['year']}</p><p>{FIELD_TEXT[t["place"]]}</p>
 <div class="actions">{btn("Back to the globe", link("fieldwork"), "line")}</div></div></div>
-<div class="jg masonry" data-gallery>{collage(t)}</div></section>"""
+{collage(t)}</section>"""
         page(sl, t["place"], body, f"Photos from our {t['year']} fieldwork in {t['place']}.")
 
 
