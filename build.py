@@ -291,6 +291,7 @@ FIELD_SITES = [  # every place we have worked; shown as unlabelled pins that ope
     (29.05, -13.65, "Lanzarote"),           # Lanzarote, Canary Islands
     (16.60, -24.25, "São Nicolau"),         # São Nicolau, Cape Verde
     (14.95, -24.38, "Fogo"),                # Fogo, Cape Verde
+    (19.98, 76.51, "Lonar"),                # Lonar crater, Maharashtra, India
 ]
 
 
@@ -563,6 +564,7 @@ FIELD_TEXT = {
     "Northeast Iceland": "Drone mapping and cosmogenic He-3 dating of the <strong><em>Jökulsá á Fjöllum</em></strong> canyon. See publication <a href=\"https://doi.org/10.1016/j.epsl.2018.10.026\">here</a>.",
     "Lanzarote": "Field trip with the NASA <a href=\"https://ssed.gsfc.nasa.gov/MajorRandAThemes/GIFT/index.html\">Goddard Instrument Field Team (GIFT)</a>.",
     "São Nicolau": "Reconnaissance work on landscape evolution.",
+    "Lonar": "Fieldwork in conjunction with Kerala University, led by Emily Bamber, to understand the <strong><em>Lonar Crater</em></strong> lake evolution.",
     "Fogo": "Fieldwork in <strong><em>Fogo island</em></strong> with MIT students/postdocs, including Shaalin Sehra's research on drainage initiation.",
 }
 

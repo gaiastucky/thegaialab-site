@@ -310,6 +310,55 @@
     "4/3",
     "2/3"
    ]
+  },
+  {
+   "place": "Lonar",
+   "year": 2023,
+   "kind": "Fieldwork",
+   "photos": [
+    "assets/fieldwork/lonar/lonar-01.webp",
+    "assets/fieldwork/lonar/lonar-02.webp",
+    "assets/fieldwork/lonar/lonar-03.webp",
+    "assets/fieldwork/lonar/lonar-04.webp",
+    "assets/fieldwork/lonar/lonar-05.webp",
+    "assets/fieldwork/lonar/lonar-06.webp",
+    "assets/fieldwork/lonar/lonar-07.webp",
+    "assets/fieldwork/lonar/lonar-08.webp",
+    "assets/fieldwork/lonar/lonar-09.webp",
+    "assets/fieldwork/lonar/lonar-10.webp",
+    "assets/fieldwork/lonar/lonar-11.webp",
+    "assets/fieldwork/lonar/lonar-12.webp",
+    "assets/fieldwork/lonar/lonar-13.webp",
+    "assets/fieldwork/lonar/lonar-14.webp",
+    "assets/fieldwork/lonar/lonar-15.webp",
+    "assets/fieldwork/lonar/lonar-16.webp",
+    "assets/fieldwork/lonar/lonar-17.webp",
+    "assets/fieldwork/lonar/lonar-18.webp",
+    "assets/fieldwork/lonar/lonar-19.webp",
+    "assets/fieldwork/lonar/lonar-20.webp"
+   ],
+   "ratios": [
+    "3/4",
+    "4/3",
+    "2/3",
+    "4/5",
+    "1/1",
+    "3/4",
+    "2/3",
+    "4/5",
+    "1/1",
+    "3/4",
+    "2/3",
+    "3/2",
+    "4/5",
+    "1/1",
+    "3/4",
+    "2/3",
+    "4/5",
+    "16/10",
+    "1/1",
+    "4/3"
+   ]
   }
  ],
  "gallery": [
