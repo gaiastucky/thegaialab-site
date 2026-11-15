@@ -732,3 +732,11 @@ dialog.lb button:hover { color: var(--maroon); }
 /* Theme image credits: subtle, on hover only */
 .theme-art .credit { position: absolute; left: 50%; bottom: 8%; transform: translateX(-50%); font-size: 12px; font-family: var(--head); color: #fff; background: rgba(47,42,49,.45); padding: 3px 10px; border-radius: 999px; text-decoration: none; white-space: nowrap; opacity: 0; transition: opacity .3s; }
 .theme-art:hover .credit, .theme-art .credit:focus { opacity: 1; }
+
+/* Contact circles: same size at every width */
+@media (max-width: 820px) { .contact-art > .pic.cutout { width: 160px; height: 160px; flex-basis: 160px; } }
+/* Gallery: the globe section is the page banner */
+.globe-hero { background: #2b2a30; color: #fff; padding: 24px 0 48px; }
+.globe-hero .story { margin-top: 0; margin-bottom: 0; }
+.globe-hero h1 { font-size: var(--fs-hero); letter-spacing: -0.035em; line-height: 0.95; color: #fff; margin-bottom: 18px; }
+.globe-hero p { color: rgba(255,255,255,.85); }

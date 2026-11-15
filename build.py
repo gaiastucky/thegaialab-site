@@ -448,7 +448,7 @@ def themes_page():
 <div class="theme-art">{pic(t['img'], t['name'], 'round')}<a class="credit" href="{e(t['credit_url'])}">{e(t['credit'])}</a></div>
 <div class="theme-txt"><h2 class="h2" data-reveal>{e(t['name'])}</h2><ol class="tq">{qs}</ol></div>
 </div></article>""")
-    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h='78vh', cls='shift', pos='78%')}
+    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h='78vh', cls='shift', pos='58%')}
 <section class="section"><div class="grid">
 <p class="lede c-2-12" data-reveal>These are the four <strong>main areas</strong> of our research. For each one, I have listed three broad research questions I am interested in addressing. I am always open to learning new ways to answer these, or, even better, answering newer and better research questions!</p>
 </div></section>
@@ -563,12 +563,11 @@ def fieldwork():
     set_depth("fieldwork")
     trips = "".join(f"""<section class="trip-panel" id="{trip_slug(t['place'])}" hidden><div class="grid"><div class="c-1-8"><span class="kicker">Fieldwork, {t['year']}</span><h2 class="h2">{e(t['place'])}</h2><p>{FIELD_TEXT[t['place']]}</p></div></div>
 <div class="jg rect" data-gallery>{collage(t)}</div></section>""" for t in misc["fieldwork"])
-    body = f"""{window(U + '2022/01/img_0429.jpg', '<h1 data-hero>Gallery</h1>', h='56vh', cls='shift', pos='60%')}
-<section class="story intro field-intro">
-<div class="story-text" data-reveal><span class="kicker">Fieldwork</span><h2 class="h2">In the field</h2>
+    body = f"""<section class="globe-hero"><div class="story intro field-intro">
+<div class="story-text" data-reveal><h1>Gallery</h1>
 <p>Our most recent adventures. Spin the globe and click a pin to open the photos from that trip. Hopefully, many more to come!</p></div>
 <div class="story-art" data-reveal="1">{globe_block(big=True)}<span class="globe-hint">Click on a location!</span></div>
-</section>
+</div></section>
 {trips}"""
     page("fieldwork", "Gallery", body, "Fieldwork sites and photos from the Gaia Lab.")
     for t in misc["fieldwork"]:
@@ -617,9 +616,8 @@ def resources():
 def contact():
     set_depth("contact-cv")
     osm = "https://www.openstreetmap.org/export/embed.html?bbox=-71.0935%2C42.3586%2C-71.0852%2C42.3622&amp;layer=mapnik&amp;marker=42.360401%2C-71.089331"
-    body = f"""{window(U + '2022/01/img_6108-1.jpg', '<h1 data-hero>Contact</h1>', h='56vh', cls='shift', pos='55%')}
-<section class="section contact"><div class="grid contact-grid">
-<div class="c-1-7" data-reveal><span class="kicker">Email</span><h2 class="h2">Get in touch</h2>
+    body = f"""<section class="section contact"><div class="grid contact-grid">
+<div class="c-1-7" data-reveal><span class="kicker">Contact</span><h1 class="h2">Get in touch</h1>
 <div class="actions"><a class="btn" href="#" data-m="dWRlLnRpbUBzYWlhZw==">Send me an email <span class="arr" aria-hidden="true">→</span></a><button class="btn line" type="button" id="copy-email" data-m="dWRlLnRpbUBzYWlhZw==">Copy address</button></div>
 <div class="contact-row"><div><span class="kicker">Office</span><p>Room 54-510, Green Building<br>Massachusetts Institute of Technology<br>21 Ames Street, Cambridge, MA 02139</p></div>
 <div><span class="kicker">CV</span><p>My most up-to-date CV.</p>{btn('View & download', media(misc['cv']), 'line')}</div></div></div>
