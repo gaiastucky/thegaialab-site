@@ -172,6 +172,9 @@ def slugify(s):
 # Preview site must stay hidden from search engines. Set to False only when Gaia approves the domain switch.
 NOINDEX = True
 
+# One height for every page banner (Home keeps its taller welcome hero).
+BANNER_H = "60vh"
+
 LAB_LINKEDIN = "https://www.linkedin.com/company/136993897/"
 
 
@@ -416,7 +419,7 @@ def team():
             f'{("<span>Now: " + e(a["now"]) + "</span>") if a.get("now") else ""}</span></li>' for k, a in enumerate(group))
         rows.append(f'<div class="alum-row" data-reveal><h3 class="kicker">{label}</h3><ul class="alum-faces">{faces}</ul></div>')
     alumni = "".join(rows)
-    body = f"""{window(people['group_photo'], '<h1 data-hero>Introducing the <span class="wiggle" aria-label="Squad">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{ch}</span>' for k, ch in enumerate('Squad')) + '</span></h1>', h='78vh', cls='team-hero')}
+    body = f"""{window(people['group_photo'], '<h1 data-hero>Introducing the <span class="wiggle" aria-label="Squad">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{ch}</span>' for k, ch in enumerate('Squad')) + '</span></h1>', h=BANNER_H, cls='team-hero')}
 <section class="section">{person(pi, pi_extra)}</section>
 {groups}
 <section class="section"><div class="group-head" data-reveal><h2 class="h2">Group Mascot</h2></div>{person(people['mascot'])}</section>
@@ -454,7 +457,7 @@ def themes_page():
 <div class="theme-art">{pic(t['img'], t['name'], 'round')}<a class="credit" href="{e(t['credit_url'])}">{e(t['credit'])}</a></div>
 <div class="theme-txt"><h2 class="h2" data-reveal>{e(t['name'])}</h2><ol class="tq">{qs}</ol></div>
 </div></article>""")
-    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h='78vh', cls='shift', pos='58%')}
+    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h=BANNER_H, cls='shift', pos='58%')}
 <section class="section"><div class="grid">
 <p class="lede c-2-12" data-reveal>These are the four <strong>main areas</strong> of our research. For each one, I have listed three broad research questions I am interested in addressing. I am always open to learning new ways to answer these, or, even better, answering newer and better research questions!</p>
 </div></section>
@@ -505,7 +508,7 @@ def publications():
 {figs}
 </article>""")
         groups.append(f'<div class="year-group"><h2 class="year" id="y{y}">{y}</h2>{"".join(items)}</div>')
-    body = f"""{window(misc['covers']['publications'], '<h1 data-hero class="book" aria-label="Publications"><span class="pg l" aria-hidden="true">Publi</span><span class="pg r" aria-hidden="true">cations</span></h1><p class="hero-lede" data-hero>Check out our peer-reviewed articles below! Browse the summaries and key figures, ordered chronologically. Authors in <strong>bold</strong> are group members. Hover over a figure to expand it, click to see it full size, and feel free to reach out if you need access to a paper.</p>', h='78vh', cls='shift')}
+    body = f"""{window(misc['covers']['publications'], '<h1 data-hero class="book" aria-label="Publications"><span class="pg l" aria-hidden="true">Publi</span><span class="pg r" aria-hidden="true">cations</span></h1><p class="hero-lede" data-hero>Check out our peer-reviewed articles below! Browse the summaries and key figures, ordered chronologically. Authors in <strong>bold</strong> are group members. Hover over a figure to expand it, click to see it full size, and feel free to reach out if you need access to a paper.</p>', h=BANNER_H, cls='shift')}
 <div class="yearnav"><div class="in"><nav class="years" aria-label="Jump to year">{jump}</nav><label class="pub-find"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><input id="pub-search" type="search" placeholder="Search" aria-label="Search papers" autocomplete="off"></label><span class="small muted" id="pub-count" aria-live="polite">{len(pubs)} papers</span></div></div>
 <section class="section"><div class="grid"><div>{''.join(groups)}</div></div></section>"""
     page("publications", "Publications", body, "Peer-reviewed articles from the Gaia Lab, with summaries and key figures.")
@@ -533,7 +536,7 @@ def outreach():
 <div><a class="btn" href="{e(p['url'])}">{e(p['outlet'])}</a><h3>“{e(p['title'])}”</h3><p class="muted">by {e(p['author'])}</p></div>
 </article>""")
     jump = '<nav class="sec-jump" aria-label="On this page"><a href="#teaching">Teaching</a><a href="#talks">Outreach</a><a href="#media">In the media</a></nav>'
-    body = f"""{window(U + '2022/01/iceland-banner-clp-5.jpg', '<h1 data-hero>Engagement</h1>' + jump, h='72vh', cls='shift')}
+    body = f"""{window(U + '2022/01/iceland-banner-clp-5.jpg', '<h1 data-hero>Engagement</h1>' + jump, h=BANNER_H, cls='shift')}
 <section class="section" id="teaching"><div class="grid">
 <div class="c-1-6" data-reveal><span class="kicker">Teaching</span><h2 class="h2">In the classroom</h2><div class="courses">{courses}</div></div>
 <div class="c-7-13 self-end gap-m" data-reveal="1">{embed(v1, t1, '12.002 lecture on planetary moments of inertia')}<p class="cap">Sample of an online class on planetary moments of inertia for 12.002.</p></div>
@@ -603,7 +606,7 @@ def resources():
     r = misc["resources"]
     m = r["models"][0]
     sketch = f'{embed("https://sketchfab.com/models/" + m["url"].rsplit("-", 1)[-1] + "/embed?autostart=1", m.get("thumb", ""), m["title"])}'
-    body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1>', h='56vh', cls='meshwin')}
+    body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1>', h=BANNER_H, cls='meshwin')}
 <section class="section"><div class="grid">
 <div class="c-1-6 self-center" data-reveal><span class="kicker">Visualization</span><h2 class="h2">Explore our surfaces in 3D</h2>
 <p>Play around with some of our surface models in <strong>SketchFab</strong>. Here's Parana Basin on Mars, with mapped valleys and a paleolake. Press play and explore!</p></div>
