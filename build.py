@@ -607,7 +607,7 @@ def resources():
 {dots()}
 <section class="section"><div class="grid">
 <div class="c-1-6 self-center" data-reveal><span class="kicker">Data</span><h2 class="h2">MESA</h2>
-<p>Check back for when it is available for download (coming soon, where soon = when my back-up drives start working).</p></div>
+<p>Coming soon! Check this space: <a href="https://planetarydems.org">planetarydems.org</a></p></div>
 <div class="c-7-13" data-reveal="1"><div class="mars-wrap"><canvas id="mars" width="400" height="400" data-tex="{rel('assets/mars-mola.jpg')}" role="img" aria-label="A turning globe of Mars coloured by elevation"></canvas></div></div>
 </div></section>"""
     page("resources", "Data & code", body, "Data, code and 3D models from the Gaia Lab.")
