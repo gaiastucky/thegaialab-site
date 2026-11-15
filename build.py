@@ -603,12 +603,6 @@ def resources():
 <div class="c-7-13" data-reveal="1">{sketch}</div>
 </div></section>
 <section class="section"><div class="grid">
-<div class="c-1-6 self-center" data-reveal><span class="kicker">Code</span><h2 class="h2">Cratering Notebook</h2>
-<p>A <strong>Jupyter notebook for simulating a population of impact craters</strong> on a given planetary surface, where the topography is a <a href="http://landlab.github.io/#/">LandLab</a> model grid object. Built by me and Emily Bamber (UT Austin) during the <a href="https://github.com/csdms/espin">ESPIn</a> Summer School.</p>
-<div class="actions">{btn('See the code', 'https://github.com/gaiastucky/Cratering')}</div></div>
-<div class="c-7-13" data-reveal="1">{pic(U + '2022/01/cratering_notebook_2-copy.jpeg', 'Cratering notebook output', 'r')}</div>
-</div></section>
-<section class="section"><div class="grid">
 <div class="c-1-6 self-center" data-reveal><span class="kicker">Data</span><h2 class="h2">MESA</h2>
 <p>Check back for when it is available for download (coming soon, where soon = when my back-up drives start working).</p></div>
 <div class="c-7-13" data-reveal="1"><div class="mars-wrap"><canvas id="mars" width="400" height="400" data-tex="{rel('assets/mars-mola.jpg')}" role="img" aria-label="A turning globe of Mars coloured by elevation"></canvas></div></div>
