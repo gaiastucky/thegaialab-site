@@ -547,7 +547,7 @@ def outreach():
 </div></section>
 {dots()}
 <section class="section" id="media"><div class="grid">
-<div class="c-2-12" data-reveal><h2 class="h2">In the media</h2><p class="muted">Here you can find the latest, major news articles and other media about our research. Click the button to read more! <span class="small">*the news is not actually breaking, everything is fine</span></p></div>
+<div class="c-2-12" data-reveal><h2 class="h2">In the media</h2><p class="muted">Here you can find the latest, major news articles and other media about our research. Click the button to read more!</p></div>
 </div></section>
 <section class="section" style="padding-top:0"><div class="tl">{''.join(tl)}</div></section>"""
     page("outreach", "Engagement", body, "Teaching, outreach talks and news coverage of the Gaia Lab's research.")
