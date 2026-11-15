@@ -746,3 +746,7 @@ dialog.lb button:hover { color: var(--maroon); }
 .jg.masonry .jg-item { width: 100%; margin: 0 0 10px; break-inside: avoid; border-radius: 2px; }
 .jg.masonry .jg-item img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 640px) { .jg.masonry { column-count: 2; column-gap: 6px; } .jg.masonry .jg-item { margin-bottom: 6px; } }
+
+/* One heading system: h2 for sections, h3.sub for small blocks inside a section */
+h3.sub { font-family: var(--head); font-size: var(--fs-l); font-weight: 700; color: var(--ink); margin: 0 0 8px; }
+.trip-year { color: var(--soft); font-family: var(--head); margin-top: -6px; }

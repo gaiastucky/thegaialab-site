@@ -314,7 +314,7 @@ def main_themes():
 
 def story(kicker, title, text, href, label, art, flip=False, i=0):
     return (f'<section class="story{" alt" if flip else ""}"><div class="story-art" data-reveal>{art}</div>'
-            f'<div class="story-text" data-reveal="1"><span class="kicker">{e(kicker)}</span><h2 class="h2">{e(title)}</h2>'
+            f'<div class="story-text" data-reveal="1"><h2 class="h2">{e(title)}</h2>'
             f'<p>{text}</p><div class="actions">{btn(label, href)}</div></div></section>')
 
 
@@ -417,14 +417,14 @@ def team():
             f'<span class="alum-card"><b>{e(a["name"])}</b><span>{e(a["role"])}</span>'
             f'{("<span>" + ("" if a.get("is_bio") else "Project: ") + e(a["project"]) + "</span>") if a.get("project") else ""}'
             f'{("<span>Now: " + e(a["now"]) + "</span>") if a.get("now") else ""}</span></li>' for k, a in enumerate(group))
-        rows.append(f'<div class="alum-row" data-reveal><h3 class="kicker">{label}</h3><ul class="alum-faces">{faces}</ul></div>')
+        rows.append(f'<div class="alum-row" data-reveal><h3 class="sub">{label}</h3><ul class="alum-faces">{faces}</ul></div>')
     alumni = "".join(rows)
     body = f"""{window(people['group_photo'], '<h1 data-hero>Introducing the <span class="wiggle" aria-label="Squad">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{ch}</span>' for k, ch in enumerate('Squad')) + '</span></h1>', h=BANNER_H, cls='team-hero')}
 <section class="section">{person(pi, pi_extra)}</section>
 {groups}
 <section class="section"><div class="group-head" data-reveal><h2 class="h2">Group Mascot</h2></div>{person(people['mascot'])}</section>
 {dots()}
-<section class="opps-banner"><div class="ticker" aria-label="News"><span class="ticker-tag">Hiring</span><div class="ticker-win"><div class="ticker-track"><span>2026 update: we are hiring! We are searching for a graduate student for fall 2027 and a postdoctoral associate for 2026 (see <a href="https://mit-gaia-lab-postdoc-ad2026.tiiny.site">the advert</a>).</span><span aria-hidden="true">2026 update: we are hiring! We are searching for a graduate student for fall 2027 and a postdoctoral associate for 2026 (see <a href="https://mit-gaia-lab-postdoc-ad2026.tiiny.site">the advert</a>).</span></div></div></div><div class="opps-in" id="opportunities"><div class="opps-head" data-reveal><span class="kicker">Opportunities</span><h2 class="h2">Come work with us</h2><p>We are always looking for creative and motivated people to work with us. Have a look around and see if you find any projects interesting, and that overlap with your research goals.</p></div>
+<section class="opps-banner"><div class="ticker" aria-label="News"><span class="ticker-tag">Hiring</span><div class="ticker-win"><div class="ticker-track"><span>2026 update: we are hiring! We are searching for a graduate student for fall 2027 and a postdoctoral associate for 2026 (see <a href="https://mit-gaia-lab-postdoc-ad2026.tiiny.site">the advert</a>).</span><span aria-hidden="true">2026 update: we are hiring! We are searching for a graduate student for fall 2027 and a postdoctoral associate for 2026 (see <a href="https://mit-gaia-lab-postdoc-ad2026.tiiny.site">the advert</a>).</span></div></div></div><div class="opps-in" id="opportunities"><div class="opps-head" data-reveal><h2 class="h2">Come work with us</h2><p>We are always looking for creative and motivated people to work with us. Have a look around and see if you find any projects interesting, and that overlap with your research goals.</p></div>
 <ul class="ways-pills">
 <li class="way" tabindex="0"><span class="way-btn">Graduate research</span><div class="way-bubble"><p>MIT EAPS accepts PhD <a href="https://eapsweb.mit.edu/graduate-admissions">applications</a> each fall. Keep an eye out for <a href="https://www.nsfgrfp.org/">NSF GRFP</a> application deadlines in the fall. Please contact me or any group member with your CV and interests.</p></div></li>
 <li class="way" tabindex="0"><span class="way-btn">Postdoctoral research</span><div class="way-bubble"><p>There are a few options! EAPS has a <a href="https://eaps.mit.edu/education/postdoctoral-training/">Distinguished Postdoctoral Fellowship</a> and hosts the <a href="https://www.hsfoundation.org/programs/science/51-pegasi-b-fellowship/">51 Pegasi b Fellowship</a> or the MIT School of Science fellowship (applications due each fall). You can also reach out to collaborate on a NASA or NSF proposal (or any other sources)!</p><p><a href="https://docs.google.com/spreadsheets/d/1fpsPL2yb56wYmncEIYMf5oW-vTCRgzrtIYCPqF3P50o/edit?usp=sharing">Here is a sheet I made to help you find sources of funding to work with us!</a></p></div></li>
@@ -468,7 +468,7 @@ def themes_page():
 <ul class="flips">{''.join(flip_circle(t) for t in other)}</ul>
 </div></section>
 <section class="section"><div class="grid">
-<div class="c-1-5 self-center" data-reveal><span class="kicker">Try it</span><h2 class="h2">Grow a river network</h2>
+<div class="c-1-5 self-center" data-reveal><h2 class="h2">Grow a river network</h2>
 <p>Each click builds a new random landscape and routes water downhill. Channels appear wherever enough upstream area drains through a point, so the network grows headward from the outlets.</p>
 <div class="actions"><button class="btn" type="button" id="drainage-again">Grow another <span class="arr" aria-hidden="true">→</span></button></div></div>
 <div class="c-6-13 model gap-m"><canvas id="drainage" role="img" aria-label="A simulated river drainage network spreading across contoured terrain"></canvas></div>
@@ -538,17 +538,17 @@ def outreach():
     jump = '<nav class="sec-jump" aria-label="On this page"><a href="#teaching">Teaching</a><a href="#talks">Outreach</a><a href="#media">In the media</a></nav>'
     body = f"""{window(U + '2022/01/iceland-banner-clp-5.jpg', '<h1 data-hero>Engagement</h1>' + jump, h=BANNER_H, cls='shift')}
 <section class="section" id="teaching"><div class="grid">
-<div class="c-1-6" data-reveal><span class="kicker">Teaching</span><h2 class="h2">In the classroom</h2><div class="courses">{courses}</div></div>
+<div class="c-1-6" data-reveal><h2 class="h2">Teaching</h2><div class="courses">{courses}</div></div>
 <div class="c-7-13 self-end gap-m" data-reveal="1">{embed(v1, t1, '12.002 lecture on planetary moments of inertia')}<p class="cap">Sample of an online class on planetary moments of inertia for 12.002.</p></div>
 </div></section>
 {dots()}
 <section class="section" id="talks"><div class="grid">
-<div class="c-1-7" data-reveal><span class="kicker">Outreach</span><h2 class="h2">Videos</h2></div>
+<div class="c-1-7" data-reveal><h2 class="h2">Outreach</h2></div>
 <div class="trio" style="margin-top:24px">{vids}</div>
 </div></section>
 {dots()}
 <section class="section" id="media"><div class="grid">
-<div class="c-2-12" data-reveal><span class="kicker">In the media</span><h2 class="h2">Our research in the news</h2><p class="muted">Here you can find the latest, major news articles and other media about our research. Click the button to read more! <span class="small">*the news is not actually breaking, everything is fine</span></p></div>
+<div class="c-2-12" data-reveal><h2 class="h2">In the media</h2><p class="muted">Here you can find the latest, major news articles and other media about our research. Click the button to read more! <span class="small">*the news is not actually breaking, everything is fine</span></p></div>
 </div></section>
 <section class="section" style="padding-top:0"><div class="tl">{''.join(tl)}</div></section>"""
     page("outreach", "Engagement", body, "Teaching, outreach talks and news coverage of the Gaia Lab's research.")
@@ -571,7 +571,7 @@ def collage(t):
 
 def fieldwork():
     set_depth("fieldwork")
-    trips = "".join(f"""<section class="trip-panel" id="{trip_slug(t['place'])}" hidden><div class="grid"><div class="c-1-8"><span class="kicker">Fieldwork, {t['year']}</span><h2 class="h2">{e(t['place'])}</h2><p>{FIELD_TEXT[t['place']]}</p></div></div>
+    trips = "".join(f"""<section class="trip-panel" id="{trip_slug(t['place'])}" hidden><div class="grid"><div class="c-1-8"><h2 class="h2">{e(t['place'])}</h2><p class="trip-year">Fieldwork, {t['year']}</p><p>{FIELD_TEXT[t['place']]}</p></div></div>
 <div class="jg masonry" data-gallery>{collage(t)}</div></section>""" for t in misc["fieldwork"])
     body = f"""<section class="globe-hero"><div class="story intro field-intro">
 <div class="story-text" data-reveal><h1>Gallery</h1>
@@ -583,7 +583,7 @@ def fieldwork():
     for t in misc["fieldwork"]:
         sl = trip_slug(t["place"])
         set_depth(sl)
-        body = f"""<section class="section tight"><div class="grid"><div class="c-1-8" data-reveal><span class="kicker">Fieldwork, {t['year']}</span><h1 class="h2">{e(t['place'])}</h1><p>{FIELD_TEXT[t["place"]]}</p>
+        body = f"""<section class="section tight"><div class="grid"><div class="c-1-8" data-reveal><h1 class="h2">{e(t['place'])}</h1><p class="trip-year">Fieldwork, {t['year']}</p><p>{FIELD_TEXT[t["place"]]}</p>
 <div class="actions">{btn("Back to the globe", link("fieldwork"), "line")}</div></div></div>
 <div class="jg masonry" data-gallery>{collage(t)}</div></section>"""
         page(sl, t["place"], body, f"Photos from our {t['year']} fieldwork in {t['place']}.")
@@ -609,13 +609,13 @@ def resources():
     sketch = f'{embed("https://sketchfab.com/models/" + m["url"].rsplit("-", 1)[-1] + "/embed?autostart=1", m.get("thumb", ""), m["title"])}'
     body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1>', h=BANNER_H, cls='meshwin')}
 <section class="section"><div class="grid">
-<div class="c-1-6 self-center" data-reveal><span class="kicker">Visualization</span><h2 class="h2">Explore our surfaces in 3D</h2>
+<div class="c-1-6 self-center" data-reveal><h2 class="h2">Explore our surfaces in 3D</h2>
 <p>Play around with some of our surface models in <strong>SketchFab</strong>. Here's Parana Basin on Mars, with mapped valleys and a paleolake. Press play and explore!</p></div>
 <div class="c-7-13" data-reveal="1">{sketch}</div>
 </div></section>
 {dots()}
 <section class="section"><div class="grid">
-<div class="c-1-6 self-center" data-reveal><span class="kicker">Data</span><h2 class="h2">MESA</h2>
+<div class="c-1-6 self-center" data-reveal><h2 class="h2">MESA</h2>
 <p>Coming soon! Check this space: <a href="https://planetarydems.org">planetarydems.org</a></p></div>
 <div class="c-7-13" data-reveal="1"><div class="mars-wrap"><canvas id="mars" width="400" height="400" data-tex="{rel('assets/mars-mola.jpg')}" role="img" aria-label="A turning globe of Mars coloured by elevation"></canvas></div></div>
 </div></section>"""
@@ -627,10 +627,10 @@ def contact():
     set_depth("contact-cv")
     osm = "https://www.openstreetmap.org/export/embed.html?bbox=-71.0935%2C42.3586%2C-71.0852%2C42.3622&amp;layer=mapnik&amp;marker=42.360401%2C-71.089331"
     body = f"""<section class="section contact"><div class="grid contact-grid">
-<div class="c-1-7" data-reveal><span class="kicker">Contact</span><h1 class="h2">Get in touch</h1>
+<div class="c-1-7" data-reveal><h1 class="h2">Get in touch</h1>
 <div class="actions"><a class="btn" href="#" data-m="dWRlLnRpbUBzYWlhZw==">Send me an email <span class="arr" aria-hidden="true">→</span></a><button class="btn line" type="button" id="copy-email" data-m="dWRlLnRpbUBzYWlhZw==">Copy address</button></div>
-<div class="contact-row"><div><span class="kicker">Office</span><p>Room 54-510, Green Building<br>Massachusetts Institute of Technology<br>21 Ames Street, Cambridge, MA 02139</p></div>
-<div><span class="kicker">CV</span><p>My most up-to-date CV.</p>{btn('View & download', media(misc['cv']), 'line')}</div></div></div>
+<div class="contact-row"><div><h3 class="sub">Office</h3><p>Room 54-510, Green Building<br>Massachusetts Institute of Technology<br>21 Ames Street, Cambridge, MA 02139</p></div>
+<div><h3 class="sub">CV</h3><p>My most up-to-date CV.</p>{btn('View & download', media(misc['cv']), 'line')}</div></div></div>
 <div class="c-8-13 contact-art" data-reveal="1">{pic(U + '2022/01/paper_email.gif', 'Animated paper airplane', 'cutout', eager=True)}<div class="map"><iframe src="{osm}" title="Map of the MIT Green Building" loading="lazy"></iframe></div></div>
 </div></section>"""
     page("contact-cv", "Contact/CV", body, "How to reach Gaia Stucky de Quay and the Gaia Lab.")
