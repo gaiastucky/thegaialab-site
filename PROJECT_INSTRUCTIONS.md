@@ -44,8 +44,8 @@ Home, Team, Research (Themes, Publications, Resources), Engagement (teaching, ou
 
 - Copy the roughly 200 hotlinked WordPress images, the Elsevier figures and the logo into `assets/` before the WordPress site closes.
 - Set up the preview site on GitHub Pages and later switch the domain.
-- Mars globe for the Resources page with planetary DEMs. The caption names the DEM as MESA (18 m/px).
-- Home page section "Follow us on LinkedIn" with the latest lab post. "Follow us" goes to the Gaia Lab LinkedIn page (URL still needed). Also needs the latest post link or embed code.
+- Mars globe on Resources (done). Texture `assets/mars-mola.jpg` is MOLA MEGDR downsampled to 1024x512 (via SPECFEM3D_GLOBE's 4 arcmin grid), coloured in the site palette with hillshade. Caption wording is a draft for Gaia to confirm.
+- Home page "Follow us on LinkedIn" section links to the lab page https://www.linkedin.com/company/136993897/ (done). Latest-post embed still needs a post link. The header LinkedIn icon still points to Gaia's personal profile.
 - Tibetan lakes paper summary drafted by Claude at Gaia's request. Awaiting her approval or edits.
 - CV link. Current link points to the 2022 PDF. Proposed approach is a public version from Overleaf with a `\newif\ifpublic` switch, published at a fixed `cv.pdf` path.
 - Mauricio is listed as a postdoc for 2025–2026 and will move to alumni when Gaia says so.

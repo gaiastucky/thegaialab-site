@@ -248,6 +248,49 @@
     });
   }
 
+  /* ---------- Mars globe: MOLA texture on a turning sphere ---------- */
+  var marsCanvas = document.getElementById("mars");
+  if (marsCanvas) {
+    var tex = new Image();
+    tex.onload = function () {
+      var tw = tex.width, th = tex.height, tc = document.createElement("canvas");
+      tc.width = tw; tc.height = th; var tctx = tc.getContext("2d"); tctx.drawImage(tex, 0, 0);
+      var src = tctx.getImageData(0, 0, tw, th).data;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2), N = Math.round(400 * dpr), R = N / 2 - 2 * dpr;
+      marsCanvas.width = N; marsCanvas.height = N;
+      var mctx = marsCanvas.getContext("2d"), img = mctx.createImageData(N, N), dst = img.data;
+      var tilt = 25 * Math.PI / 180, ct = Math.cos(tilt), st = Math.sin(tilt);
+      var idx = [], rowOf = [], lonOf = [], lit = [];
+      for (var y = 0; y < N; y++) for (var x = 0; x < N; x++) {
+        var px = (x + .5 - N / 2) / R, py = (N / 2 - y - .5) / R, rr = px * px + py * py;
+        if (rr > 1) continue;
+        var pz = Math.sqrt(1 - rr);
+        var Y = py * ct + pz * st, Z = -py * st + pz * ct;
+        var la = Math.asin(Y), lo = Math.atan2(px, Z);
+        idx.push((y * N + x) * 4);
+        rowOf.push(Math.min(th - 1, Math.floor((0.5 - la / Math.PI) * th)) * tw);
+        lonOf.push(lo / (2 * Math.PI) * tw);
+        var edge = Math.min(1, (1 - Math.sqrt(rr)) * N / 3);
+        lit.push([edge * 255, 0.82 + 0.18 * pz]);
+      }
+      var n = idx.length, lon = 0, last = performance.now(), paused = false;
+      marsCanvas.addEventListener("mouseenter", function () { paused = true; });
+      marsCanvas.addEventListener("mouseleave", function () { paused = false; });
+      (function spin(now) {
+        if (!paused && !reduceMotion) lon += (now - last) * 0.012 * tw / 360;
+        last = now;
+        for (var i = 0; i < n; i++) {
+          var c = Math.floor(lonOf[i] + lon) % tw; if (c < 0) c += tw;
+          var s = (rowOf[i] + c) * 4, d = idx[i], L = lit[i], k = L[1];
+          dst[d] = src[s] * k; dst[d + 1] = src[s + 1] * k; dst[d + 2] = src[s + 2] * k; dst[d + 3] = L[0];
+        }
+        mctx.putImageData(img, 0, 0);
+        if (!reduceMotion) requestAnimationFrame(spin);
+      })(last);
+    };
+    tex.src = marsCanvas.dataset.tex;
+  }
+
   /* ---------- Flip circles: tap to turn over on touch screens ---------- */
   document.querySelectorAll(".flip-in").forEach(function (b) {
     b.addEventListener("click", function () { b.parentNode.classList.toggle("on"); });

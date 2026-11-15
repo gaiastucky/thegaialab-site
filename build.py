@@ -162,6 +162,9 @@ def slugify(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
+LAB_LINKEDIN = "https://www.linkedin.com/company/136993897/"
+
+
 ICONS = {
     "LinkedIn": '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.84-2.05 3.8-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.5-2.25 3.1V21H9z"/></svg>',
     "Google Scholar": '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 3 1 9.5l4 2.36V17c0 1.66 3.13 3 7 3s7-1.34 7-3v-5.14l2-1.18V16h2V9.5zm5 13.9c-.4.56-2.2 1.6-5 1.6s-4.6-1.04-5-1.6v-3.86l5 2.95 5-2.95z"/></svg>',
@@ -347,7 +350,11 @@ def home():
 
 {dots()}
 
-{stories}"""
+{stories}
+
+<section class="section linkedin" data-reveal><a class="li-badge" href="{LAB_LINKEDIN}" aria-hidden="true" tabindex="-1">{ICONS["LinkedIn"]}</a>
+<h2 class="h2">Follow us on LinkedIn</h2>
+<div class="actions">{btn("Follow us", LAB_LINKEDIN)}</div></section>"""
     page("", "Home", body, "The Gaia Lab at MIT: exploring landscapes across the Solar System.")
 
 
@@ -599,7 +606,9 @@ def resources():
 </div></section>
 <section class="panel"><div class="section"><div class="grid">
 <div class="c-1-5" data-reveal><span class="kicker">Data repositories</span><h2 class="h2">Download our data</h2>
-<p class="small muted">DEMs: check back for when there are any available for download (coming soon, where soon = when my back-up drives start working).</p></div>
+<p class="small muted">DEMs: check back for when there are any available for download (coming soon, where soon = when my back-up drives start working).</p>
+<figure class="mars-wrap"><canvas id="mars" width="400" height="400" data-tex="{rel('assets/mars-mola.jpg')}" role="img" aria-label="A turning globe of Mars coloured by elevation"></canvas>
+<figcaption class="small muted">MESA DEM, 18 m/px. Globe shows MOLA topography, downsampled.</figcaption></figure></div>
 <div class="c-6-13 gap-m" data-reveal="1">
 <div class="rows">
 <div class="row" style="grid-template-columns:minmax(0,1fr)"><h3>Coupled Lake Systems (Mars) and runoff</h3><p class="cite">Stucky de Quay, Gaia, 2021, "Replication Data for Stucky de Quay et al. (2021) in GRL", <a href="https://doi.org/10.18738/T8/XV7LGU">https://doi.org/10.18738/T8/XV7LGU</a>, Texas Data Repository, V1.</p><p class="small">Includes coupled lake + watershed shapefiles and extracted climate data.</p></div>
