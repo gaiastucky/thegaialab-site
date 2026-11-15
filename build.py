@@ -351,6 +351,7 @@ def home():
     hero = ('<h1 data-hero>Hello there! Welcome to the Gaia Lab.</h1>'
             '<p class="sub" data-hero>We study the driving forces behind the formation, evolution, and decay of Solar System surfaces, '
             'and the coupled interactions between climate, erosion, and tectonics recorded in landscapes. <em>Find out more below!</em></p>')
+    li_posts = "".join(f'<iframe src="https://www.linkedin.com/embed/feed/update/{u}" title="LinkedIn post by The Gaia Lab" loading="lazy" allowfullscreen></iframe>' for u in misc.get("linkedin_posts", []))
     body = f"""{window(misc['covers']['home'], hero, h='78vh', cls='hero', tag='Jökulsá á Fjöllum canyon, Iceland')}
 <section class="logo-stage" aria-label="The Gaia Lab logo"><div class="logo-anim" data-reveal>
 <img src="{rel('assets/logo.webp')}" alt="The Gaia Lab logo: a planet of layered mountains and a river, circled by an orbit with a satellite">
@@ -374,6 +375,7 @@ def home():
 
 <section class="section linkedin" data-reveal><a class="li-badge" href="{LAB_LINKEDIN}" aria-hidden="true" tabindex="-1">{ICONS["LinkedIn"]}</a>
 <h2 class="h2">Follow us on LinkedIn</h2>
+<div class="li-posts">{li_posts}</div>
 <div class="actions">{btn("Follow us", LAB_LINKEDIN)}</div></section>"""
     page("", "Home", body, "The Gaia Lab at MIT: exploring landscapes across the Solar System.")
 
