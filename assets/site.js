@@ -422,10 +422,12 @@
     }
     function draw(threshold) {
       var ctx = canvas.getContext("2d"), W = canvas.width, H = canvas.height, sx = W / NX, sy = H / NY, cs = getComputedStyle(document.documentElement);
-      ctx.fillStyle = cs.getPropertyValue("--paper").trim(); ctx.fillRect(0, 0, W, H);
       var zmin = Infinity, zmax = -Infinity, i;
       for (i = 0; i < state.z.length; i++) { if (state.z[i] < zmin) zmin = state.z[i]; if (state.z[i] > zmax) zmax = state.z[i]; }
-      var step = (zmax - zmin) / 22; ctx.fillStyle = cs.getPropertyValue("--rose").trim();
+      // elevation tint: pale sand in the valleys to rusty rose on the ridges
+      var lo = [246, 240, 232], hi = [214, 150, 120];
+      for (var yy = 0; yy < NY; yy++) for (var xx = 0; xx < NX; xx++) { var t2 = (state.z[yy * NX + xx] - zmin) / (zmax - zmin || 1); ctx.fillStyle = "rgb(" + Math.round(lo[0] + (hi[0] - lo[0]) * t2) + "," + Math.round(lo[1] + (hi[1] - lo[1]) * t2) + "," + Math.round(lo[2] + (hi[2] - lo[2]) * t2) + ")"; ctx.fillRect(Math.floor(xx * sx), Math.floor(yy * sy), Math.ceil(sx) + 1, Math.ceil(sy) + 1); }
+      var step = (zmax - zmin) / 22; ctx.fillStyle = "rgba(148,80,58,.45)";
       for (var y = 0; y < NY - 1; y++) for (var x = 0; x < NX - 1; x++) { var a = Math.floor((state.z[y * NX + x] - zmin) / step), b = Math.floor((state.z[y * NX + x + 1] - zmin) / step), c = Math.floor((state.z[(y + 1) * NX + x] - zmin) / step); if (a !== b || a !== c) ctx.fillRect(x * sx + sx / 2 - 0.7, y * sy + sy / 2 - 0.7, 1.4, 1.4); }
       ctx.strokeStyle = cs.getPropertyValue("--dust-deep").trim(); ctx.lineCap = "round";
       var dpr = W / canvas.clientWidth || 1;
