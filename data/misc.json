@@ -99,16 +99,34 @@
  ],
  "courses": [
   {
-   "code": "12.013",
-   "name": "Planetary Explorations"
+   "code": "12.421",
+   "name": "Physical Principles of Remote Sensing",
+   "taught": "Fall 2026",
+   "url": "https://student.mit.edu/catalog/search.cgi?search=12.421",
+   "desc": "Introduction to the physics of remote sensing, with applications to the study of Earth, the Moon, and other planets and solar system bodies, as well as to emerging industrial applications. Covers the physical principles of optical, thermal, radar, and lidar remote sensing with an emphasis on the fundamental properties of electromagnetic waves; the principles of electromagnetic scattering from real and idealized materials, including various types of surfaces and vegetation; the interaction of electromagnetic radiation with the atmosphere; and thermal and microwave emission from various media. Discusses remote sensing platforms along with the essentials of orbital mechanics and data processing methods and tools."
   },
   {
-   "code": "12.421",
-   "name": "Remote Sensing"
+   "code": "12.013",
+   "name": "Planetary Explorations",
+   "taught": "Spring 2026",
+   "url": "https://student.mit.edu/catalog/search.cgi?search=12.013",
+   "desc": "A tour of the solar system, from the scorched surface of Mercury to the icy nuclei of the outermost comets. Students explore the geology, interiors, atmosphere, and long-term evolution of planets, moons, and small bodies across the solar system. Students work directly with cutting-edge planetary datasets and techniques, including spacecraft imagery, spectra, topographic data, crater counts, meteorite samples, and atmospheric experiments. Culminates in an individual hypothesis-driven mission proposal in which students design a scientific exploration strategy for a solar system target of their choosing."
+  },
+  {
+   "code": "12.S593",
+   "name": "Special Seminar in Earth, Atmospheric and Planetary Sciences",
+   "taught": "Fall 2025",
+   "url": "https://student.mit.edu/catalog/archive/fall/m12c.html#12.S593",
+   "desc": "Organized lecture or laboratory subject on an aspect of the earth sciences, planetary sciences, or astronomy not normally covered in regularly scheduled subjects."
   },
   {
    "code": "12.002",
-   "name": "Introduction to Geophysics and Planetary Science"
+   "name": "Introduction to Geophysics and Planetary Science",
+   "taught": "2023, 2024 and 2025",
+   "url": "https://student.mit.edu/catalog/search.cgi?search=12.002",
+   "desc": "Study of the structure, composition, and physical processes governing the terrestrial planets, including their formation and basic orbital properties. Topics include plate tectonics, earthquakes, seismic waves, rheology, impact cratering, gravity and magnetic fields, heat flux, thermal structure, mantle convection, deep interiors, planetary magnetism, and core dynamics. Suitable for majors and non-majors seeking general background in geophysics and planetary structure.",
+   "video": "mUoPht9wXok",
+   "caption": "Sample of an online class on planetary moments of inertia for 12.002."
   }
  ],
  "fieldwork": [

@@ -785,3 +785,19 @@ h3.sub { font-family: var(--head); font-size: var(--fs-l); font-weight: 700; col
 .window:not(.hero) { height: var(--h, 60vh); min-height: 0; }
 .globe-hero { height: 60vh; min-height: 0; overflow: hidden; padding: 0; }
 .globe-hero .globe-wrap.big { width: min(100%, 420px, calc(60vh - 90px)); }
+
+/* Teaching: one card per course with catalog description and link */
+.courses { gap: 22px; margin-top: 28px; }
+.course { grid-template-columns: 96px minmax(0, 1fr); grid-template-rows: auto; align-items: start; padding: 22px 24px; }
+.course .code { grid-row: auto; line-height: 1.2; }
+.course .course-body h3 { margin: 0 0 4px; }
+.course .course-body .small { margin: 0 0 10px; }
+.course .course-desc { font-size: var(--fs-s); line-height: 1.6; margin: 0 0 10px; }
+.course .course-link { font-size: var(--fs-s); color: var(--maroon); font-weight: 600; }
+@media (max-width: 640px) { .course { grid-template-columns: 1fr; row-gap: 6px; } }
+.courses { display: grid; gap: 28px; margin-top: 28px; }
+.course-row { align-items: center; row-gap: 14px; }
+.course-row .course { margin: 0; }
+.course-media:empty { display: none; }
+.course-logos { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.course-logos img { height: 96px; width: auto; }

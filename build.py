@@ -523,7 +523,14 @@ def outreach():
     """Teaching, outreach talks and press coverage on one page."""
     set_depth("outreach")
     v1, t1 = yt("mUoPht9wXok")
-    courses = "".join(f'<div class="course" data-reveal="{i}"><span class="code">{e(c["code"])}</span><h3>{e(c["name"])}</h3><span class="small muted">MIT EAPS</span></div>' for i, c in enumerate(misc["courses"]))
+    def course_media(c):
+        if c.get("video"):
+            v, t = yt(c["video"])
+            return embed(v, t, c.get("caption", c["code"])) + (f'<p class="cap">{e(c["caption"])}</p>' if c.get("caption") else "")
+        if c.get("images"):
+            return '<div class="course-logos">' + "".join(img(u, a) for u, a in c["images"]) + "</div>"
+        return ""
+    courses = "".join(f'<div class="course-row grid" data-reveal="{i % 2}"><div class="course c-1-7"><span class="code">{e(c["code"])}</span><div class="course-body"><h3>{e(c["name"])}</h3><p class="small muted">MIT EAPS, taught {e(c["taught"])}</p><p class="course-desc">{e(c["desc"])}</p><a class="course-link" href="{e(c["url"])}">MIT course catalog</a></div></div><div class="course-media c-7-13">{course_media(c)}</div></div>' for i, c in enumerate(misc["courses"]))
     out = [("Pt6uvfet2N8", 0, "News video on our work published in Nature on lake outflows."),
            ("vLDQRo_Qp6s", 0, "5 minute flash talk for an interview on my research."),
            ("JnODU5J767c", 0, "MIT Alumni Forum talk on decoding the mystery of water on Mars, 2025.")]
@@ -542,9 +549,8 @@ def outreach():
     jump = '<nav class="sec-jump" aria-label="On this page"><a href="#teaching">Teaching</a><a href="#talks">Outreach</a><a href="#media">In the media</a></nav>'
     body = f"""{window('assets/banners/engagement-2.webp', '<h1 data-hero>Engagement</h1>' + jump, h=BANNER_H, cls='shift')}
 <section class="section" id="teaching"><div class="grid">
-<div class="c-1-6" data-reveal><h2 class="h2">Teaching</h2><div class="courses">{courses}</div></div>
-<div class="c-7-13 self-end gap-m" data-reveal="1">{embed(v1, t1, '12.002 lecture on planetary moments of inertia')}<p class="cap">Sample of an online class on planetary moments of inertia for 12.002.</p></div>
-</div></section>
+<div class="c-1-8" data-reveal><h2 class="h2">Teaching</h2></div></div>
+<div class="courses">{courses}</div></section>
 {dots()}
 <section class="section" id="talks"><div class="grid">
 <div class="c-1-7" data-reveal><h2 class="h2">Outreach</h2></div>
