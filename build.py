@@ -35,6 +35,12 @@ CUR = {"depth": 0}
 U = "https://thegaialab.files.wordpress.com/"  # short prefix for image paths below
 
 
+def ver(path):
+    """Short content hash so browsers fetch the new file after every change."""
+    import hashlib
+    return hashlib.md5((ROOT / path).read_bytes()).hexdigest()[:8]
+
+
 def rel(path):
     return ("../" * CUR["depth"]) + path
 
@@ -202,8 +208,8 @@ def page(slug, title, body, description):
         css = f"<style>{(ROOT / 'assets/style.css').read_text()}</style>"
         js = f"<script>{(ROOT / 'assets/site.js').read_text()}</script>"
     else:
-        css = f'<link rel="stylesheet" href="{rel("assets/style.css")}">'
-        js = f'<script src="{rel("assets/site.js")}" defer></script>'
+        css = f'<link rel="stylesheet" href="{rel("assets/style.css")}?v={ver("assets/style.css")}">'
+        js = f'<script src="{rel("assets/site.js")}?v={ver("assets/site.js")}" defer></script>'
     head = (f"<title>{e(full_title)}</title>\n<meta name=\"description\" content=\"{e(description)}\">\n"
             '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
             f'<link rel="stylesheet" href="{FONTS}">\n{css}\n')
