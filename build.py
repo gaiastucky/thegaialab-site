@@ -540,7 +540,7 @@ def outreach():
 <div><a class="btn" href="{e(p['url'])}">{e(p['outlet'])}</a><h3>“{e(p['title'])}”</h3><p class="muted">by {e(p['author'])}</p></div>
 </article>""")
     jump = '<nav class="sec-jump" aria-label="On this page"><a href="#teaching">Teaching</a><a href="#talks">Outreach</a><a href="#media">In the media</a></nav>'
-    body = f"""{window('assets/banners/engagement.webp', '<h1 data-hero>Engagement</h1>' + jump, h=BANNER_H, cls='shift')}
+    body = f"""{window('assets/banners/engagement-2.webp', '<h1 data-hero>Engagement</h1>' + jump, h=BANNER_H, cls='shift')}
 <section class="section" id="teaching"><div class="grid">
 <div class="c-1-6" data-reveal><h2 class="h2">Teaching</h2><div class="courses">{courses}</div></div>
 <div class="c-7-13 self-end gap-m" data-reveal="1">{embed(v1, t1, '12.002 lecture on planetary moments of inertia')}<p class="cap">Sample of an online class on planetary moments of inertia for 12.002.</p></div>
