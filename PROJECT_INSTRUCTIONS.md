@@ -49,5 +49,4 @@ Home, Team, Research (Themes, Publications, Resources), Engagement (teaching, ou
 - Summary for the Tibetan lakes (endorheic) paper. Needs text from Gaia.
 - Year of Deepali Singh's visit.
 - CV link. Current link points to the 2022 PDF. Proposed approach is a public version from Overleaf with a `\newif\ifpublic` switch, published at a fixed `cv.pdf` path.
-- Funding sheet. The Contact page ("Postdoctoral research" bubble) links to Gaia's Google Sheet of funding sources. Confirm it is shared as "anyone with the link can view".
 - Mauricio is listed as a postdoc for 2025–2026 and will move to alumni when Gaia says so.
