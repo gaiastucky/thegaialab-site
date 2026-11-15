@@ -302,9 +302,9 @@
         if (meshCanvas.width !== cw || meshCanvas.height !== ch) { meshCanvas.width = cw; meshCanvas.height = ch; }
         var scrolled = Math.max(0, Math.min(1, -box.top / Math.max(1, box.height)));
         var yaw = -0.25 + (reduceMotion ? 0 : scrolled * 0.45), cy = Math.cos(yaw), sy = Math.sin(yaw);
-        var t = 0.66, ct = Math.cos(t), st = Math.sin(t), D = 0.5 * W, F = Math.max(cw * 0.62, ch * 1.6), ex = g.unit * 1.1;
+        var t = 0.66, ct = Math.cos(t), st = Math.sin(t), D = 0.5 * W, F = Math.max(cw * 0.62, ch * 1.6), ex = g.unit * 7;
         function P(i, j) {
-          var x = i - W / 2, y = j - H / 2, z = Z[j * W + i] * ex - 4;
+          var x = i - W / 2, y = j - H / 2, z = Z[j * W + i] * ex - 6;
           var X = x * cy - y * sy, Y = x * sy + y * cy;
           var vx = X, vy = Y - D * ct, vz = z - D * st;
           var depth = -(vy * ct + vz * st), up = -vy * st + vz * ct;
