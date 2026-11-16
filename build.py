@@ -502,7 +502,7 @@ def themes_page():
 <div class="theme-art">{pic(t['img'], t['name'], 'round')}<a class="credit" href="{e(t['credit_url'])}">{e(t['credit'])}</a></div>
 <div class="theme-txt"><h2 class="h2" data-reveal>{e(t['name'])}</h2><ol class="tq">{qs}</ol></div>
 </div></article>""")
-    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h=BANNER_H, cls='shift', pos='58%')}
+    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h=BANNER_H, cls='shift', pos='50%')}
 <section class="section"><div class="grid">
 <p class="lede c-2-12" data-reveal>These are the four <strong>main areas</strong> of our research. For each one, I have listed three broad research questions I am interested in addressing. I am always open to learning new ways to answer these, or, even better, answering newer and better research questions!</p>
 </div></section>
