@@ -839,3 +839,8 @@ html, body { overflow-x: clip; }
 .contact-art { min-width: 0; }
 .contact-art > .pic, .contact-art > .pic.cutout, .contact .map { width: min(220px, calc((100% - 28px) / 2)); height: auto; flex: 0 1 auto; aspect-ratio: 1; }
 @media (max-width: 820px) { .contact-art > .pic, .contact-art > .pic.cutout, .contact .map { width: min(160px, calc((100% - 28px) / 2)); height: auto; flex-basis: auto; } }
+/* Body text blocks are justified on every page, as on Team and Publications. Centred blocks keep their alignment. */
+main p:not(.hero-lede):not(.cap):not(.since):not(.hiring), main li { text-align: justify; hyphens: auto; }
+.teaser p, .center-head p, .flip p, .night p, .group-head p, .linkedin p, .alum-row p, .alum-row li, .theme-art p, .g-place p, .tl-year, .actions p { text-align: inherit; }
+.theme-row.alt .theme-txt p, .theme-row.alt .theme-txt li { text-align-last: right; }
+@media (max-width: 880px) { .theme-row.alt .theme-txt p, .theme-row.alt .theme-txt li { text-align-last: auto; } }
