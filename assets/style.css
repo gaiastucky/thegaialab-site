@@ -820,3 +820,4 @@ h3.sub { font-family: var(--head); font-size: var(--fs-l); font-weight: 700; col
 html, body { overflow-x: clip; }
 .alum-card { width: min(240px, 72vw); }
 @media (max-width: 760px) { .window.shift.eng { background-position: 8% calc(var(--bp, 50%) + var(--by, 0px)); } }
+@media (min-width: 881px) { .foot-in > div:last-child { text-align: right; } }
