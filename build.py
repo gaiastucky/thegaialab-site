@@ -175,7 +175,7 @@ def slugify(s):
 
 
 # Preview site must stay hidden from search engines. Set to False only when Gaia approves the domain switch.
-NOINDEX = True
+NOINDEX = False
 
 # One height for every page banner (Home keeps its taller welcome hero).
 BANNER_H = "60vh"

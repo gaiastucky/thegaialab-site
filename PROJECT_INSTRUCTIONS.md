@@ -42,12 +42,12 @@ Home, Team, Research (Themes, Publications, Resources), Engagement (teaching, ou
 - No sensitive CV content such as pending grants or money.
 - Do not download images to Gaia's computer without asking.
 - The live domain stays on WordPress until Gaia approves the switch. DNS changes only after her explicit approval.
-- The preview site, once set up, must stay hidden from search engines (noindex and robots.txt).
+- The site is public and indexed (NOINDEX = False, robots.txt allows all) since going live on 2026-11-15.
 
 ## Open items
 
 - Copy the roughly 200 hotlinked WordPress images, the Elsevier figures and the logo into `assets/` before the WordPress site closes.
-- Preview site is live at https://gaiastucky.github.io/thegaialab-site/ (GitHub Pages, main branch root, noindex via `NOINDEX` in build.py plus robots.txt). Images still load from WordPress until copied into `media/`. Domain switch waits for Gaia's approval.
+- Live at https://thegaialab.com (GitHub Pages, main branch root, CNAME file in the repo). Gaia approved the switch on 2026-11-15. DNS is managed at WordPress.com: apex A/AAAA records point to GitHub Pages, www is a CNAME to gaiastucky.github.io, buildingmars is a CNAME to building-mars.netlify.app (keep it). The old WordPress site still exists at thegaialab.wordpress.com.
 - Mars globe on Resources (done). Texture `assets/mars-mola.jpg` is MOLA MEGDR downsampled to 1024x512 (via SPECFEM3D_GLOBE's 4 arcmin grid), coloured in the site palette with hillshade. Caption wording is a draft for Gaia to confirm.
 - Home page "Follow us on LinkedIn" section links to the lab page https://www.linkedin.com/company/136993897/ (done). Shows the three latest lab posts as official LinkedIn embeds; their URNs are in `misc.linkedin_posts` (newest first). To update, take the URNs from the lab page's admin posts list (Gaia signs in to LinkedIn in the browser pane). The header LinkedIn icon still points to Gaia's personal profile.
 - Tibetan lakes paper summary drafted by Claude at Gaia's request. Awaiting her approval or edits.
