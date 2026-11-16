@@ -391,7 +391,7 @@ def home():
             '<p class="sub" data-hero>We study the driving forces behind the formation, evolution, and decay of Solar System surfaces, '
             'and the coupled interactions between climate, erosion, and tectonics recorded in landscapes. <em>Find out more below!</em></p>')
     li_posts = "".join(f'<iframe src="https://www.linkedin.com/embed/feed/update/{u}" title="LinkedIn post by The Gaia Lab" loading="lazy" allowfullscreen></iframe>' for u in misc.get("linkedin_posts", []))
-    body = f"""{window(misc['covers']['home'], hero, h='78vh', cls='hero', tag='Jökulsá á Fjöllum canyon, Iceland')}
+    body = f"""{window(misc['covers']['home'], hero, h='78vh', cls='hero', tag='Jökulsá á Fjöllum canyon, Iceland, 2017')}
 <section class="logo-stage" aria-label="The Gaia Lab logo"><div class="logo-anim" data-reveal>
 <img src="{rel('assets/logo.webp')}" alt="The Gaia Lab logo: a planet of layered mountains and a river, circled by an orbit with a satellite">
 <div class="logo-sky" aria-hidden="true"><div class="band stars"><i class="ss s1"></i><i class="ss s2"></i><i class="ss s3"></i></div><div class="band clouds"><i class="cl c1"></i><i class="cl c2"></i><i class="cl c3"></i></div></div>
@@ -502,7 +502,7 @@ def themes_page():
 <div class="theme-art">{pic(t['img'], t['name'], 'round')}<a class="credit" href="{e(t['credit_url'])}">{e(t['credit'])}</a></div>
 <div class="theme-txt"><h2 class="h2" data-reveal>{e(t['name'])}</h2><ol class="tq">{qs}</ol></div>
 </div></article>""")
-    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h=BANNER_H, cls='shift', pos='50%')}
+    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1>', h=BANNER_H, cls='shift', pos='50%', tag='Fogo, Cape Verde, 2025')}
 <section class="section"><div class="grid">
 <p class="lede c-2-12" data-reveal>These are the four <strong>main areas</strong> of our research. For each one, I have listed three broad research questions I am interested in addressing. I am always open to learning new ways to answer these, or, even better, answering newer and better research questions!</p>
 </div></section>
