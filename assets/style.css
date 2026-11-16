@@ -855,3 +855,11 @@ main p:not(.hero-lede):not(.cap):not(.since):not(.hiring):has(br) { text-align: 
 .hello span { display: inline-block; animation: hello 5s ease-in-out infinite; animation-delay: calc(1.2s + var(--i) * .07s); }
 @keyframes hello { 0%, 30%, 100% { color: #fff; transform: translateY(0); } 8% { color: #f3e0d4; transform: translateY(-.14em); } 15% { color: #9cc8ea; transform: translateY(0); } 22% { color: #e8a48c; } }
 @media (prefers-reduced-motion: reduce) { .hello span { animation: none; } }
+
+/* Gallery on phones: the dark band grows to hold the text and the whole globe below it, and the title clears the logo badge */
+@media (max-width: 760px) {
+  .globe-hero { height: auto; overflow: visible; }
+  .globe-hero .story { padding: 84px var(--gutter) 40px; gap: 28px; }
+  .globe-hero .field-intro .story-art { max-width: 100%; }
+  .globe-hero .globe-wrap.big { width: min(100%, 360px); }
+}
