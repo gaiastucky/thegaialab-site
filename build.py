@@ -545,7 +545,7 @@ def outreach():
                 f'<p class="small muted">{e(c["taught"])}</p><p>{e(c["desc"])}</p>'
                 f'<p><a href="{e(c["url"])}">MIT course catalog</a></p>')
         if m:
-            return f'<div class="grid course-item"><div class="c-1-6 self-center" data-reveal>{text}</div><div class="c-7-13 self-center" data-reveal="1">{m}</div></div>'
+            return f'<div class="grid course-item"><div class="c-1-6" data-reveal>{text}</div><div class="c-7-13 course-media" data-reveal="1">{m}</div></div>'
         return f'<div class="grid course-item"><div class="c-1-6" data-reveal>{text}</div></div>'
     courses = "".join(course(i, c) for i, c in enumerate(misc["courses"]))
     out = [("Pt6uvfet2N8", 0, "News video on our work published in Nature on lake outflows."),
