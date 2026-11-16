@@ -826,4 +826,5 @@ html, body { overflow-x: clip; }
   .river .water.thin { stroke-width: 14; }
   .river .bank { stroke-width: 50; }
   .river .bank.thin { stroke-width: 30; }
+  .river .chev use { transform: scale(2.3); }
 }
