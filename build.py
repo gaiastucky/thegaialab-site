@@ -209,6 +209,8 @@ def slugify(s):
 
 # Preview site must stay hidden from search engines. Set to False only when Gaia approves the domain switch.
 NOINDEX = False
+# Visitor statistics (dashboard: https://thegaialab.goatcounter.com). Live build only.
+GOATCOUNTER = '<script data-goatcounter="https://thegaialab.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>\n'
 
 # One height for every page banner (Home keeps its taller welcome hero).
 BANNER_H = "60vh"
@@ -254,7 +256,8 @@ def page(slug, title, body, description):
         js = f'<script src="{rel("assets/site.js")}?v={ver("assets/site.js")}" defer></script>'
     head = (f"<title>{e(full_title)}</title>\n<meta name=\"description\" content=\"{e(description)}\">\n"
             '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-            f'<link rel="stylesheet" href="{FONTS}">\n{css}\n')
+            f'<link rel="stylesheet" href="{FONTS}">\n{css}\n'
+            + (GOATCOUNTER if MODE == "live" else ''))
     content = f"""<a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="head-in">
 <a class="mark" href="{link('')}"><span class="mark-badge"><img class="mark-logo" src="{rel('assets/logo.webp')}" alt="" width="900" height="856"></span><span class="mark-txt"><b>The Gaia Lab</b><span>Exploring landscapes across the Solar System</span></span></a>
