@@ -53,3 +53,7 @@ Home, Team, Research (Themes, Publications, Resources), Engagement (teaching, ou
 - Tibetan lakes paper summary drafted by Claude at Gaia's request. Awaiting her approval or edits.
 - CV link (done). The Contact page links to `assets/cv.pdf`, the public CV built in the CV Project (no funding amounts, no pending grants, no phone). To update it, rebuild `cv-public.pdf` there and copy it over `assets/cv.pdf`. The CV source is kept out of this public repository.
 - Mauricio is listed as a postdoc for 2025–2026 and will move to alumni when Gaia says so.
+
+## Image storage
+- Full-size originals of every image from the old WordPress site: `~/MIT Dropbox/Gaia Quay/Gaia_Lab_Website/media_originals/` (200 files, same YYYY/MM/name paths).
+- Web copies (max 2400 px) live in the repo under `media/`. build.py serves `media/YYYY/MM/name` and no longer loads anything from WordPress.
