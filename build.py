@@ -570,7 +570,6 @@ def outreach():
 </div>
 <div class="grid course-item legoscape-row"><div class="c-1-6 self-center" data-reveal>
 <h3 class="sub">Building Mars in Lego</h3>
-<p class="small muted">With Richard Teague, 2025</p>
 <p>A community-built Lego model of the surface of Mars, made from real mission data. Elevation comes from the MOLA global topography and colours come from the USGS geologic map of Mars (Tanaka et al., 2014), each resampled to a 96 by 48 grid of 2x2 plates on 18 baseplates. Every plate of height stands for about 2 km of elevation, so the tallest Tharsis volcanoes stand 13 to 14 plates high. Members of the EAPS community build it plate by plate from printed guides.</p>
 <p><a href="https://github.com/gaiastucky/mars-legoscape">Maps and code on GitHub</a></p>
 </div><div class="c-7-13 self-center" data-reveal="1"><canvas class="legoscape" data-src="{rel('assets/legoscape.json')}" aria-label="Rotatable 3D preview of the Mars Lego model" role="img"></canvas><p class="cap">The planned model, with relief doubled for this preview. Drag to turn it.</p></div></div>
