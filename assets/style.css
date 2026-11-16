@@ -847,4 +847,4 @@ main p:not(.hero-lede):not(.cap):not(.since):not(.hiring), main li { text-align:
 /* Map keeps one zoom at every circle size, centred on the marker. */
 .contact .map iframe { width: 380px; height: 380px; left: 50%; top: 50%; transform: translate(-50%, -50%); }
 /* Address-style lines broken with <br> stay left aligned. */
-main p:has(br) { text-align: left; }
+main p:not(.hero-lede):not(.cap):not(.since):not(.hiring):has(br) { text-align: left; }
