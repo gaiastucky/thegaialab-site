@@ -10,6 +10,18 @@
  },
  "groups": [
   {
+   "name": "Postdoctoral researchers",
+   "members": [
+    {
+     "name": "Abdallah Zaki",
+     "since": "2026",
+     "photo": "assets/people/abdallah-1.jpg",
+     "photo2": "assets/people/abdallah-2.jpg",
+     "bio": ""
+    }
+   ]
+  },
+  {
    "name": "Graduate students",
    "members": [
     {
