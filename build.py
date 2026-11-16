@@ -31,7 +31,7 @@ misc = json.loads((ROOT / "data/misc.json").read_text())
 TEAM_GROUPS = {"Postdoctoral researchers": "Postdoctoral Associates / Fellows",
                "Graduate students": "Graduate Students",
                "Undergraduate researchers": "Undergraduate Researchers"}
-MEMBER_REQUIRED = {"name", "photo", "bio"}
+MEMBER_REQUIRED = {"name", "since", "photo", "bio"}
 MEMBER_ALLOWED = {"name", "since", "photo", "photo2", "website", "bio"}
 ALUM_REQUIRED = {"name", "role", "photo"}
 ALUM_ALLOWED = {"name", "role", "project", "photo", "photo2", "is_bio", "now"}
