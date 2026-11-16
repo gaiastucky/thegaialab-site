@@ -470,7 +470,7 @@ dialog.lb button:hover { color: var(--maroon); }
 @keyframes hint { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 
 /* ---------- Team layout ---------- */
-.window.team-hero { background-attachment: scroll; background-position: center calc(38% + var(--by, 0px)); }
+.window.team-hero { background-attachment: scroll; background-position: center calc(82% + var(--by, 0px)); }
 .opps-banner { background: linear-gradient(120deg, var(--dust-deep), var(--dust), var(--maroon), var(--dust-deep)); background-size: 300% 300%; animation: opps-drift 18s ease-in-out infinite; }
 @keyframes opps-drift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 .opps-in { max-width: 1080px; margin: 0 auto; padding: clamp(44px, 6vw, 72px) 24px; display: grid; gap: 28px; }
@@ -814,3 +814,6 @@ h3.sub { font-family: var(--head); font-size: var(--fs-l); font-weight: 700; col
   .course-media > .course-logos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
   .course-media > .cap { margin-bottom: 0; }
 }
+/* Phones: hover cards and wide decorations must not make the page scroll sideways. */
+html, body { overflow-x: clip; }
+.alum-card { width: min(240px, 72vw); }
