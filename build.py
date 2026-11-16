@@ -472,7 +472,7 @@ def team():
             f'{("<span>Now: " + e(a["now"]) + "</span>") if a.get("now") else ""}</span></li>' for k, a in enumerate(group))
         rows.append(f'<div class="alum-row" data-reveal><h3 class="sub">{label}</h3><ul class="alum-faces">{faces}</ul></div>')
     alumni = "".join(rows)
-    body = f"""{window(people['group_photo'], '<h1 data-hero>Introducing the <span class="wiggle" aria-label="Squad">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{ch}</span>' for k, ch in enumerate('Squad')) + '</span></h1>', h=BANNER_H, cls='team-hero', tag='Gaia Lab at MIT, 2025')}
+    body = f"""{window('assets/banners/team.webp', '<h1 data-hero>Introducing the <span class="wiggle" aria-label="Squad">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{ch}</span>' for k, ch in enumerate('Squad')) + '</span></h1>', h=BANNER_H, cls='team-hero', tag='Gaia Lab at MIT, 2025')}
 <section class="section">{person(pi, pi_extra)}</section>
 <section class="opps-banner"><div class="ticker" aria-label="News"><span class="ticker-tag">Hiring</span><div class="ticker-win"><div class="ticker-track"><span>2026 update: we are hiring! We are searching for a graduate student for fall 2027.</span><span aria-hidden="true">2026 update: we are hiring! We are searching for a graduate student for fall 2027.</span></div></div></div><div class="opps-in" id="opportunities"><div class="opps-head" data-reveal><h2 class="h2">Come work with us</h2><p>We are always looking for creative and motivated people to work with us. Have a look around and see if you find any projects interesting, and that overlap with your research goals.</p></div>
 <ul class="ways-pills">
