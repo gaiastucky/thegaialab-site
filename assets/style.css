@@ -792,6 +792,8 @@ h3.sub { font-family: var(--head); font-size: var(--fs-l); font-weight: 700; col
 .courses { margin-top: 8px; }
 .course-item + .course-item { margin-top: clamp(40px, 6vw, 72px); }
 .course-code { color: var(--maroon); margin-right: 6px; }
+/* Teaching: courses without media yet, two per row; stacked on phones */
+@media (max-width: 880px) { .course-pair { row-gap: clamp(40px, 6vw, 72px); } }
 .course-logos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-items: center; max-width: 440px; margin-inline: auto; }
 .course-logos figure { margin: 0; }
 .course-logos img { width: 100%; height: auto; display: block; }
