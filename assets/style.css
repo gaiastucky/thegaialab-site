@@ -801,3 +801,7 @@ h3.sub { font-family: var(--head); font-size: var(--fs-l); font-weight: 700; col
 /* Teaching: placeholder where a course's photo, video or collage will go */
 .media-soon { aspect-ratio: 16 / 9; border-radius: 16px; background: var(--dust-pale); display: grid; place-items: center; }
 .media-soon span { font: 700 var(--fs-s) var(--head); color: var(--dust, #7f97a8); letter-spacing: .02em; }
+
+.legoscape{display:block;width:100%;aspect-ratio:16/11;cursor:grab;touch-action:pan-y}
+.legoscape:active{cursor:grabbing}
+.legoscape-row{margin-top:24px}

@@ -315,6 +315,73 @@
   }
 
   /* ---------- Data & code banner: perspective wireframe of Mars topography ---------- */
+
+  // Mars Legoscape: 96 x 48 grid of 2x2 plates, stacked to MOLA height, coloured by USGS unit. Drag to turn.
+  var lego = document.querySelector("canvas.legoscape");
+  if (lego) {
+    fetch(lego.dataset.src).then(function (r) { return r.json(); }).then(function (g) {
+      var W = g.w, H = g.h, ctx = lego.getContext("2d");
+      var COL = [null, [169,85,0], [155,154,90], [111,148,122], [0,108,183], [53,33,8], [175,116,70], [103,130,151], [255,255,255], [72,158,206], [120,191,234]];
+      var cells = [];
+      for (var j = 0; j < H; j++) for (var i = 0; i < W; i++) {
+        var k = j * W + i; if (g.top[k] > 0) cells.push({ x: i - W / 2, y: j - H / 2, z: g.top[k] * 0.4, c: COL[g.unit[k]] || [150,150,150] });
+      }
+      function shade(c, f) { return "rgb(" + Math.round(c[0] * f) + "," + Math.round(c[1] * f) + "," + Math.round(c[2] * f) + ")"; }
+      var yaw = -0.3, tilt = 0.8, drag = null, idle = 0, visible = false, last = 0;
+      function draw() {
+        var box = lego.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var cw = Math.round(box.width * dpr), ch = Math.round(box.height * dpr);
+        if (lego.width !== cw || lego.height !== ch) { lego.width = cw; lego.height = ch; }
+        var ca = Math.cos(yaw), sa = Math.sin(yaw), ct = Math.cos(tilt), st = Math.sin(tilt);
+        var bx = W / 2 + 1, by = H / 2 + 1, hx = bx * Math.abs(ca) + by * Math.abs(sa), hy = bx * Math.abs(sa) + by * Math.abs(ca), S = Math.min(cw / (2 * hx + 1), ch / (2 * hy * st + 6 * ct + 1)), ox = cw / 2, oy = ch / 2 + 3 * S * ct;
+        function P(x, y, z) { var X = x * ca - y * sa, Y = x * sa + y * ca; return [ox + X * S, oy + Y * st * S - z * ct * S]; }
+        function quad(a, b, c, d, fill) { ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(c[0], c[1]); ctx.lineTo(d[0], d[1]); ctx.closePath(); ctx.fillStyle = fill; ctx.fill(); }
+        ctx.clearRect(0, 0, cw, ch);
+        // baseplate
+        var bw = W / 2 + 1, bh = H / 2 + 1;
+        quad(P(-bw, -bh, 0), P(bw, -bh, 0), P(bw, bh, 0), P(-bw, bh, 0), "#2b2f36");
+        // which two side faces face the viewer
+        var sides = [[1, 0], [-1, 0], [0, 1], [0, -1]].filter(function (n) { return n[0] * sa + n[1] * ca > 0; });
+        cells.forEach(function (c) { c.d = c.x * sa + c.y * ca; });
+        cells.sort(function (a, b) { return a.d - b.d; });
+        var r = 0.28 * S, ry = r * st;
+        for (var n = 0; n < cells.length; n++) {
+          var c = cells[n], x0 = c.x, x1 = c.x + 1, y0 = c.y, y1 = c.y + 1, z = c.z;
+          for (var q = 0; q < sides.length; q++) {
+            var nx = sides[q][0], ny = sides[q][1], f = 0.62 + 0.18 * (nx * 0.6 + ny * 0.8);
+            if (nx === 1) quad(P(x1, y0, 0), P(x1, y1, 0), P(x1, y1, z), P(x1, y0, z), shade(c.c, f));
+            else if (nx === -1) quad(P(x0, y0, 0), P(x0, y1, 0), P(x0, y1, z), P(x0, y0, z), shade(c.c, f));
+            else if (ny === 1) quad(P(x0, y1, 0), P(x1, y1, 0), P(x1, y1, z), P(x0, y1, z), shade(c.c, f));
+            else quad(P(x0, y0, 0), P(x1, y0, 0), P(x1, y0, z), P(x0, y0, z), shade(c.c, f));
+          }
+          quad(P(x0, y0, z), P(x1, y0, z), P(x1, y1, z), P(x0, y1, z), shade(c.c, 1));
+          if (S > 5) {
+            var m = P(c.x + 0.5, c.y + 0.5, z);
+            ctx.beginPath(); ctx.ellipse(m[0], m[1], r, ry, 0, 0, 6.2832); ctx.fillStyle = shade(c.c, 1.12); ctx.fill();
+          }
+        }
+      }
+      function loop(t) {
+        if (!visible) return;
+        if (!drag && !reduceMotion && t - idle > 1500) yaw += Math.min(50, t - (last || t)) * 0.00012;
+        last = t; draw(); requestAnimationFrame(loop);
+      }
+      lego.addEventListener("pointerdown", function (ev) { drag = [ev.clientX, ev.clientY, yaw, tilt]; lego.setPointerCapture(ev.pointerId); });
+      lego.addEventListener("pointermove", function (ev) {
+        if (!drag) return;
+        yaw = drag[2] + (ev.clientX - drag[0]) * 0.008;
+        tilt = clamp(drag[3] - (ev.clientY - drag[1]) * 0.006, 0.35, 1.5);
+        if (reduceMotion) draw();
+      });
+      function up() { drag = null; idle = performance.now(); }
+      lego.addEventListener("pointerup", up); lego.addEventListener("pointercancel", up);
+      new IntersectionObserver(function (es) {
+        var was = visible; visible = es[0].isIntersecting;
+        if (visible && !was) { last = 0; requestAnimationFrame(loop); }
+      }).observe(lego);
+      draw();
+    });
+  }
   var meshCanvas = document.querySelector("canvas.mesh");
   if (meshCanvas) {
     fetch(meshCanvas.dataset.src).then(function (r) { return r.json(); }).then(function (g) {
