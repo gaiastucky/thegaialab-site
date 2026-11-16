@@ -491,10 +491,44 @@
         return a + (b - a) * sx + (c - a) * sy + (a - b - c + d) * sx * sy;
       };
     }
-    function build(seed) {
-      var rand = rng(seed), N = NX * NY, z = new Float64Array(N);
+    function terrain(seed) {
+      var rand = rng(seed), z = new Float64Array(NX * NY);
       var oct = [valueNoise(rand, 3), valueNoise(rand, 7), valueNoise(rand, 15), valueNoise(rand, 31)], amp = [1, 0.55, 0.3, 0.18], tiltX = (rand() - 0.5) * 0.6;
       for (var y = 0; y < NY; y++) for (var x = 0; x < NX; x++) { var u = x / NX, v = y / NY, h = 0; for (var k = 0; k < 4; k++) h += amp[k] * oct[k](u, v); z[y * NX + x] = h * 1.5 + (1 - v) * 0.9 + u * tiltX; }
+      return z;
+    }
+    function newSeed() { return (Math.random() * 1e9) | 0; }
+    // extra roughness at short wavelengths, so channels wander
+    function addNoise(z) {
+      var r = rng(newSeed()), n1 = valueNoise(r, 45), n2 = valueNoise(r, 88);
+      for (var y = 0; y < NY; y++) for (var x = 0; x < NX; x++) { var u = x / NX, v = y / NY; z[y * NX + x] += (n1(u, v) - 0.5) * 0.32 + (n2(u, v) - 0.5) * 0.14; }
+    }
+    // add a radial shape f(d) around (cx, cy) out to distance rmax (in cells)
+    // pits only show as lakes inside crater bowls, so the random base terrain stays dry
+    var bowl = new Uint8Array(NX * NY);
+    function stamp(z, cx, cy, rmax, f, rb) {
+      var x0 = Math.max(0, Math.floor(cx - rmax)), x1 = Math.min(NX - 1, Math.ceil(cx + rmax)), y0 = Math.max(0, Math.floor(cy - rmax)), y1 = Math.min(NY - 1, Math.ceil(cy + rmax));
+      for (var y = y0; y <= y1; y++) for (var x = x0; x <= x1; x++) { var d = Math.hypot(x - cx, y - cy); if (d < rmax) { z[y * NX + x] += f(d); if (d < rb) bowl[y * NX + x] = 1; } }
+    }
+    // bowl-shaped impact craters with raised rims; small craters are more common than large ones
+    function addCraters(z) {
+      var r = rng(newSeed()), n = 3 + Math.floor(r() * 4);
+      for (var c = 0; c < n; c++) {
+        var R = Math.min(22, 4 * Math.pow(r() + 0.03, -0.55)), D = Math.min(0.9, 0.3 + 0.03 * R), rim = 0.3 * D;
+        stamp(z, r() * NX, r() * (NY - 8), 3 * R, function (d) { return d < R ? -D + (D + rim) * (d / R) * (d / R) : rim * Math.pow(R / d, 3); }, R);
+      }
+    }
+    // cone-shaped volcanoes with a small summit crater
+    function addVolcanoes(z) {
+      var r = rng(newSeed()), n = 1 + Math.floor(r() * 2);
+      for (var c = 0; c < n; c++) {
+        var R = 14 + r() * 18, H = 1.3 + r() * 0.8, Rc = 0.12 * R;
+        stamp(z, 10 + r() * (NX - 20), 8 + r() * (NY - 30), R, function (d) { return H * Math.pow(1 - d / R, 1.6) - (d < Rc ? 0.2 * H * (1 - (d / Rc) * (d / Rc)) : 0); }, Rc);
+      }
+    }
+    // fill pits (lakes), route each cell to its steepest downhill neighbour and accumulate drainage area
+    function route(z) {
+      var rand = rng(7), N = NX * NY;
       var filled = new Float64Array(N), done = new Uint8Array(N), heap = [];
       function push(i) { heap.push(i); var c = heap.length - 1; while (c > 0) { var p = (c - 1) >> 1; if (filled[heap[p]] <= filled[heap[c]]) break; var t = heap[p]; heap[p] = heap[c]; heap[c] = t; c = p; } }
       function pop() { var top = heap[0], last = heap.pop(); if (heap.length) { heap[0] = last; var c = 0; for (;;) { var l = 2 * c + 1, r = l + 1, m = c; if (l < heap.length && filled[heap[l]] < filled[heap[m]]) m = l; if (r < heap.length && filled[heap[r]] < filled[heap[m]]) m = r; if (m === c) break; var t = heap[m]; heap[m] = heap[c]; heap[c] = t; c = m; } } return top; }
@@ -503,12 +537,12 @@
       while (heap.length) { var c = pop(); order.push(c); var cx = c % NX, cy = (c / NX) | 0; for (var n = 0; n < 8; n++) { var nx = cx + DX[n], ny = cy + DY[n]; if (nx < 0 || ny < 0 || nx >= NX || ny >= NY) continue; var ni = ny * NX + nx; if (done[ni]) continue; done[ni] = 1; filled[ni] = Math.max(z[ni], filled[c] + 1e-6 * (1 + rand())); push(ni); } }
       var rec = new Int32Array(N).fill(-1);
       for (var i = 0; i < N; i++) { var ix = i % NX, iy = (i / NX) | 0; if (iy === NY - 1) continue; var best = 0, bi = -1; for (var m = 0; m < 8; m++) { var jx = ix + DX[m], jy = iy + DY[m]; if (jx < 0 || jy < 0 || jx >= NX || jy >= NY) continue; var j = jy * NX + jx, dist = (DX[m] && DY[m]) ? 1.4142 : 1, s = (filled[i] - filled[j]) / dist; if (s > best) { best = s; bi = j; } } rec[i] = bi; }
-      var area = new Float64Array(N).fill(1), maxA = 1;
+      var area = new Float64Array(N).fill(1), maxA = 1, lake = new Uint8Array(N);
       for (var o = order.length - 1; o >= 0; o--) { var qq = order[o]; if (rec[qq] >= 0) area[rec[qq]] += area[qq]; }
-      for (var a2 = 0; a2 < N; a2++) if (area[a2] > maxA) maxA = area[a2];
-      var segs = []; for (var s2 = 0; s2 < N; s2++) if (rec[s2] >= 0 && area[s2] >= 30) segs.push(s2);
+      for (var a2 = 0; a2 < N; a2++) { if (area[a2] > maxA) maxA = area[a2]; if (bowl[a2] && filled[a2] - z[a2] > 0.004) lake[a2] = 1; }
+      var segs = []; for (var s2 = 0; s2 < N; s2++) if (rec[s2] >= 0 && area[s2] >= 30 && !lake[s2]) segs.push(s2);
       segs.sort(function (p, q2) { return area[q2] - area[p]; });
-      return { z: filled, rec: rec, area: area, maxA: maxA, segs: segs };
+      return { z: filled, rec: rec, area: area, maxA: maxA, segs: segs, lake: lake };
     }
     function draw(threshold) {
       var ctx = canvas.getContext("2d"), W = canvas.width, H = canvas.height, sx = W / NX, sy = H / NY, cs = getComputedStyle(document.documentElement);
@@ -516,7 +550,10 @@
       for (i = 0; i < state.z.length; i++) { if (state.z[i] < zmin) zmin = state.z[i]; if (state.z[i] > zmax) zmax = state.z[i]; }
       // elevation tint: pale sand in the valleys to rusty rose on the ridges
       var lo = [246, 240, 232], hi = [214, 150, 120];
-      for (var yy = 0; yy < NY; yy++) for (var xx = 0; xx < NX; xx++) { var t2 = (state.z[yy * NX + xx] - zmin) / (zmax - zmin || 1); ctx.fillStyle = "rgb(" + Math.round(lo[0] + (hi[0] - lo[0]) * t2) + "," + Math.round(lo[1] + (hi[1] - lo[1]) * t2) + "," + Math.round(lo[2] + (hi[2] - lo[2]) * t2) + ")"; ctx.fillRect(Math.floor(xx * sx), Math.floor(yy * sy), Math.ceil(sx) + 1, Math.ceil(sy) + 1); }
+      for (var yy = 0; yy < NY; yy++) for (var xx = 0; xx < NX; xx++) { var t2 = (state.z[yy * NX + xx] - zmin) / (zmax - zmin || 1); var ci = yy * NX + xx, gx = state.z[xx > 0 ? ci - 1 : ci] - state.z[xx < NX - 1 ? ci + 1 : ci], gy = state.z[yy > 0 ? ci - NX : ci] - state.z[yy < NY - 1 ? ci + NX : ci], hs = Math.max(0.88, Math.min(1.05, 1 + 1.2 * (gx + gy))); ctx.fillStyle = "rgb(" + Math.round((lo[0] + (hi[0] - lo[0]) * t2) * hs) + "," + Math.round((lo[1] + (hi[1] - lo[1]) * t2) * hs) + "," + Math.round((lo[2] + (hi[2] - lo[2]) * t2) * hs) + ")"; ctx.fillRect(Math.floor(xx * sx), Math.floor(yy * sy), Math.ceil(sx) + 1, Math.ceil(sy) + 1); }
+      // ponded water (filled pits such as crater lakes) in river blue
+      ctx.fillStyle = "rgb(156,200,234)";
+      for (i = 0; i < state.lake.length; i++) if (state.lake[i]) { var lx = i % NX, ly = (i / NX) | 0; ctx.fillRect(Math.floor(lx * sx), Math.floor(ly * sy), Math.ceil(sx) + 1, Math.ceil(sy) + 1); }
       var step = (zmax - zmin) / 22; ctx.fillStyle = "rgba(148,80,58,.45)";
       for (var y = 0; y < NY - 1; y++) for (var x = 0; x < NX - 1; x++) { var a = Math.floor((state.z[y * NX + x] - zmin) / step), b = Math.floor((state.z[y * NX + x + 1] - zmin) / step), c = Math.floor((state.z[(y + 1) * NX + x] - zmin) / step); if (a !== b || a !== c) ctx.fillRect(x * sx + sx / 2 - 0.7, y * sy + sy / 2 - 0.7, 1.4, 1.4); }
       ctx.strokeStyle = cs.getPropertyValue("--dust-deep").trim(); ctx.lineCap = "round";
@@ -524,16 +561,23 @@
       for (var k = 0; k < state.segs.length; k++) { var s = state.segs[k], A = state.area[s]; if (A < threshold) break; var r = state.rec[s]; ctx.lineWidth = (0.45 + 0.08 * Math.sqrt(A)) * dpr; ctx.beginPath(); ctx.moveTo((s % NX + 0.5) * sx, (((s / NX) | 0) + 0.5) * sy); ctx.lineTo((r % NX + 0.5) * sx, (((r / NX) | 0) + 0.5) * sy); ctx.stroke(); }
     }
     function size() { var dpr = Math.min(window.devicePixelRatio || 1, 2); canvas.width = Math.round(canvas.clientWidth * dpr); canvas.height = Math.round(canvas.clientWidth * dpr * NY / NX); }
-    function run(seed) {
-      cancelAnimationFrame(raf); state = build(seed); size();
+    var seed = 20231009, base = terrain(seed), cur = base.slice();
+    function run() {
+      cancelAnimationFrame(raf); state = route(cur); size();
       var minA = 30, maxA = state.maxA;
       if (reduceMotion) { draw(minA); return; }
       var st = performance.now(), dur = 2600;
       (function f(t) { var p = Math.min(1, (t - st) / dur), e2 = 1 - Math.pow(1 - p, 3); draw(Math.exp(Math.log(maxA) + (Math.log(minA) - Math.log(maxA)) * e2)); if (p < 1) raf = requestAnimationFrame(f); })(st);
     }
-    var seed = 20231009; run(seed);
-    var again = document.getElementById("drainage-again");
-    if (again) again.addEventListener("click", function () { seed = (Math.random() * 1e9) | 0; run(seed); });
+    run();
+    var acts = {
+      "drainage-again": function () { seed = newSeed(); base = terrain(seed); cur = base.slice(); bowl.fill(0); },
+      "drainage-noise": function () { addNoise(cur); },
+      "drainage-craters": function () { addCraters(cur); },
+      "drainage-volcanoes": function () { addVolcanoes(cur); },
+      "drainage-reset": function () { cur = base.slice(); bowl.fill(0); }
+    };
+    Object.keys(acts).forEach(function (id) { var b = document.getElementById(id); if (b) b.addEventListener("click", function () { acts[id](); run(); }); });
     window.addEventListener("resize", function () { if (state) { size(); draw(30); } });
   }
 

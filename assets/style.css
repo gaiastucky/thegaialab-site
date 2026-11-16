@@ -828,3 +828,5 @@ html, body { overflow-x: clip; }
   .river .bank.thin { stroke-width: 30; }
   .river .chev use { transform: scale(2.3); }
 }
+.model-tools { margin-top: 12px; gap: 8px; }
+.model-tools .btn { padding: 8px 15px; font-size: 14px; }
