@@ -574,7 +574,7 @@ def outreach():
         m = course_media(c)
         text = (f'<h3 class="sub"><span class="course-code">{e(c["code"])}</span> {e(c["name"])}</h3>'
                 f'<p class="small muted">{e(c["taught"])}</p><p>{e(c["desc"])}</p>'
-                f'<p><a href="{e(c["url"])}">MIT course catalog</a></p>')
+                f'<div class="actions">{btn("MIT course catalog", e(c["url"]), "line")}</div>')
         if m:
             return f'<div class="grid course-item"><div class="c-1-6" data-reveal>{text}</div><div class="c-7-13 course-media" data-reveal="1">{m}</div></div>'
         return f'<div class="grid course-item"><div class="c-1-6" data-reveal>{text}</div></div>'
@@ -606,7 +606,7 @@ def outreach():
 <div class="grid course-item legoscape-row"><div class="c-1-6 self-center" data-reveal>
 <h3 class="sub">Building Mars in Lego</h3>
 <p>A community-built Lego model of the surface of Mars, made from real mission data. Elevation comes from the MOLA global topography and colours come from the USGS geologic map of Mars (Tanaka et al., 2014), each resampled to a 96 by 48 grid of 2x2 plates on 18 baseplates. Every plate of height stands for about 2 km of elevation, so the tallest Tharsis volcanoes stand 13 to 14 plates high. Members of the EAPS community build it plate by plate from printed guides.</p>
-<p><a href="https://buildingmars.thegaialab.com">Visit the Building Mars website</a></p>
+<div class="actions">{btn('Visit the Building Mars website', 'https://buildingmars.thegaialab.com', 'line')}</div>
 </div><div class="c-7-13 self-center" data-reveal="1"><canvas class="legoscape" data-src="{rel('assets/legoscape.json')}" aria-label="Rotatable 3D preview of the Mars Lego model" role="img"></canvas><p class="cap">The planned model, with relief doubled for this preview. Drag to turn it.</p></div></div>
 <div class="grid">
 <div class="trio" style="margin-top:48px">{vids}</div>
@@ -745,7 +745,7 @@ def resources():
     r = misc["resources"]
     m = r["models"][0]
     sketch = f'{embed("https://sketchfab.com/models/" + m["url"].rsplit("-", 1)[-1] + "/embed?autostart=1", m.get("thumb", ""), m["title"])}'
-    body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1><p class="hero-lede">Please <a href="' + link('contact-cv') + '">reach out</a> if you have any data requests related to our publications or other projects!</p>', h=BANNER_H, cls='meshwin')}
+    body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1><p class="hero-lede">Please reach out if you have any data requests related to our publications or other projects!</p>', h=BANNER_H, cls='meshwin')}
 <section class="section"><div class="grid">
 <div class="c-1-6 self-center" data-reveal><h2 class="h2">Explore our surfaces in 3D</h2>
 <p>Play around with some of our surface models in <strong>SketchFab</strong>. Here's Parana Basin on Mars, with mapped valleys and a paleolake. Press play and explore!</p></div>
