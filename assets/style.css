@@ -848,3 +848,8 @@ main p:not(.hero-lede):not(.cap):not(.since):not(.hiring), main li { text-align:
 .contact .map iframe { width: 380px; height: 380px; left: 50%; top: 50%; transform: translate(-50%, -50%); }
 /* Address-style lines broken with <br> stay left aligned. */
 main p:not(.hero-lede):not(.cap):not(.since):not(.hiring):has(br) { text-align: left; }
+.hello { white-space: nowrap; }
+/* Home: "Hello there!" letters ripple through the site palette with a small hop, every few seconds. */
+.hello span { display: inline-block; animation: hello 5s ease-in-out infinite; animation-delay: calc(1.2s + var(--i) * .07s); }
+@keyframes hello { 0%, 30%, 100% { color: #fff; transform: translateY(0); } 8% { color: #f3e0d4; transform: translateY(-.14em); } 15% { color: #9cc8ea; transform: translateY(0); } 22% { color: #e8a48c; } }
+@media (prefers-reduced-motion: reduce) { .hello span { animation: none; } }

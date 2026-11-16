@@ -394,7 +394,7 @@ def home():
               "Find out who is in our team so far. And whether there is a place for you!",
               link("team"), "Yes please", art(people["group_photo"], [people["mascot"]["photo"]]), flip=True),
     ])
-    hero = ('<h1 data-hero>Hello there! Welcome to the Gaia Lab.</h1>'
+    hero = ('<h1 data-hero><span class="hello" aria-label="Hello there!">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{"&nbsp;" if ch == " " else ch}</span>' for k, ch in enumerate('Hello there!')) + '</span> Welcome to the Gaia Lab.</h1>'
             '<p class="sub" data-hero>We study the driving forces behind the formation, evolution, and decay of Solar System surfaces, '
             'and the coupled interactions between climate, erosion, and tectonics recorded in landscapes. <em>Find out more below!</em></p>')
     li_posts = "".join(f'<iframe src="https://www.linkedin.com/embed/feed/update/{u}" title="LinkedIn post by The Gaia Lab" loading="lazy" allowfullscreen></iframe>' for u in misc.get("linkedin_posts", []))
