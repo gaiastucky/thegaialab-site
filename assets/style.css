@@ -436,14 +436,16 @@ dialog.lb button:hover { color: var(--maroon); }
 .story.alt .story-art { order: 2; }
 .story-art { position: relative; width: 100%; max-width: 400px; justify-self: center; }
 .story-art .art-main { display: block; }
-.story-art .sat { position: absolute; width: 34%; border: 6px solid var(--paper); box-sizing: content-box; }
+.story-art .sat { position: absolute; width: 34%; height: auto; aspect-ratio: 1; box-shadow: 0 0 0 6px var(--paper); }
+.pic.round > img { position: absolute; inset: 0; }
 .story-art .sat0 { right: -8%; bottom: -4%; }
 .story-art .sat1 { left: -10%; top: 2%; width: 26%; }
 .story-text { max-width: 440px; }
 .story-text p { font-size: var(--fs-b); }
 .story .globe-wrap { margin: 0 auto; }
 @media (max-width: 760px) {
-  .story { grid-template-columns: 1fr; }
+  .story, .story.intro { grid-template-columns: 1fr; gap: 40px; }
+  .story-art.gif { max-width: 360px; }
   .story.alt .story-art { order: 0; }
   .story-art { max-width: 300px; }
 }
@@ -817,3 +819,4 @@ h3.sub { font-family: var(--head); font-size: var(--fs-l); font-weight: 700; col
 /* Phones: hover cards and wide decorations must not make the page scroll sideways. */
 html, body { overflow-x: clip; }
 .alum-card { width: min(240px, 72vw); }
+@media (max-width: 760px) { .window.shift.eng { background-position: 8% calc(var(--bp, 50%) + var(--by, 0px)); } }

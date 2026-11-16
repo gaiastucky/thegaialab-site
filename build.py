@@ -564,7 +564,7 @@ def outreach():
 <div><a class="btn" href="{e(p['url'])}">{e(p['outlet'])}</a><h3>“{e(p['title'])}”</h3><p class="muted">by {e(p['author'])}</p></div>
 </article>""")
     jump = '<nav class="sec-jump" aria-label="On this page"><a href="#teaching">Teaching</a><a href="#talks">Outreach</a><a href="#media">In the media</a></nav>'
-    body = f"""{window('assets/banners/engagement-2.webp', '<h1 data-hero>Engagement</h1>', h=BANNER_H, cls='shift')}
+    body = f"""{window('assets/banners/engagement-2.webp', '<h1 data-hero>Engagement</h1>', h=BANNER_H, cls='shift eng')}
 <section class="section" id="teaching"><div class="grid">
 <div class="c-1-8" data-reveal><h2 class="h2">Teaching</h2></div></div>
 <div class="courses">{courses}</div></section>
