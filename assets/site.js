@@ -218,11 +218,26 @@
         globeCanvas.addEventListener("mouseenter", function () { paused = true; });
         globeCanvas.addEventListener("mouseleave", function () { paused = false; });
         var shown = [];
+        var chooser = null;
+        function closeChooser() { if (chooser) { chooser.remove(); chooser = null; } }
+        document.addEventListener("click", function (e3) { if (chooser && !chooser.contains(e3.target) && e3.target !== globeCanvas) closeChooser(); });
+        function goTrip(hit) { var m = /(fieldwork-[\w-]+)(?:\.html|\/(?:index\.html)?)?$/.exec(hit.href), sec = m && document.getElementById(m[1]); if (sec) { [].forEach.call(document.querySelectorAll(".trip-panel"), function (p) { p.hidden = p !== sec; }); sec.scrollIntoView({ behavior: "smooth", block: "start" }); } else if (!(m && window.glGo && window.glGo(m[1]))) location.href = hit.href; }
         globeCanvas.addEventListener("click", function (ev) {
           if (dragged) { dragged = false; return; }
           var r = globeCanvas.getBoundingClientRect(), x = (ev.clientX - r.left) * size / r.width, y = (ev.clientY - r.top) * size / r.height;
-          var hit = shown.filter(function (p) { return Math.hypot(p.x - x, p.y - y) < 28; })[0];
-          if (hit) { ev.preventDefault(); var m = /(fieldwork-[\w-]+)(?:\.html|\/(?:index\.html)?)?$/.exec(hit.href), sec = m && document.getElementById(m[1]); if (sec) { [].forEach.call(document.querySelectorAll(".trip-panel"), function (p) { p.hidden = p !== sec; }); sec.scrollIntoView({ behavior: "smooth", block: "start" }); } else if (!(m && window.glGo && window.glGo(m[1]))) location.href = hit.href; }
+          // pins closer than a finger width (Fogo and São Nicolau) open a small chooser
+          var near = shown.filter(function (p) { return Math.hypot(p.x - x, p.y - y) < 28; }).sort(function (a, b) { return Math.hypot(a.x - x, a.y - y) - Math.hypot(b.x - x, b.y - y); });
+          var seen = {}, hits = near.filter(function (p) { if (seen[p.href]) return false; seen[p.href] = 1; return true; });
+          closeChooser();
+          if (!hits.length) return;
+          ev.preventDefault();
+          if (hits.length === 1) { goTrip(hits[0]); return; }
+          paused = true;
+          chooser = document.createElement("div"); chooser.className = "pin-chooser";
+          hits.forEach(function (h) { var b = document.createElement("button"); b.type = "button"; b.textContent = h.name; b.addEventListener("click", function (e2) { e2.stopPropagation(); closeChooser(); goTrip(h); }); chooser.appendChild(b); });
+          var host = globeCanvas.parentNode; if (getComputedStyle(host).position === "static") host.style.position = "relative";
+          var hr = host.getBoundingClientRect(); chooser.style.left = (ev.clientX - hr.left) + "px"; chooser.style.top = (ev.clientY - hr.top) + "px";
+          host.appendChild(chooser);
         });
         globeCanvas.addEventListener("mousemove", function (ev) {
           var r = globeCanvas.getBoundingClientRect(), x = (ev.clientX - r.left) * size / r.width, y = (ev.clientY - r.top) * size / r.height;
@@ -242,7 +257,7 @@
             var c = proj.rotate(), d = d3.geoDistance([p.lon, p.lat], [-c[0], -c[1]]);
             if (d > Math.PI / 2 - 0.08) return;
             var xy = proj([p.lon, p.lat]);
-            shown.push({ x: xy[0], y: xy[1], href: p.href });
+            shown.push({ x: xy[0], y: xy[1], href: p.href, name: p.name });
             ctx.beginPath(); ctx.arc(xy[0], xy[1], 6 + pulse * 16, 0, 7); ctx.fillStyle = "rgba(181,101,74," + (0.35 * (1 - pulse)).toFixed(3) + ")"; ctx.fill();
             ctx.beginPath(); ctx.arc(xy[0], xy[1], 6, 0, 7); ctx.fillStyle = col("--maroon"); ctx.fill();
             ctx.lineWidth = 2; ctx.strokeStyle = "#fff"; ctx.stroke();

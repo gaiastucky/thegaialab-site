@@ -334,13 +334,20 @@ FIELD_SITES = [  # every place we have worked; shown as unlabelled pins that ope
 ]
 
 
+TRIP_TITLE = {"Lonar": "Lonar, India"}  # display names where the place alone is not enough
+
+
+def trip_title(place):
+    return TRIP_TITLE.get(place, place)
+
+
 def trip_slug(place):
     import unicodedata
     return "fieldwork-" + slugify(unicodedata.normalize("NFKD", place).encode("ascii", "ignore").decode())
 
 
 def globe_block(big=False):
-    pts = json.dumps([{"lat": a, "lon": b, "href": link(trip_slug(p))} for a, b, p in FIELD_SITES]).replace('"', "&quot;")
+    pts = json.dumps([{"lat": a, "lon": b, "href": link(trip_slug(p)), "name": trip_title(p)} for a, b, p in FIELD_SITES]).replace('"', "&quot;")
     if big:  # on the gallery page the pins are the only links
         return (f'<div class="globe-wrap big" role="img" aria-label="A turning globe with pins at our field sites. Click a pin to open its photos">'
                 f'<canvas id="globe" width="460" height="460" data-places="{pts}"></canvas></div>')
@@ -709,7 +716,7 @@ def collage(t):
 
 def fieldwork():
     set_depth("fieldwork")
-    trips = "".join(f"""<section class="trip-panel" id="{trip_slug(t['place'])}" hidden><div class="grid"><div class="c-1-8"><h2 class="h2">{e(t['place'])}</h2><p class="trip-year">{t.get('kind', 'Fieldwork')}, {t['year']}</p><p>{FIELD_TEXT[t['place']]}</p></div></div>
+    trips = "".join(f"""<section class="trip-panel" id="{trip_slug(t['place'])}" hidden><div class="grid"><div class="c-1-8"><h2 class="h2">{e(trip_title(t['place']))}</h2><p class="trip-year">{t.get('kind', 'Fieldwork')}, {t['year']}</p><p>{FIELD_TEXT[t['place']]}</p></div></div>
 {collage(t)}</section>""" for t in misc["fieldwork"])
     body = f"""<section class="globe-hero"><div class="story intro field-intro">
 <div class="story-text" data-reveal><h1>Gallery</h1>
@@ -721,10 +728,10 @@ def fieldwork():
     for t in misc["fieldwork"]:
         sl = trip_slug(t["place"])
         set_depth(sl)
-        body = f"""<section class="section tight"><div class="grid"><div class="c-1-8" data-reveal><h1 class="h2">{e(t['place'])}</h1><p class="trip-year">{t.get('kind', 'Fieldwork')}, {t['year']}</p><p>{FIELD_TEXT[t["place"]]}</p>
+        body = f"""<section class="section tight"><div class="grid"><div class="c-1-8" data-reveal><h1 class="h2">{e(trip_title(t['place']))}</h1><p class="trip-year">{t.get('kind', 'Fieldwork')}, {t['year']}</p><p>{FIELD_TEXT[t["place"]]}</p>
 <div class="actions">{btn("Back to the globe", link("fieldwork"), "line")}</div></div></div>
 {collage(t)}</section>"""
-        page(sl, t["place"], body, f"Photos from our {t['year']} fieldwork in {t['place']}.")
+        page(sl, trip_title(t["place"]), body, f"Photos from our {t['year']} fieldwork in {trip_title(t['place'])}.")
 
 
 # ======================================================================= Gallery

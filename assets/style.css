@@ -832,3 +832,6 @@ html, body { overflow-x: clip; }
 .model-tools .btn { padding: 8px 15px; font-size: 14px; }
 /* Phones: photo captions sit in their own line under the banner text. */
 @media (max-width: 760px) { .window:has(.tag) .in { padding-bottom: 44px; } .window .tag { bottom: 14px; } }
+.pin-chooser { position: absolute; z-index: 5; transform: translate(-50%, 12px); display: flex; flex-direction: column; gap: 6px; padding: 8px; background: #fff; border-radius: 18px; box-shadow: 0 6px 24px rgba(40, 30, 40, .18); }
+.pin-chooser button { font: 700 var(--fs-s) var(--body); color: var(--maroon); background: transparent; border: 0; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--maroon); padding: 7px 16px; cursor: pointer; white-space: nowrap; }
+.pin-chooser button:hover { background: var(--maroon); color: #fff; }
