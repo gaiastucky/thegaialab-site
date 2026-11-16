@@ -844,3 +844,7 @@ main p:not(.hero-lede):not(.cap):not(.since):not(.hiring), main li { text-align:
 .teaser p, .center-head p, .flip p, .night p, .group-head p, .linkedin p, .alum-row p, .alum-row li, .theme-art p, .g-place p, .tl-year, .actions p { text-align: inherit; }
 .theme-row.alt .theme-txt p, .theme-row.alt .theme-txt li { text-align-last: right; }
 @media (max-width: 880px) { .theme-row.alt .theme-txt p, .theme-row.alt .theme-txt li { text-align-last: auto; } }
+/* Map keeps one zoom at every circle size, centred on the marker. */
+.contact .map iframe { width: 380px; height: 380px; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+/* Address-style lines broken with <br> stay left aligned. */
+main p:has(br) { text-align: left; }

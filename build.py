@@ -776,7 +776,7 @@ def contact():
 <div class="actions"><a class="btn" href="#" data-m="dWRlLnRpbUBzYWlhZw==">Send me an email <span class="arr" aria-hidden="true">→</span></a><button class="btn line" type="button" id="copy-email" data-m="dWRlLnRpbUBzYWlhZw==">Copy address</button></div>
 <div class="contact-row"><div><h3 class="sub">Lab</h3><p>Room 54-319, Green Building<br>Massachusetts Institute of Technology<br>77 Massachusetts Avenue, Cambridge, MA 02139</p><p>Gaia's office is in Room 54-510.</p></div>
 <div><h3 class="sub">CV</h3><p>My most up-to-date CV.</p>{btn('View & download', media(misc['cv']), 'line')}</div></div></div>
-<div class="c-8-13 contact-art" data-reveal="1">{pic(U + '2022/01/paper_email.gif', 'Animated paper airplane', 'cutout', eager=True)}<div class="map"><iframe src="{osm}" title="Map of the MIT Green Building" loading="lazy"></iframe></div></div>
+<div class="c-8-13 contact-art" data-reveal="1">{pic('assets/paper-plane.webp', 'Paper airplane', 'cutout', eager=True)}<div class="map"><iframe src="{osm}" title="Map of the MIT Green Building" loading="lazy"></iframe></div></div>
 </div></section>"""
     page("contact-cv", "Contact/CV", body, "How to reach Gaia Stucky de Quay and the Gaia Lab.")
 
