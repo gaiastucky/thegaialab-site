@@ -551,7 +551,7 @@ def publications():
 {figs}
 </article>""")
         groups.append(f'<div class="year-group"><h2 class="year" id="y{y}">{y}</h2>{"".join(items)}</div>')
-    body = f"""{window(misc['covers']['publications'], '<h1 data-hero class="book" aria-label="Publications"><span class="pg l" aria-hidden="true">Publi</span><span class="pg r" aria-hidden="true">cations</span></h1>', h=BANNER_H, cls='shift', tag='Harvard Library')}
+    body = f"""{window(misc['covers']['publications'], '<h1 data-hero class="book" aria-label="Publications"><span class="pg l" aria-hidden="true">Publi</span><span class="pg r" aria-hidden="true">cations</span></h1><p class="hero-lede" data-hero>Check out our peer-reviewed articles below! Browse the summaries and key figures, ordered chronologically. Authors in <strong>bold</strong> are group members. Hover over a figure to expand it, click to see it full size, and feel free to reach out if you need access to a paper.</p>', h=BANNER_H, cls='shift', tag='Harvard Library')}
 <div class="yearnav"><div class="in"><nav class="years" aria-label="Jump to year">{jump}</nav><label class="pub-find"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><input id="pub-search" type="search" placeholder="Search" aria-label="Search papers" autocomplete="off"></label></div></div>
 <section class="section"><div class="grid"><div>{''.join(groups)}</div></div></section>"""
     page("publications", "Publications", body, "Peer-reviewed articles from the Gaia Lab, with summaries and key figures.")
@@ -745,7 +745,7 @@ def resources():
     r = misc["resources"]
     m = r["models"][0]
     sketch = f'{embed("https://sketchfab.com/models/" + m["url"].rsplit("-", 1)[-1] + "/embed?autostart=1", m.get("thumb", ""), m["title"])}'
-    body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1>', h=BANNER_H, cls='meshwin')}
+    body = f"""{window(None, '<canvas class="mesh" data-src="' + rel('assets/mars-mesh.json') + '" aria-hidden="true"></canvas><h1>Data &amp; code</h1><p class="hero-lede">Please <a href="' + link('contact-cv') + '">reach out</a> if you have any data requests related to our publications or other projects!</p>', h=BANNER_H, cls='meshwin')}
 <section class="section"><div class="grid">
 <div class="c-1-6 self-center" data-reveal><h2 class="h2">Explore our surfaces in 3D</h2>
 <p>Play around with some of our surface models in <strong>SketchFab</strong>. Here's Parana Basin on Mars, with mapped valleys and a paleolake. Press play and explore!</p></div>

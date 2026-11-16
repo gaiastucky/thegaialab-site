@@ -832,3 +832,5 @@ html, body { overflow-x: clip; }
 .model-tools .btn { padding: 8px 15px; font-size: 14px; }
 /* Phones: photo captions sit in their own line under the banner text. */
 @media (max-width: 760px) { .window:has(.tag) .in { padding-bottom: 44px; } .window .tag { bottom: 14px; } }
+.hero-lede a { color: #fff; text-decoration-color: rgba(255,255,255,.6); }
+.hero-lede a:hover { color: #fff; text-decoration-color: #fff; }
