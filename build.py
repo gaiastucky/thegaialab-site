@@ -533,7 +533,7 @@ def outreach():
             return embed(v, t, c.get("caption", c["code"])) + (f'<p class="cap">{e(c["caption"])}</p>' if c.get("caption") else "")
         if c.get("images"):
             return '<div class="course-logos">' + "".join(img(u, a) for u, a in c["images"]) + "</div>"
-        return ""
+        return '<div class="media-soon" aria-hidden="true"><span>Photos and video coming soon</span></div>'  # placeholder until Gaia sends media
     def course(i, c):
         m = course_media(c)
         text = (f'<h3 class="sub"><span class="course-code">{e(c["code"])}</span> {e(c["name"])}</h3>'
