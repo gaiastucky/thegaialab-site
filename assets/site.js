@@ -590,7 +590,6 @@
       "drainage-noise": function () { addNoise(cur); },
       "drainage-craters": function () { addCraters(cur); },
       "drainage-volcanoes": function () { addVolcanoes(cur); },
-      "drainage-reset": function () { cur = base.slice(); bowl.fill(0); }
     };
     Object.keys(acts).forEach(function (id) { var b = document.getElementById(id); if (b) b.addEventListener("click", function () { acts[id](); run(); }); });
     window.addEventListener("resize", function () { if (state) { size(); draw(30); } });

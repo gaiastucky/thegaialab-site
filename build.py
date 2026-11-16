@@ -520,7 +520,7 @@ def themes_page():
 <div class="c-1-5 self-center" data-reveal><h2 class="h2">Grow a river network</h2>
 <p>What happens if you let it rain? Click the button below to form your very own (random) drainage network. In this mini model, water finds the lowest path, gathers into streams, joining into progressively larger rivers. Every landscape is unique!</p>
 <div class="actions"><button class="btn" type="button" id="drainage-again">Grow another <span class="arr" aria-hidden="true">→</span></button></div>
-<div class="actions model-tools"><button class="btn line" type="button" id="drainage-noise">Add noise</button><button class="btn line" type="button" id="drainage-craters">Add craters</button><button class="btn line" type="button" id="drainage-volcanoes">Add volcanoes</button><button class="btn line" type="button" id="drainage-reset">Reset</button></div></div>
+<div class="actions model-tools"><button class="btn line" type="button" id="drainage-noise">Add noise</button><button class="btn line" type="button" id="drainage-craters">Add craters</button><button class="btn line" type="button" id="drainage-volcanoes">Add volcanoes</button></div></div>
 <div class="c-6-13 model gap-m"><canvas id="drainage" role="img" aria-label="A simulated river drainage network spreading across contoured terrain"></canvas></div>
 </div></section>"""
     page("themes", "Themes", body, "Research themes and the questions that keep the Gaia Lab up at night.")
