@@ -110,7 +110,22 @@
    "name": "Planetary Explorations",
    "taught": "Spring 2026",
    "url": "https://student.mit.edu/catalog/search.cgi?search=12.013",
-   "desc": "A tour of the solar system, from the scorched surface of Mercury to the icy nuclei of the outermost comets. Students explore the geology, interiors, atmosphere, and long-term evolution of planets, moons, and small bodies across the solar system. Students work directly with cutting-edge planetary datasets and techniques, including spacecraft imagery, spectra, topographic data, crater counts, meteorite samples, and atmospheric experiments. Culminates in an individual hypothesis-driven mission proposal in which students design a scientific exploration strategy for a solar system target of their choosing."
+   "desc": "A tour of the solar system, from the scorched surface of Mercury to the icy nuclei of the outermost comets. Students explore the geology, interiors, atmosphere, and long-term evolution of planets, moons, and small bodies across the solar system. Students work directly with cutting-edge planetary datasets and techniques, including spacecraft imagery, spectra, topographic data, crater counts, meteorite samples, and atmospheric experiments. Culminates in an individual hypothesis-driven mission proposal in which students design a scientific exploration strategy for a solar system target of their choosing.",
+   "images": [
+    [
+     "assets/teaching/12013-class-logo.webp",
+     "12.013 Planetary Explorations class logo"
+    ],
+    [
+     "assets/teaching/12013-argus.webp",
+     "ARGUS mission logo: Atmospheric Reconnaissance of the Global Uranian System"
+    ],
+    [
+     "assets/teaching/12013-prism.webp",
+     "PRISM mission logo: Polar Regolith and Ice Sample Mapper"
+    ]
+   ],
+   "caption": "Class logo and logos from student mission proposals: ARGUS (Uranus) and PRISM (lunar polar sample return)."
   },
   {
    "code": "12.S593",
