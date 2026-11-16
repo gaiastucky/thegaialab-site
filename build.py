@@ -27,7 +27,8 @@ misc = json.loads((ROOT / "data/misc.json").read_text())
 
 NAV = [("", "Home"), ("team", "Team"),
        ("research", "Research", [("themes", "Themes"), ("publications", "Publications"), ("resources", "Data & code")]),
-       ("outreach", "Engagement"), ("fieldwork", "Gallery")]
+       ("outreach", "Engagement", [("outreach#teaching", "Teaching"), ("outreach#talks", "Outreach"), ("outreach#media", "In the media")]),
+       ("fieldwork", "Gallery")]
 FONTS = "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,500&family=Raleway:ital,wght@0,400;0,700;1,400&display=swap"
 EMAIL = "gaias@mit.edu"
 e = html.escape
@@ -192,9 +193,10 @@ def page(slug, title, body, description):
     for it in NAV:
         if len(it) == 3:
             subs = it[2]
-            on = any(sl == slug for sl, _ in subs)
-            inner = "".join(f'<a href="{link(sl)}"{" aria-current=\"page\"" if sl == slug else ""}>{e(lb)}</a>' for sl, lb in subs)
-            items.append(f'<div class="drop{" on" if on else ""}"><a href="{link(subs[0][0])}" class="drop-top"{" aria-current=\"true\"" if on else ""}>{e(it[1])} <span aria-hidden="true">▾</span></a><div class="drop-menu">{inner}</div></div>')
+            on = any(sl.split("#")[0] == slug for sl, _ in subs)
+            href = lambda sl: link(sl.split("#")[0]) + ("#" + sl.split("#")[1] if "#" in sl else "")
+            inner = "".join(f'<a href="{href(sl)}"{" aria-current=\"page\"" if sl == slug else ""}>{e(lb)}</a>' for sl, lb in subs)
+            items.append(f'<div class="drop{" on" if on else ""}"><a href="{link(subs[0][0].split("#")[0])}" class="drop-top"{" aria-current=\"true\"" if on else ""}>{e(it[1])} <span aria-hidden="true">▾</span></a><div class="drop-menu">{inner}</div></div>')
         else:
             sl, lb = it
             items.append(f'<a href="{link(sl)}"{" aria-current=\"page\"" if sl == slug or (sl and slug.startswith(sl + "-")) else ""}>{e(lb)}</a>')
@@ -557,7 +559,7 @@ def outreach():
 <div><a class="btn" href="{e(p['url'])}">{e(p['outlet'])}</a><h3>“{e(p['title'])}”</h3><p class="muted">by {e(p['author'])}</p></div>
 </article>""")
     jump = '<nav class="sec-jump" aria-label="On this page"><a href="#teaching">Teaching</a><a href="#talks">Outreach</a><a href="#media">In the media</a></nav>'
-    body = f"""{window('assets/banners/engagement-2.webp', '<h1 data-hero>Engagement</h1>' + jump, h=BANNER_H, cls='shift')}
+    body = f"""{window('assets/banners/engagement-2.webp', '<h1 data-hero>Engagement</h1>', h=BANNER_H, cls='shift')}
 <section class="section" id="teaching"><div class="grid">
 <div class="c-1-8" data-reveal><h2 class="h2">Teaching</h2></div></div>
 <div class="courses">{courses}</div></section>
