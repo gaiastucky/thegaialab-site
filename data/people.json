@@ -70,6 +70,18 @@
      "bio": "I’m Noella, a third year undergraduate at MIT majoring in Earth, Atmosphere, and Planetary Science with a minor in Political Science. I’m working with Grace to study volcanic island river valleys on Earth to better understand how precipitation rates impact valley incision depth, and apply this to Martian river valleys. In my free time, I like to explore Boston with my friends and work on various craft projects."
     }
    ]
+  },
+  {
+   "name": "High school researchers",
+   "members": [
+    {
+     "name": "Jack Gao",
+     "since": "2026",
+     "photo": "assets/people/jack-1.jpg",
+     "photo2": "assets/people/jack-2.jpg",
+     "bio": "Hi! I’m Jack (he/him), a senior in high school interested in geomorphology. I currently work on analyzing how stream networks behave in different climates as they develop over time. The goal is to better understand how streams impact their landscape and apply this understanding to other planetary bodies. In my free time I like to run, take photos, and play card games."
+    }
+   ]
   }
  ],
  "mascot": {

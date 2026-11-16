@@ -30,7 +30,8 @@ misc = json.loads((ROOT / "data/misc.json").read_text())
 # The build stops if an entry has a field that its siblings do not use or lacks a required field.
 TEAM_GROUPS = {"Postdoctoral researchers": "Postdoctoral Associates / Fellows",
                "Graduate students": "Graduate Students",
-               "Undergraduate researchers": "Undergraduate Researchers"}
+               "Undergraduate researchers": "Undergraduate Researchers",
+               "High school researchers": "High School Researchers"}
 MEMBER_REQUIRED = {"name", "since", "photo", "bio"}
 MEMBER_ALLOWED = {"name", "since", "photo", "photo2", "website", "bio"}
 ALUM_REQUIRED = {"name", "role", "photo"}
