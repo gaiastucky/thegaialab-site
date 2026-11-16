@@ -123,9 +123,13 @@
     [
      "assets/teaching/12013-prism.webp",
      "PRISM mission logo: Polar Regolith and Ice Sample Mapper"
+    ],
+    [
+     "assets/teaching/12013-navi.webp",
+     "NAVI mission logo: Novel Analysis of Venusian Interiors"
     ]
    ],
-   "caption": "Class logo and logos from student mission proposals: ARGUS (Uranus) and PRISM (lunar polar sample return)."
+   "caption": "Class logo and logos from student mission proposals: ARGUS (Uranus), PRISM (lunar polar sample return) and NAVI (Venus interior)."
   },
   {
    "code": "12.S593",
