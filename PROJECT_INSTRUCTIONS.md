@@ -8,6 +8,17 @@ The code lives in the GitHub repository gaiastucky/thegaialab-site. At the start
 
 Content lives in four JSON files under `data/`. Most updates are edits to those files and need no change to `build.py`.
 
+## Keep every new entry in the existing format
+
+This rule matters more than any other. When Gaia gives something to add (a person, a paper, a trip, a course, a press item), copy the structure of the existing entries of the same kind exactly.
+
+- Use the same fields, field order, group name and file conventions as the existing sibling entries. Do not add, drop or rename fields.
+- Photos for people go in `assets/people/<firstname>-1.jpg` (main) and `-2.jpg` (second), 800 x 800 px JPEG, as for the other members.
+- Do not change templates, CSS or page structure to fit a new entry. If the new content does not fit the existing format, ask Gaia first.
+- Never publish a placeholder or a partial entry (for example a member with no bio). Ask for the missing text and publish the entry when it is complete.
+- After the build, compare the new entry with an existing one on desktop and at iPhone width (393 px). Photo sizes, headings and text layout must match.
+- `build.py` checks `people.json` against the allowed fields and stops if an entry differs from the format or has an empty bio. Team section headings come from `TEAM_GROUPS` by group name.
+
 ## How Gaia works
 
 - Make the requested change directly and show it. Ask only when the request is ambiguous and a wrong guess is costly.

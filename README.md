@@ -35,6 +35,17 @@ Only the live build is published. `preview/` and `pane/` are scratch output and 
 
 Run `python3 build.py` after every edit.
 
+## Keep every new entry in the existing format
+
+This rule matters more than any other. When Gaia gives something to add (a person, a paper, a trip, a course, a press item), copy the structure of the existing entries of the same kind exactly.
+
+- Use the same fields, field order, group name and file conventions as the existing sibling entries. Do not add, drop or rename fields.
+- Photos for people go in `assets/people/<firstname>-1.jpg` (main) and `-2.jpg` (second), 800 x 800 px JPEG, as for the other members.
+- Do not change templates, CSS or page structure to fit a new entry. If the new content does not fit the existing format, ask Gaia first.
+- Never publish a placeholder or a partial entry (for example a member with no bio). Ask for the missing text and publish the entry when it is complete.
+- After the build, compare the new entry with an existing one on desktop and at iPhone width (393 px). Photo sizes, headings and text layout must match.
+- `build.py` checks `people.json` against the allowed fields and stops if an entry differs from the format or has an empty bio. Team section headings come from `TEAM_GROUPS` by group name.
+
 ## Rules
 
 - The email address is never written out in HTML. `data-m` holds the address reversed and base64 encoded, and `site.js` assembles it on click.

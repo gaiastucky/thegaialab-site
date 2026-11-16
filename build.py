@@ -25,6 +25,39 @@ pubs = json.loads((ROOT / "data/publications.json").read_text())
 themes = json.loads((ROOT / "data/themes.json").read_text())
 misc = json.loads((ROOT / "data/misc.json").read_text())
 
+
+# Every new entry must have the same structure as the existing entries of its kind.
+# The build stops if an entry has a field that its siblings do not use or lacks a required field.
+TEAM_GROUPS = {"Postdoctoral researchers": "Postdoctoral Associates / Fellows",
+               "Graduate students": "Graduate Students",
+               "Undergraduate researchers": "Undergraduate Researchers"}
+MEMBER_REQUIRED = {"name", "photo", "bio"}
+MEMBER_ALLOWED = {"name", "since", "photo", "photo2", "website", "bio"}
+ALUM_REQUIRED = {"name", "role", "photo"}
+ALUM_ALLOWED = {"name", "role", "project", "photo", "photo2", "is_bio", "now"}
+
+
+def check_people():
+    bad = []
+    for g in people["groups"]:
+        if g["name"] not in TEAM_GROUPS:
+            bad.append(f'unknown team group "{g["name"]}"')
+        for m in g["members"]:
+            k = set(m)
+            if MEMBER_REQUIRED - k or k - MEMBER_ALLOWED:
+                bad.append(f'{m.get("name")}: missing {sorted(MEMBER_REQUIRED - k)}, unexpected {sorted(k - MEMBER_ALLOWED)}')
+            if not m.get("bio", "").strip():
+                bad.append(f'{m.get("name")}: empty bio')
+    for a in people["alumni"]:
+        k = set(a)
+        if ALUM_REQUIRED - k or k - ALUM_ALLOWED:
+            bad.append(f'alumni {a.get("name")}: missing {sorted(ALUM_REQUIRED - k)}, unexpected {sorted(k - ALUM_ALLOWED)}')
+    if bad:
+        raise SystemExit("people.json does not match the existing entry format:\n  " + "\n  ".join(bad))
+
+
+check_people()
+
 NAV = [("", "Home"), ("team", "Team"),
        ("research", "Research", [("themes", "Themes"), ("publications", "Publications"), ("resources", "Data & code")]),
        ("outreach", "Engagement", [("outreach#teaching", "Teaching"), ("outreach#talks", "Outreach"), ("outreach#media", "In the media")]),
@@ -404,10 +437,10 @@ def team():
     set_depth("team")
     pi = dict(people["pi"], bio=" ".join(people["pi"]["bio"]), is_pi=True, role="Principal Investigator")
     pi_extra = f'<div class="actions">{btn("Get in touch", link("contact-cv"))}</div>'
-    titles = ["Postdoctoral Associates / Fellows", "Graduate Students", "Undergraduate Researchers"]
+    order = list(TEAM_GROUPS)
     groups = "".join(
-        f'<section class="section"><div class="group-head" data-reveal><h2 class="h2">{e(t)}</h2></div><div class="stack-people">{"".join(person(m) for m in g["members"])}</div></section>'
-        for g, t in zip(people["groups"], titles) if g["members"])
+        f'<section class="section"><div class="group-head" data-reveal><h2 class="h2">{e(TEAM_GROUPS[g["name"]])}</h2></div><div class="stack-people">{"".join(person(m) for m in g["members"])}</div></section>'
+        for g in sorted(people["groups"], key=lambda g: order.index(g["name"])) if g["members"])
     def tier(a):
         r = a["role"].lower()
         return 2 if "visiting" in r else 0 if "postdoc" in r else 1 if ("phd" in r or "master" in r or "grad" in r and "undergrad" not in r) else 2 if "visiting" in r else 3

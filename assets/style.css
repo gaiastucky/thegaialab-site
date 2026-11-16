@@ -293,7 +293,7 @@ strong { font-weight: 700; }
 .night p { max-width: 54ch; margin: 18px auto 30px; }
 
 /* ---------- Team ---------- */
-.person { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr); gap: clamp(20px, 3.5vw, 48px); align-items: center; max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); scroll-margin-top: 100px; }
+.person { width: 100%; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr); gap: clamp(20px, 3.5vw, 48px); align-items: center; max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); scroll-margin-top: 100px; }
 .person .pic.round { max-width: 280px; width: 100%; justify-self: center; box-shadow: 0 0 0 10px var(--paper), 0 0 0 11px var(--hair); }
 .person .pic.round img { transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
 .person:hover .pic.round img { transform: scale(1.05); }
