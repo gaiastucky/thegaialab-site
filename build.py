@@ -421,7 +421,7 @@ def home():
 
 # ======================================================================= Team
 def person(m, extra="", i=0):
-    since = f'<p class="since">{e(m["since"])}{"" if "–" in m["since"] else " –"}</p>' if m.get("since") else (f'<p class="since">{e(m["role"])}</p>' if m.get("role") and m.get("is_pi") else "")
+    since = f'<p class="since">{e(m["since"])}{"" if "–" in m["since"] else "–"}</p>' if m.get("since") else (f'<p class="since">{e(m["role"])}</p>' if m.get("role") and m.get("is_pi") else "")
     site = f'<div class="actions">{btn("Website", m["website"], "line")}</div>' if m.get("website") else ""
     anchor = "io" if m["name"].startswith("Io ") else slugify(m["name"])
     left = pic(m["photo"], m["name"], "round")
