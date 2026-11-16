@@ -465,7 +465,7 @@ def team():
             f'{("<span>Now: " + e(a["now"]) + "</span>") if a.get("now") else ""}</span></li>' for k, a in enumerate(group))
         rows.append(f'<div class="alum-row" data-reveal><h3 class="sub">{label}</h3><ul class="alum-faces">{faces}</ul></div>')
     alumni = "".join(rows)
-    body = f"""{window(people['group_photo'], '<h1 data-hero>Introducing the <span class="wiggle" aria-label="Squad">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{ch}</span>' for k, ch in enumerate('Squad')) + '</span></h1>', h=BANNER_H, cls='team-hero')}
+    body = f"""{window(people['group_photo'], '<h1 data-hero>Introducing the <span class="wiggle" aria-label="Squad">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{ch}</span>' for k, ch in enumerate('Squad')) + '</span></h1>', h=BANNER_H, cls='team-hero', tag='Gaia Lab at MIT, 2025')}
 <section class="section">{person(pi, pi_extra)}</section>
 <section class="opps-banner"><div class="ticker" aria-label="News"><span class="ticker-tag">Hiring</span><div class="ticker-win"><div class="ticker-track"><span>2026 update: we are hiring! We are searching for a graduate student for fall 2027.</span><span aria-hidden="true">2026 update: we are hiring! We are searching for a graduate student for fall 2027.</span></div></div></div><div class="opps-in" id="opportunities"><div class="opps-head" data-reveal><h2 class="h2">Come work with us</h2><p>We are always looking for creative and motivated people to work with us. Have a look around and see if you find any projects interesting, and that overlap with your research goals.</p></div>
 <ul class="ways-pills">
@@ -554,7 +554,7 @@ def publications():
 {figs}
 </article>""")
         groups.append(f'<div class="year-group"><h2 class="year" id="y{y}">{y}</h2>{"".join(items)}</div>')
-    body = f"""{window(misc['covers']['publications'], '<h1 data-hero class="book" aria-label="Publications"><span class="pg l" aria-hidden="true">Publi</span><span class="pg r" aria-hidden="true">cations</span></h1><p class="hero-lede" data-hero>Check out our peer-reviewed articles below! Browse the summaries and key figures, ordered chronologically. Authors in <strong>bold</strong> are group members. Hover over a figure to expand it, click to see it full size, and feel free to reach out if you need access to a paper.</p>', h=BANNER_H, cls='shift')}
+    body = f"""{window(misc['covers']['publications'], '<h1 data-hero class="book" aria-label="Publications"><span class="pg l" aria-hidden="true">Publi</span><span class="pg r" aria-hidden="true">cations</span></h1><p class="hero-lede" data-hero>Check out our peer-reviewed articles below! Browse the summaries and key figures, ordered chronologically. Authors in <strong>bold</strong> are group members. Hover over a figure to expand it, click to see it full size, and feel free to reach out if you need access to a paper.</p>', h=BANNER_H, cls='shift', tag='Harvard Library')}
 <div class="yearnav"><div class="in"><nav class="years" aria-label="Jump to year">{jump}</nav><label class="pub-find"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><input id="pub-search" type="search" placeholder="Search" aria-label="Search papers" autocomplete="off"></label></div></div>
 <section class="section"><div class="grid"><div>{''.join(groups)}</div></div></section>"""
     page("publications", "Publications", body, "Peer-reviewed articles from the Gaia Lab, with summaries and key figures.")
@@ -598,7 +598,7 @@ def outreach():
 <div><a class="btn" href="{e(p['url'])}">{e(p['outlet'])}</a><h3>“{e(p['title'])}”</h3><p class="muted">by {e(p['author'])}</p></div>
 </article>""")
     jump = '<nav class="sec-jump" aria-label="On this page"><a href="#teaching">Teaching</a><a href="#talks">Outreach</a><a href="#media">In the media</a></nav>'
-    body = f"""{window('assets/banners/engagement-2.webp', '<h1 data-hero>Engagement</h1>', h=BANNER_H, cls='shift eng')}
+    body = f"""{window('assets/banners/engagement-2.webp', '<h1 data-hero>Engagement</h1>', h=BANNER_H, cls='shift eng', tag='EPS Department, Harvard University')}
 <section class="section" id="teaching"><div class="grid">
 <div class="c-1-8" data-reveal><h2 class="h2">Teaching</h2></div></div>
 <div class="courses">{courses}</div></section>

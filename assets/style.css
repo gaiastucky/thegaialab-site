@@ -830,3 +830,5 @@ html, body { overflow-x: clip; }
 }
 .model-tools { margin-top: 12px; gap: 8px; }
 .model-tools .btn { padding: 8px 15px; font-size: 14px; }
+/* Phones: photo captions sit in their own line under the banner text. */
+@media (max-width: 760px) { .window:has(.tag) .in { padding-bottom: 44px; } .window .tag { bottom: 14px; } }
