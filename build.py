@@ -83,7 +83,11 @@ def pic(url, alt="", cls="", style="", drift=0, eager=False, grow=False):
 
 
 def window(photo, inner="", h=None, cls="", tag="", pos=None):
-    style = (f"--img:url('{media(photo)}');" if photo else "") + (f"--h:{h};" if h else "") + (f"--bp:{pos};" if pos else "")
+    # url() inside a CSS variable resolves against assets/style.css, so local paths are written relative to assets/.
+    u = media(photo) if photo else ""
+    if u and not u.startswith(("http:", "https:", "data:")):
+        u = "../" + u[len("../" * CUR["depth"]):]
+    style = (f"--img:url('{u}');" if photo else "") + (f"--h:{h};" if h else "") + (f"--bp:{pos};" if pos else "")
     t = f'<span class="tag">{tag}</span>' if tag else ""
     return f'<section class="window {cls}" style="{style}"><div class="in">{inner}</div>{t}</section>'
 
