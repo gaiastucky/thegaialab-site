@@ -483,7 +483,7 @@ def team():
 {groups}
 <section class="section"><div class="group-head" data-reveal><h2 class="h2">Group Mascot</h2></div>{person(people['mascot'])}</section>
 {dots()}
-<section class="section alumni-sec"><div class="group-head" data-reveal><h2 class="h2">Alumni</h2><p class="alum-note">Past members of the group. Hover over a face to see more.</p></div><div class="alumni-tiers">{alumni}</div><div>
+<section class="section alumni-sec"><div class="group-head" data-reveal><h2 class="h2">Alumni</h2></div><div class="alumni-tiers">{alumni}</div><div>
 <div class="actions" style="justify-content:center;margin-top:72px">{btn('Join us', link('contact-cv'))}</div></div></section>"""
     page("team", "Team", body, "Meet the members and alumni of the Gaia Lab at MIT.")
 
