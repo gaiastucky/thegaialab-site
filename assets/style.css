@@ -821,3 +821,9 @@ html, body { overflow-x: clip; }
 .alum-card { width: min(240px, 72vw); }
 @media (max-width: 760px) { .window.shift.eng { background-position: 8% calc(var(--bp, 50%) + var(--by, 0px)); } }
 @media (min-width: 881px) { .foot-in > div:last-child { text-align: right; } }
+@media (max-width: 760px) {
+  .river .water { stroke-width: 30; }
+  .river .water.thin { stroke-width: 14; }
+  .river .bank { stroke-width: 50; }
+  .river .bank.thin { stroke-width: 30; }
+}
