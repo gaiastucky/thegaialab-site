@@ -193,23 +193,46 @@
         globeCanvas.width = size * dpr; globeCanvas.height = size * dpr; ctx.scale(dpr, dpr);
         var proj = d3.geoOrthographic().scale(size / 2 - 30).translate([size / 2, size / 2]).clipAngle(90);
         var path = d3.geoPath(proj, ctx), grat = d3.geoGraticule10();
-        var lon = 40, paused = false, last = performance.now();
+        var lon = 40, lat = -24, paused = false, last = performance.now();
+        /* drag to spin: horizontal turns the globe, vertical tilts it */
+        var drag = null, dragged = false;
+        globeCanvas.style.touchAction = "none";
+        globeCanvas.addEventListener("pointerdown", function (ev) {
+          drag = { x: ev.clientX, y: ev.clientY, lon: lon, lat: lat }; dragged = false; paused = true;
+          globeCanvas.setPointerCapture(ev.pointerId);
+        });
+        globeCanvas.addEventListener("pointermove", function (ev) {
+          if (!drag) return;
+          var r = globeCanvas.getBoundingClientRect(), k = 180 / r.width;
+          var dx = ev.clientX - drag.x, dy = ev.clientY - drag.y;
+          if (Math.abs(dx) + Math.abs(dy) > 4) dragged = true;
+          lon = drag.lon + dx * k; lat = Math.max(-70, Math.min(70, drag.lat - dy * k));
+          globeCanvas.style.cursor = "grabbing";
+        });
+        function endDrag(ev) {
+          if (!drag) return; drag = null; globeCanvas.style.cursor = "";
+          if (ev.pointerType !== "mouse") paused = false;
+        }
+        globeCanvas.addEventListener("pointerup", endDrag);
+        globeCanvas.addEventListener("pointercancel", endDrag);
         globeCanvas.addEventListener("mouseenter", function () { paused = true; });
         globeCanvas.addEventListener("mouseleave", function () { paused = false; });
         var shown = [];
         globeCanvas.addEventListener("click", function (ev) {
+          if (dragged) { dragged = false; return; }
           var r = globeCanvas.getBoundingClientRect(), x = (ev.clientX - r.left) * size / r.width, y = (ev.clientY - r.top) * size / r.height;
           var hit = shown.filter(function (p) { return Math.hypot(p.x - x, p.y - y) < 28; })[0];
           if (hit) { ev.preventDefault(); var m = /(fieldwork-[\w-]+)(?:\.html|\/(?:index\.html)?)?$/.exec(hit.href), sec = m && document.getElementById(m[1]); if (sec) { [].forEach.call(document.querySelectorAll(".trip-panel"), function (p) { p.hidden = p !== sec; }); sec.scrollIntoView({ behavior: "smooth", block: "start" }); } else if (!(m && window.glGo && window.glGo(m[1]))) location.href = hit.href; }
         });
         globeCanvas.addEventListener("mousemove", function (ev) {
           var r = globeCanvas.getBoundingClientRect(), x = (ev.clientX - r.left) * size / r.width, y = (ev.clientY - r.top) * size / r.height;
-          globeCanvas.style.cursor = shown.some(function (p) { return Math.hypot(p.x - x, p.y - y) < 28; }) ? "pointer" : "";
+          if (drag) return;
+          globeCanvas.style.cursor = shown.some(function (p) { return Math.hypot(p.x - x, p.y - y) < 28; }) ? "pointer" : "grab";
         });
         (function spin(now) {
           if (!paused && !reduceMotion) lon -= (now - last) * 0.008;
           last = now;
-          proj.rotate([lon, -24]);
+          proj.rotate([lon, lat]);
           ctx.clearRect(0, 0, size, size);
           ctx.beginPath(); path({ type: "Sphere" }); ctx.fillStyle = col("--dust-pale"); ctx.fill();
           ctx.beginPath(); path(land); ctx.fillStyle = col("--sand"); ctx.fill(); ctx.strokeStyle = "rgba(127,151,168,.35)"; ctx.lineWidth = .5; ctx.stroke();
@@ -224,7 +247,7 @@
             ctx.beginPath(); ctx.arc(xy[0], xy[1], 6, 0, 7); ctx.fillStyle = col("--maroon"); ctx.fill();
             ctx.lineWidth = 2; ctx.strokeStyle = "#fff"; ctx.stroke();
           });
-          if (!reduceMotion) requestAnimationFrame(spin);
+          requestAnimationFrame(spin);
         })(last);
       }
       if (worldBox) {
