@@ -871,3 +871,8 @@ main p:not(.hero-lede):not(.cap):not(.since):not(.hiring):has(br) { text-align: 
 
 /* Phone menu: start the list below the logo badge so Home is visible */
 @media (max-width: 820px) { .head-right { padding-top: 76px; } }
+
+/* Courses with two photos: stacked, cropped to fill, rounded like other photos. */
+.course-logos:has(> figure:nth-child(2):last-child) { grid-template-columns: 1fr; max-width: none; }
+.course-logos:has(> figure:nth-child(2):last-child) img { border-radius: 12px; aspect-ratio: 16 / 10; object-fit: cover; }
+@media (min-width: 901px) { .course-media > .course-logos:has(> figure:nth-child(2):last-child) img { object-fit: cover; } }
