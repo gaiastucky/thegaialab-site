@@ -408,7 +408,7 @@ def home():
             '<p class="sub" data-hero>We study the driving forces behind the formation, evolution, and decay of Solar System surfaces, '
             'and the coupled interactions between climate, erosion, and tectonics recorded in landscapes. <em>Find out more below!</em></p>')
     li_posts = "".join(f'<iframe src="https://www.linkedin.com/embed/feed/update/{u}" title="LinkedIn post by The Gaia Lab" loading="lazy" allowfullscreen></iframe>' for u in misc.get("linkedin_posts", []))
-    body = f"""{window(misc['covers']['home'], hero, h='78vh', cls='hero', tag='Fogo, Cape Verde, 2025', video=('assets/video/home-fogo.mp4', 'assets/video/home-fogo-960.mp4'))}
+    body = f"""{window(misc['covers']['home'], hero, h='78vh', cls='hero', tag='Fogo, Cape Verde, 2025', video=('assets/video/home-fogo-v2.mp4', 'assets/video/home-fogo-v2-960.mp4'))}
 <section class="story intro">
 <div class="story-text" data-reveal><h2 class="h2">What we do, and why</h2>
 <p>Have you ever looked at a landscape and thought, “<em>Wow, that looks cool. How did that happen</em>”? Then welcome to the club (if not, that's okay). From your backyard to faraway moons, <strong>river systems</strong> dictate how surfaces evolve over geological time.</p>
