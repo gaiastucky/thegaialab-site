@@ -270,7 +270,7 @@ def page(slug, title, body, description):
 </main>
 <footer class="site-foot"><div class="foot-in">
 <div><b>The Gaia Lab</b><br>Department of Earth, Atmospheric and Planetary Sciences<br>Massachusetts Institute of Technology</div>
-<div>Room 54-319, Green Building<br>Cambridge, MA 02139<br><a href="{link('contact-cv')}">Get in touch</a></div>
+<div>Green Building, MIT<br>Cambridge, MA 02139<br><a href="{link('contact-cv')}">Get in touch</a></div>
 </div></footer>
 {geo}{js}"""
     if MODE == "preview" and not slug:
@@ -788,7 +788,7 @@ def contact():
     body = f"""<section class="section contact"><div class="grid contact-grid">
 <div class="c-1-7" data-reveal><h1 class="h2">Get in touch</h1>
 <div class="actions"><a class="btn" href="#" data-m="dWRlLnRpbUBzYWlhZw==">Send me an email <span class="arr" aria-hidden="true">→</span></a><button class="btn line" type="button" id="copy-email" data-m="dWRlLnRpbUBzYWlhZw==">Copy address</button></div>
-<div class="contact-row"><div><h3 class="sub">Lab</h3><p>Room 54-319, Green Building<br>Massachusetts Institute of Technology<br>77 Massachusetts Avenue, Cambridge, MA 02139</p><p>Gaia's office is in Room 54-510.</p></div>
+<div class="contact-row"><div><h3 class="sub">Lab</h3><p>Green Building<br>Massachusetts Institute of Technology<br>77 Massachusetts Avenue, Cambridge, MA 02139</p></div>
 <div><h3 class="sub">CV</h3><p>My most up-to-date CV.</p>{btn('View & download', media(misc['cv']), 'line')}</div></div></div>
 <div class="c-8-13 contact-art" data-reveal="1">{pic('assets/paper-plane.webp', 'Paper airplane', 'cutout', eager=True)}<div class="map"><iframe src="{osm}" title="Map of the MIT Green Building" loading="lazy"></iframe></div></div>
 </div></section>"""
