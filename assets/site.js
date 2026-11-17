@@ -222,7 +222,9 @@
         function closeChooser() { if (chooser) { chooser.remove(); chooser = null; } }
         document.addEventListener("click", function (e3) { if (chooser && !chooser.contains(e3.target) && e3.target !== globeCanvas) closeChooser(); });
         function goTrip(hit) { var m = /(fieldwork-[\w-]+)(?:\.html|\/(?:index\.html)?)?$/.exec(hit.href), sec = m && document.getElementById(m[1]); if (sec) { [].forEach.call(document.querySelectorAll(".trip-panel"), function (p) { p.hidden = p !== sec; }); sec.scrollIntoView({ behavior: "smooth", block: "start" }); } else if (!(m && window.glGo && window.glGo(m[1]))) location.href = hit.href; }
+        var globeLink = globeCanvas.closest("a");
         globeCanvas.addEventListener("click", function (ev) {
+          if (globeLink) { if (dragged) { dragged = false; ev.preventDefault(); } return; } /* home globe: any click opens the Gallery page */
           if (dragged) { dragged = false; return; }
           var r = globeCanvas.getBoundingClientRect(), x = (ev.clientX - r.left) * size / r.width, y = (ev.clientY - r.top) * size / r.height;
           // pins closer than a finger width (Fogo and São Nicolau) open a small chooser
@@ -242,7 +244,7 @@
         globeCanvas.addEventListener("mousemove", function (ev) {
           var r = globeCanvas.getBoundingClientRect(), x = (ev.clientX - r.left) * size / r.width, y = (ev.clientY - r.top) * size / r.height;
           if (drag) return;
-          globeCanvas.style.cursor = shown.some(function (p) { return Math.hypot(p.x - x, p.y - y) < 28; }) ? "pointer" : "grab";
+          globeCanvas.style.cursor = globeLink ? "pointer" : shown.some(function (p) { return Math.hypot(p.x - x, p.y - y) < 28; }) ? "pointer" : "grab";
         });
         (function spin(now) {
           if (!paused && !reduceMotion) lon -= (now - last) * 0.008;
