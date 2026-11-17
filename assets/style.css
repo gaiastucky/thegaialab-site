@@ -263,7 +263,7 @@ strong { font-weight: 700; }
 .sound i::after { content: ""; border-left: 9px solid #fff; border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 3px; }
 .story.intro { row-gap: 28px; }
 .sound-row { grid-column: 1; }
-.sound-label { font: 700 var(--fs-s) var(--head); color: var(--ink); margin-top: 28px; }
+.story .sound-label { font: 700 var(--fs-s) var(--head); color: var(--ink); margin-top: 0; text-align: left; }
 .sound-frame { margin-top: 10px; border-radius: 12px; overflow: hidden; }
 .sound-frame iframe { width: 100%; height: 152px; border: 0; display: block; }
 
@@ -442,6 +442,9 @@ dialog.lb button:hover { color: var(--maroon); }
 .story.intro { grid-template-columns: 5fr 6fr; }
 .story-art.gif { max-width: 560px; }
 .story-art.gif img { width: 100%; height: auto; display: block; }
+.story.intro .story-art.gif { grid-column: 2; grid-row: 1 / span 2; }
+.story.intro .story-text { align-self: end; }
+.story.intro .sound-row { align-self: start; }
 .hero h1 { font-size: var(--fs-hero); max-width: 16ch; }
 .hero .sub { max-width: 46ch; font-size: var(--fs-b); line-height: 1.6; }
 .story.alt .story-art { order: 2; }
@@ -457,6 +460,7 @@ dialog.lb button:hover { color: var(--maroon); }
 @media (max-width: 760px) {
   .story, .story.intro { grid-template-columns: 1fr; gap: 40px; }
   .story-art.gif { max-width: 360px; }
+  .story.intro .story-art.gif { grid-column: auto; grid-row: auto; }
   .story.alt .story-art { order: 0; }
   .story-art { max-width: 300px; }
 }
@@ -853,7 +857,7 @@ html, body { overflow-x: clip; }
 .contact-art > .pic, .contact-art > .pic.cutout, .contact .map { width: min(220px, calc((100% - 28px) / 2)); height: auto; flex: 0 1 auto; aspect-ratio: 1; }
 @media (max-width: 820px) { .contact-art > .pic, .contact-art > .pic.cutout, .contact .map { width: min(160px, calc((100% - 28px) / 2)); height: auto; flex-basis: auto; } }
 /* Body text blocks are justified on every page, as on Team and Publications. Centred blocks keep their alignment. */
-main p:not(.hero-lede):not(.cap):not(.since):not(.hiring), main li { text-align: justify; hyphens: auto; }
+main p:not(.hero-lede):not(.cap):not(.since):not(.hiring):not(.sound-label), main li { text-align: justify; hyphens: auto; }
 .teaser p, .center-head p, .flip p, .night p, .group-head p, .linkedin p, .alum-row p, .alum-row li, .theme-art p, .g-place p, .tl-year, .actions p { text-align: inherit; }
 .theme-row.alt .theme-txt p, .theme-row.alt .theme-txt li { text-align-last: right; }
 @media (max-width: 880px) { .theme-row.alt .theme-txt p, .theme-row.alt .theme-txt li { text-align-last: auto; } }
