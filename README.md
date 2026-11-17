@@ -17,7 +17,7 @@ Only the live build is published. `preview/` and `pane/` are scratch output and 
 | Path | Contents |
 |---|---|
 | `build.py` | All page templates and the build logic |
-| `data/people.json` | Team members, alumni, mascot. Bios, project titles, photos, dates |
+| `data/people.json` | Team members, alumni, mascots (`mascots` list). Bios, project titles, photos, dates |
 | `data/publications.json` | Papers by year, with journal, authors, summary, DOI and figure URLs |
 | `data/themes.json` | Research themes and their numbered questions |
 | `data/misc.json` | Courses, press items, fieldwork trips and photos, resources, CV link, banner images |

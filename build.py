@@ -405,7 +405,7 @@ def home():
               link("fieldwork"), "Follow our journeys", globe_block()),
         story("Team", "Learn about us",
               "Find out who is in our team so far. And whether there is a place for you!",
-              link("team"), "Yes please", art(people["group_photo"], [people["mascot"]["photo"]]), flip=True),
+              link("team"), "Yes please", art(people["group_photo"], [people["mascots"][0]["photo"]]), flip=True),
     ])
     hero = ('<h1 data-hero><span class="hello" aria-label="Hello there!">' + ''.join(f'<span style="--i:{k}" aria-hidden="true">{"&nbsp;" if ch == " " else ch}</span>' for k, ch in enumerate('Hello there!')) + '</span> Welcome to the Gaia Lab.</h1>'
             '<p class="sub" data-hero>We study the driving forces behind the formation, evolution, and decay of Solar System surfaces, '
@@ -489,7 +489,7 @@ def team():
 <li class="way" tabindex="0"><span class="way-btn">Undergraduate research</span><div class="way-bubble"><p>Look through MIT's <a href="https://urop.mit.edu/">UROP</a> or <a href="https://oge.mit.edu/msrp/">MSRP</a> programs and contact me or any group member with your CV and interests.</p></div></li>
 </ul></div></section>
 {groups}
-<section class="section"><div class="group-head" data-reveal><h2 class="h2">Group Mascot</h2></div>{person(people['mascot'])}</section>
+<section class="section"><div class="group-head" data-reveal><h2 class="h2">Group Mascots</h2></div><div class="stack-people">{"".join(person(m) for m in people['mascots'])}</div></section>
 {dots()}
 <section class="section alumni-sec"><div class="group-head" data-reveal><h2 class="h2">Alumni</h2></div><div class="alumni-tiers">{alumni}</div><div>
 <div class="actions" style="justify-content:center;margin-top:72px">{btn('Join us', link('contact-cv'))}</div></div></section>"""
@@ -802,7 +802,7 @@ def contact():
 <div class="actions"><a class="btn" href="#" data-m="dWRlLnRpbUBzYWlhZw==">Send me an email <span class="arr" aria-hidden="true">→</span></a><button class="btn line" type="button" id="copy-email" data-m="dWRlLnRpbUBzYWlhZw==">Copy address</button></div>
 <div class="contact-row"><div><h3 class="sub">Lab</h3><p>Green Building<br>Massachusetts Institute of Technology<br>77 Massachusetts Avenue, Cambridge, MA 02139</p></div>
 <div><h3 class="sub">CV</h3><p>My most up-to-date CV.</p>{btn('View & download', media(misc['cv']), 'line')}</div></div></div>
-<div class="c-8-13 contact-art" data-reveal="1">{pic('assets/paper-plane.webp', 'Paper airplane', 'cutout', eager=True)}<div class="map"><iframe src="{osm}" title="Map of the MIT Green Building" loading="lazy"></iframe></div></div>
+<div class="c-8-13 contact-art" data-reveal="1">{pic('assets/paper-plane.webp', 'Animated paper airplane', 'cutout', eager=True)}<div class="map"><iframe src="{osm}" title="Map of the MIT Green Building" loading="lazy"></iframe></div></div>
 </div></section>"""
     page("contact-cv", "Contact/CV", body, "How to reach Gaia Stucky de Quay and the Gaia Lab.")
 

@@ -84,14 +84,24 @@
    ]
   }
  ],
- "mascot": {
-  "name": "Io Mitchell de Quay",
-  "since": "2024",
-  "photo": "https://thegaialab.files.wordpress.com/2025/10/io.jpg",
-  "photo2": "https://thegaialab.files.wordpress.com/2024/03/9655894b-0538-401f-8366-a546c524ba9d-edited.jpg",
-  "website": "",
-  "bio": "I don't know a lot about geomorphology or planetary science (despite my name), but I do enjoy sleeping, treats, chasing squirrels, and eating sticks. I can usually be found in my dad's or my mom's office in the Green Building, if you ever want to stop by and discuss some ideas (= give me some attention)."
- },
+ "mascots": [
+  {
+   "name": "Io Mitchell de Quay",
+   "since": "2024",
+   "photo": "https://thegaialab.files.wordpress.com/2025/10/io.jpg",
+   "photo2": "https://thegaialab.files.wordpress.com/2024/03/9655894b-0538-401f-8366-a546c524ba9d-edited.jpg",
+   "website": "",
+   "bio": "I don't know a lot about geomorphology or planetary science (despite my name), but I do enjoy sleeping, treats, chasing squirrels, and eating sticks. I can usually be found in my dad's or my mom's office in the Green Building, if you ever want to stop by and discuss some ideas (= give me some attention)."
+  },
+  {
+   "name": "Catfish",
+   "since": "",
+   "photo": "assets/people/catfish-1.jpg",
+   "photo2": "assets/people/catfish-2.jpg",
+   "website": "",
+   "bio": "Meow, I’m Catfish! I’m a bit of a black sheep, or really black cat, and like to study plants instead of rocks and planetary surfaces. My methods include inspecting them with my paws and chewing on them to determine their taste and texture. When I’m not hard at work, you’ll find me playing, zooming, or stealing Io’s dog bed. I tend to be in the office Wednesdays and Fridays if you wanna say hi and play with me!"
+  }
+ ],
  "alumni": [
   {
    "name": "Mauricio Barcelos-Haag",
