@@ -474,7 +474,7 @@ def team():
         if not group:
             continue
         faces = "".join(
-            f'<li class="alum-face" tabindex="0">{alum_pic(a, k)}<span class="alum-name">{e(a["name"])}</span>'
+            f'<li class="alum-face" tabindex="0">{alum_pic(a, k)}<span class="alum-name">{"<br>".join(e(x) for x in a["name"].split(" ", 1))}</span>'
             f'<span class="alum-card"><b>{e(a["name"])}</b><span>{e(a["role"])}</span>'
             f'{("<span>" + ("" if a.get("is_bio") else "Project: ") + e(a["project"]) + "</span>") if a.get("project") else ""}'
             f'{("<span>Now: " + e(a["now"]) + "</span>") if a.get("now") else ""}</span></li>' for k, a in enumerate(group))
