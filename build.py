@@ -403,18 +403,13 @@ def home():
             'and the coupled interactions between climate, erosion, and tectonics recorded in landscapes. <em>Find out more below!</em></p>')
     li_posts = "".join(f'<iframe src="https://www.linkedin.com/embed/feed/update/{u}" title="LinkedIn post by The Gaia Lab" loading="lazy" allowfullscreen></iframe>' for u in misc.get("linkedin_posts", []))
     body = f"""{window(misc['covers']['home'], hero, h='78vh', cls='hero', tag='Jökulsá á Fjöllum canyon, Iceland, 2017')}
-<section class="logo-stage" aria-label="The Gaia Lab logo"><div class="logo-anim" data-reveal>
-<img src="{rel('assets/logo.webp')}" alt="The Gaia Lab logo: a planet of layered mountains and a river, circled by an orbit with a satellite">
-<div class="logo-sky" aria-hidden="true"><div class="band stars"><i class="ss s1"></i><i class="ss s2"></i><i class="ss s3"></i></div><div class="band clouds"><i class="cl c1"></i><i class="cl c2"></i><i class="cl c3"></i></div></div>
-
-</div></section>
-
 <section class="story intro">
 <div class="story-text" data-reveal><h2 class="h2">What we do, and why</h2>
 <p>Have you ever looked at a landscape and thought, “<em>Wow, that looks cool. How did that happen</em>”? Then welcome to the club (if not, that's okay). From your backyard to faraway moons, <strong>river systems</strong> dictate how surfaces evolve over geological time.</p>
-<div class="actions"><button class="sound" id="sound" type="button"><i></i>Play some sweet river sounds</button></div>
-<div class="sound-frame" id="sound-frame"></div></div>
+</div>
 <div class="story-art gif" data-reveal="1"><img src="{media(U + '2022/01/water_gif-3.gif')}" alt="Animated block diagram of a river cutting through a landscape" loading="lazy"></div>
+<div class="sound-row" data-reveal><div class="actions"><button class="sound" id="sound" type="button"><i></i>Play some sweet river sounds</button></div>
+<div class="sound-frame" id="sound-frame"></div></div>
 </section>
 
 {dots()}
@@ -562,7 +557,7 @@ def publications():
 {figs}
 </article>""")
         groups.append(f'<div class="year-group"><h2 class="year" id="y{y}">{y}</h2>{"".join(items)}</div>')
-    body = f"""{window(misc['covers']['publications'], '<h1 data-hero class="book" aria-label="Publications"><span class="pg l" aria-hidden="true">Publi</span><span class="pg r" aria-hidden="true">cations</span></h1><p class="hero-lede" data-hero>Check out our peer-reviewed articles below! Browse the summaries and key figures, ordered chronologically. Authors in <strong>bold</strong> are group members. Hover over a figure to expand it, click to see it full size, and feel free to reach out if you need access to a paper.</p>', h=BANNER_H, cls='shift', tag='Harvard Library')}
+    body = f"""{window(misc['covers']['publications'], '<h1 data-hero class="book" aria-label="Publications"><span class="pg l" aria-hidden="true">Publi</span><span class="pg r" aria-hidden="true">cations</span></h1><p class="hero-lede" data-hero>Check out our peer-reviewed articles below! Browse the summaries and key figures, ordered chronologically. Authors in <strong>bold</strong> are group members. Hover over a figure to expand it, click to see it full size, and feel free to reach out if you need access to a paper.</p>', h=BANNER_H, cls='shift dim', tag='Harvard Library')}
 <div class="yearnav"><div class="in"><nav class="years" aria-label="Jump to year">{jump}</nav><label class="pub-find"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><input id="pub-search" type="search" placeholder="Search" aria-label="Search papers" autocomplete="off"></label></div></div>
 <section class="section"><div class="grid"><div>{''.join(groups)}</div></div></section>"""
     page("publications", "Publications", body, "Peer-reviewed articles from the Gaia Lab, with summaries and key figures.")
