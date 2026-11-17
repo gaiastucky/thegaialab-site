@@ -881,6 +881,5 @@ main p:not(.hero-lede):not(.cap):not(.since):not(.hiring):has(br) { text-align: 
 .window.has-video { background-image: var(--img); background-size: cover; background-position: center; background-attachment: scroll; }
 /* Own compositing layers for the video and its shade, so text animations above them do not make Chrome repaint them (flicker). */
 .window.has-video::before { will-change: transform; transform: translateZ(0); }
-.window .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; pointer-events: none; transform: translateZ(0); backface-visibility: hidden; opacity: 0; transition: opacity .8s ease; }
-.window .bg-video.on { opacity: 1; }
+.window .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; pointer-events: none; transform: translateZ(0); backface-visibility: hidden; }
 @media (prefers-reduced-motion: reduce) { .window .bg-video { display: none; } }
