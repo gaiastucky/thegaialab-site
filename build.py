@@ -127,7 +127,10 @@ def window(photo, inner="", h=None, cls="", tag="", pos=None, video=None):
     v = ""
     if video:
         v = (f'<video class="bg-video" autoplay muted loop playsinline preload="auto" poster="{rel(photo)}" aria-hidden="true">'
+             f'<source src="{rel(video[1].replace(".mp4", "-hevc.mp4"))}" type=\'video/mp4; codecs="hvc1"\' media="(max-width: 760px)">'
              f'<source src="{rel(video[1])}" type="video/mp4" media="(max-width: 760px)">'
+             # HEVC first (sharper at the same size; Safari and most Chrome on Mac), H.264 as fallback.
+             f'<source src="{rel(video[0].replace(".mp4", "-hevc.mp4"))}" type=\'video/mp4; codecs="hvc1"\'>'
              f'<source src="{rel(video[0])}" type="video/mp4"></video>')
     return f'<section class="window {cls}" style="{style}">{v}<div class="in">{inner}</div>{t}</section>'
 
