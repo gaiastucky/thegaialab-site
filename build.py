@@ -584,20 +584,23 @@ def outreach():
         if m:
             return f'<div class="grid course-item"><div class="c-1-6" data-reveal>{text}</div><div class="c-7-13 course-media" data-reveal="1">{m}</div></div>'
         return f'<div class="grid course-item"><div class="c-1-6" data-reveal>{text}</div></div>'
-    # Courses with a photo or video come first. Courses still waiting for media sit side by side in the
-    # last rows with no placeholder box; each moves up on its own once it gets "images" or "video".
-    with_media = [c for c in misc["courses"] if c.get("images") or c.get("video")]
-    no_media = [c for c in misc["courses"] if not (c.get("images") or c.get("video"))]
+    # Courses with a photo or video come first. Current courses still waiting for media sit side by side
+    # below them with no placeholder box. Retired courses ("retired": true) never show media and fill the
+    # last rows, two per row.
+    with_media = [c for c in misc["courses"] if (c.get("images") or c.get("video")) and not c.get("retired")]
     def course_text(c):
         return (f'<h3 class="sub"><span class="course-code">{e(c["code"])}</span> {e(c["name"])}</h3>'
                 f'<p class="small muted">{e(c["taught"])}</p><p>{e(c["desc"])}</p>'
                 f'<div class="actions">{btn("MIT course catalog", e(c["url"]), "line")}</div>')
     pairs = []
-    for k in range(0, len(no_media), 2):
+    def pair_rows(no_media):
+      for k in range(0, len(no_media), 2):
         cells = [f'<div class="c-1-6" data-reveal>{course_text(no_media[k])}</div>']
         if k + 1 < len(no_media):
             cells.append(f'<div class="c-7-13" data-reveal="1">{course_text(no_media[k + 1])}</div>')
         pairs.append(f'<div class="grid course-item course-pair">{"".join(cells)}</div>')
+    pair_rows([c for c in misc["courses"] if not (c.get("images") or c.get("video")) and not c.get("retired")])
+    pair_rows([c for c in misc["courses"] if c.get("retired")])
     courses = "".join(course(i, c) for i, c in enumerate(with_media)) + "".join(pairs)
     out = [("Pt6uvfet2N8", 0, "News video on our work published in Nature on lake outflows."),
            ("vLDQRo_Qp6s", 0, "5 minute flash talk for an interview on my research."),

@@ -136,7 +136,8 @@
    "name": "Exploring Solar System Surfaces (No Spacesuit Required)",
    "taught": "Fall 2025",
    "url": "https://student.mit.edu/catalog/archive/fall/m12c.html#12.S593",
-   "desc": "Investigates the diverse surfaces of planetary bodies throughout our solar system through the lens of robotic exploration and remote sensing. Examines how mission data reveals the formation, evolution, and current state of rocky planets, icy moons, and small bodies. Compares and contrasts geological processes across different planetary environments, from Mercury's extreme temperature variations to the subsurface oceans of Europa and Enceladus. Topics may include: impact cratering; volcanism; tectonics; weathering and erosion processes; sedimentary deposits; glacial and periglacial features; and the search for habitable environments. Emphasizes critical reading, student-led discussions, and comparative planetology approaches."
+   "desc": "Investigates the diverse surfaces of planetary bodies throughout our solar system through the lens of robotic exploration and remote sensing. Examines how mission data reveals the formation, evolution, and current state of rocky planets, icy moons, and small bodies. Compares and contrasts geological processes across different planetary environments, from Mercury's extreme temperature variations to the subsurface oceans of Europa and Enceladus. Topics may include: impact cratering; volcanism; tectonics; weathering and erosion processes; sedimentary deposits; glacial and periglacial features; and the search for habitable environments. Emphasizes critical reading, student-led discussions, and comparative planetology approaches.",
+   "retired": true
   },
   {
    "code": "12.002",
@@ -144,8 +145,7 @@
    "taught": "Spring 2023, 2024, 2025",
    "url": "https://student.mit.edu/catalog/search.cgi?search=12.002",
    "desc": "Study of the structure, composition, and physical processes governing the terrestrial planets, including their formation and basic orbital properties. Topics include plate tectonics, earthquakes, seismic waves, rheology, impact cratering, gravity and magnetic fields, heat flux, thermal structure, mantle convection, deep interiors, planetary magnetism, and core dynamics. Suitable for majors and non-majors seeking general background in geophysics and planetary structure.",
-   "video": "mUoPht9wXok",
-   "caption": "Sample of an online class on planetary moments of inertia for 12.002."
+   "retired": true
   }
  ],
  "fieldwork": [

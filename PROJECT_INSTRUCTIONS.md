@@ -43,6 +43,8 @@ This rule matters more than any other. When Gaia gives something to add (a perso
 - Each section has one big h2 heading and no small label above it. Small blocks inside a section (Office, CV, alumni tiers) use `h3.sub`. Rivers (`dots()`) go only between the main sections of a page, never inside one.
 - The Data & code banner is a live wireframe of real MOLA topography of Jezero crater (`assets/mars-mesh.json`).
 
+- Teaching: courses Gaia no longer teaches are retired. Mark them `"retired": true` in `misc.json` courses. Retired courses show no image or video and sit two per row at the bottom of the Teaching section (as 12.S593 and 12.002).
+
 ## Pages
 
 Home, Team, Research (Themes, Publications, Resources), Engagement (teaching, outreach videos, media timeline), Gallery (spinning globe with pins that open trip collages below it), Contact.
