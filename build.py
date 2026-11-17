@@ -116,14 +116,20 @@ def pic(url, alt="", cls="", style="", drift=0, eager=False, grow=False):
     return f'<div class="pic {cls}"{s}{d}>{img(url, alt, eager)}</div>'
 
 
-def window(photo, inner="", h=None, cls="", tag="", pos=None):
+def window(photo, inner="", h=None, cls="", tag="", pos=None, video=None):
     # url() inside a CSS variable resolves against assets/style.css, so local paths are written relative to assets/.
     u = media(photo) if photo else ""
     if u and not u.startswith(("http:", "https:", "data:")):
         u = "../" + u[len("../" * CUR["depth"]):]
     style = (f"--img:url('{u}');" if photo else "") + (f"--h:{h};" if h else "") + (f"--bp:{pos};" if pos else "")
     t = f'<span class="tag">{tag}</span>' if tag else ""
-    return f'<section class="window {cls}" style="{style}"><div class="in">{inner}</div>{t}</section>'
+    # Optional looping background video (silent). The photo stays as poster and fallback.
+    v = ""
+    if video:
+        v = (f'<video class="bg-video" autoplay muted loop playsinline preload="auto" poster="{rel(photo)}" aria-hidden="true">'
+             f'<source src="{rel(video[1])}" type="video/mp4" media="(max-width: 760px)">'
+             f'<source src="{rel(video[0])}" type="video/mp4"></video>')
+    return f'<section class="window {cls}" style="{style}">{v}<div class="in">{inner}</div>{t}</section>'
 
 
 RIVER_N = [0]
@@ -402,7 +408,7 @@ def home():
             '<p class="sub" data-hero>We study the driving forces behind the formation, evolution, and decay of Solar System surfaces, '
             'and the coupled interactions between climate, erosion, and tectonics recorded in landscapes. <em>Find out more below!</em></p>')
     li_posts = "".join(f'<iframe src="https://www.linkedin.com/embed/feed/update/{u}" title="LinkedIn post by The Gaia Lab" loading="lazy" allowfullscreen></iframe>' for u in misc.get("linkedin_posts", []))
-    body = f"""{window(misc['covers']['home'], hero, h='78vh', cls='hero', tag='Jökulsá á Fjöllum canyon, Iceland, 2017')}
+    body = f"""{window(misc['covers']['home'], hero, h='78vh', cls='hero', tag='Fogo, Cape Verde, 2025', video=('assets/video/home-fogo.mp4', 'assets/video/home-fogo-960.mp4'))}
 <section class="story intro">
 <div class="story-text" data-reveal><h2 class="h2">What we do, and why</h2>
 <p>Have you ever looked at a landscape and thought, “<em>Wow, that looks cool. How did that happen</em>”? Then welcome to the club (if not, that's okay). From your backyard to faraway moons, <strong>river systems</strong> dictate how surfaces evolve over geological time.</p>
@@ -508,7 +514,7 @@ def themes_page():
 <div class="theme-art">{pic(t['img'], t['name'], 'round')}<a class="credit" href="{e(t['credit_url'])}">{e(t['credit'])}</a></div>
 <div class="theme-txt"><h2 class="h2" data-reveal>{e(t['name'])}</h2><ol class="tq">{qs}</ol></div>
 </div></article>""")
-    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1><p class="hero-lede" data-hero>These are the <strong>main areas</strong> of our research. For each one, I have listed three broad research questions I am interested in addressing. I am always open to learning new ways to answer these, or, even better, answering newer and better research questions!</p>', h=BANNER_H, cls='shift', pos='50%', tag='Fogo, Cape Verde, 2025')}
+    body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1><p class="hero-lede" data-hero>These are the <strong>main areas</strong> of our research. For each one, I have listed three broad research questions I am interested in addressing. I am always open to learning new ways to answer these, or, even better, answering newer and better research questions!</p>', h=BANNER_H, cls='shift', pos='0%', tag='Jökulsá á Fjöllum canyon, Iceland, 2017')}
 {''.join(rows)}
 {dots()}
 <section class="section" id="other"><div class="grid">
