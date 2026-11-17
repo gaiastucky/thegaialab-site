@@ -878,6 +878,8 @@ main p:not(.hero-lede):not(.cap):not(.since):not(.hiring):has(br) { text-align: 
 @media (min-width: 901px) { .course-media > .course-logos:has(> figure:nth-child(2):last-child) img { object-fit: cover; } }
 
 /* Home banner video: fills the banner behind the shade and text. */
-.window.has-video { background: #59656f; background-attachment: scroll; }
-.window .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; pointer-events: none; }
+.window.has-video { background-image: var(--img); background-size: cover; background-position: center; background-attachment: scroll; }
+/* Own compositing layers for the video and its shade, so text animations above them do not make Chrome repaint them (flicker). */
+.window.has-video::before { will-change: transform; transform: translateZ(0); }
+.window .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; pointer-events: none; transform: translateZ(0); backface-visibility: hidden; }
 @media (prefers-reduced-motion: reduce) { .window .bg-video { display: none; } }

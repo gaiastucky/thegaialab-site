@@ -122,13 +122,12 @@ def window(photo, inner="", h=None, cls="", tag="", pos=None, video=None):
     if u and not u.startswith(("http:", "https:", "data:")):
         u = "../" + u[len("../" * CUR["depth"]):]
     style = (f"--img:url('{u}');" if photo else "") + (f"--h:{h};" if h else "") + (f"--bp:{pos};" if pos else "")
-    if video:
-        style = (f"--h:{h};" if h else "")  # video banners: no CSS background behind the video (browsers flicker between the two)
+    # Video banners keep the first frame as a plain (non-fixed) background so Safari shows it full-bleed before playback.
     t = f'<span class="tag">{tag}</span>' if tag else ""
     # Optional looping background video (silent). The photo stays as poster and fallback.
     v = ""
     if video:
-        v = (f'<video class="bg-video" autoplay muted loop playsinline preload="auto" poster="{rel(photo)}" aria-hidden="true">'
+        v = (f'<video class="bg-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">'
              f'<source src="{rel(video[1])}" type="video/mp4" media="(max-width: 760px)">'
              f'<source src="{rel(video[0])}" type="video/mp4"></video>')
     return f'<section class="window {cls}{" has-video" if video else ""}" style="{style}">{v}<div class="in">{inner}</div>{t}</section>'
