@@ -100,7 +100,7 @@
  "courses": [
   {
    "code": "12.421",
-   "name": "Principles of Remote Sensing",
+   "name": "Remote Sensing: Physical Principles and Techniques",
    "taught": "Fall 2026",
    "url": "https://student.mit.edu/catalog/search.cgi?search=12.421",
    "desc": "Introduction to the physics of remote sensing, with applications to the study of Earth, the Moon, and other planets and solar system bodies, as well as to emerging industrial applications. Covers the physical principles of optical, thermal, radar, and lidar remote sensing with an emphasis on the fundamental properties of electromagnetic waves; the principles of electromagnetic scattering from real and idealized materials, including various types of surfaces and vegetation; the interaction of electromagnetic radiation with the atmosphere; and thermal and microwave emission from various media. Discusses remote sensing platforms along with the essentials of orbital mechanics and data processing methods and tools.",
