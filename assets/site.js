@@ -460,6 +460,16 @@
       b.replaceWith(f);
     });
   });
+  // Banner video stays hidden over its full-bleed first-frame still until real frames are on screen,
+  // then fades in. Avoids Safari's letterboxed start and Chrome's blank-frame flicker.
+  [].forEach.call(document.querySelectorAll(".bg-video"), function (v) {
+    function show() { v.classList.add("on"); }
+    function arm() {
+      if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(function () { setTimeout(show, 150); });
+      else setTimeout(show, 300);
+    }
+    if (!v.paused && v.readyState >= 3) arm(); else v.addEventListener("playing", arm, { once: true });
+  });
   var sound = document.getElementById("sound");
   if (sound) sound.addEventListener("click", function () {
     var box = document.getElementById("sound-frame");
