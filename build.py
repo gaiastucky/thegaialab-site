@@ -122,7 +122,7 @@ def window(photo, inner="", h=None, cls="", tag="", pos=None, video=None):
     if u and not u.startswith(("http:", "https:", "data:")):
         u = "../" + u[len("../" * CUR["depth"]):]
     style = (f"--img:url('{u}');" if photo else "") + (f"--h:{h};" if h else "") + (f"--bp:{pos};" if pos else "")
-    t = f'<span class="tag">{tag}</span>' if tag else ""
+    t = ""  # Banner place captions removed at Gaia's request (17 Nov 2026); tag= values are kept in the calls for reference.
     # Optional looping background video (silent). The photo stays as poster and fallback.
     v = ""
     if video:
