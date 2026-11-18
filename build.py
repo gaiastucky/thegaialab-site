@@ -401,7 +401,7 @@ def home():
               link("publications"), "Read more",
               art("https://thegaialab.files.wordpress.com/2022/09/perspective.png", ["https://thegaialab.files.wordpress.com/2021/11/screen-shot-2021-11-14-at-11.01.49-pm.png", "https://thegaialab.files.wordpress.com/2021/11/screen-shot-2021-11-14-at-11.32.15-pm.png"]), flip=True),
         story("Fieldwork", "Excited about the great outdoors?",
-              "So are we! We travel all over the globe to find interesting and unique places to answer questions about how and why landscapes look the way they do. Click the globe to see where we have been.",
+              "So are we! We travel all over the world to find interesting and unique places to answer questions about how and why landscapes look the way they do. Click the globe to see where we have been.",
               link("fieldwork"), "Follow our journeys", globe_block()),
         story("Team", "Learn about us",
               "Find out who is in our team so far. And whether there is a place for you!",
