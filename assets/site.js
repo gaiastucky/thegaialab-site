@@ -91,10 +91,10 @@
       var r = row.getBoundingClientRect(); if (r.bottom < -100 || r.top > vh + 100) return;
       var q = (vh - r.top) / vh;
       row._paths.forEach(function (p, i) {
-        var k = clamp((q - 0.2 - i * 0.14) / 0.42, 0, 1);
+        var k = clamp((q - 0.08 - i * 0.07) / 0.22, 0, 1);
         p.style.strokeDashoffset = (1 - k).toFixed(4);
         row._dots[i].style.opacity = k > 0 ? 1 : 0;
-        var a = clamp((k - 0.75) / 0.25, 0, 1);
+        var a = clamp((k - 0.4) / 0.4, 0, 1);
         row._qs[i].style.opacity = a.toFixed(3);
         row._qs[i].style.transform = "translateX(" + ((1 - a) * (row.classList.contains("alt") ? -14 : 14)).toFixed(1) + "px)";
       });

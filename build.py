@@ -252,7 +252,7 @@ def page(slug, title, body, description):
     items.append(f'<a href="{link("contact-cv")}" class="nav-contact"{" aria-current=\"page\"" if slug == "contact-cv" else ""}>Contact</a>')
     nav = "".join(items)
     icons = "".join(f'<a href="{u}" aria-label="{n}">{ICONS[n]}</a>' for n, u in [
-        ("LinkedIn", "https://www.linkedin.com/in/g-stucky/"),
+        ("LinkedIn", LAB_LINKEDIN),
         ("Google Scholar", "https://scholar.google.com/citations?user=uJNld2AAAAAJ&amp;hl=en"),
         ("GitHub", "https://github.com/gaiastucky")])
     full_title = "The Gaia Lab" if not slug else f"{title} | The Gaia Lab"
@@ -484,7 +484,7 @@ def team():
 <section class="section">{person(pi, pi_extra)}</section>
 <section class="opps-banner"><div class="ticker" aria-label="News"><span class="ticker-tag">Hiring</span><div class="ticker-win"><div class="ticker-track"><span>2026 update: we are hiring! We are searching for a graduate student for fall 2027.</span><span aria-hidden="true">2026 update: we are hiring! We are searching for a graduate student for fall 2027.</span></div></div></div><div class="opps-in" id="opportunities"><div class="opps-head" data-reveal><h2 class="h2">Come work with us</h2><p>We are always looking for creative and motivated people to work with us. Have a look around and see if you find any projects interesting, and that overlap with your research goals.</p></div>
 <ul class="ways-pills">
-<li class="way" tabindex="0"><span class="way-btn">Graduate research</span><div class="way-bubble"><p>MIT EAPS accepts PhD <a href="https://eaps.mit.edu/education/graduate-program/graduate-admissions/">applications</a> each fall. Keep an eye out for <a href="https://www.nsf.gov/funding/initiatives/grfp">NSF GRFP</a> application deadlines in the fall. Please contact me or any group member with your CV and interests.</p></div></li>
+<li class="way" tabindex="0"><span class="way-btn">Graduate research</span><div class="way-bubble"><p>MIT EAPS accepts PhD <a href="https://eaps.mit.edu/education/graduate-program/graduate-admissions/">applications</a> each fall. Keep an eye out for <a href="https://www.nsf.gov/funding/initiatives/grfp">NSF GRFP</a> application deadlines in the fall. Please contact me or any group member with your CV and interests.</p><p>Current EAPS graduate students can also help with your application through the <a href="https://sites.google.com/view/eaps-student-advisory-council/application-assistance">EAPS Application Mentorship Program (AMP)</a>.</p></div></li>
 <li class="way" tabindex="0"><span class="way-btn">Postdoctoral research</span><div class="way-bubble"><p>There are a few options! EAPS has a <a href="https://eaps.mit.edu/research/postdoctoral-training/">Distinguished Postdoctoral Fellowship</a> and hosts the <a href="https://www.hsfoundation.org/programs/science/51-pegasi-b-fellowship/">51 Pegasi b Fellowship</a> or the MIT School of Science fellowship (applications due each fall). You can also reach out to collaborate on a NASA or NSF proposal (or any other sources)!</p><p><a href="https://docs.google.com/spreadsheets/d/1fpsPL2yb56wYmncEIYMf5oW-vTCRgzrtIYCPqF3P50o/edit?usp=sharing">Here is a sheet I made to help you find sources of funding to work with us!</a></p></div></li>
 <li class="way" tabindex="0"><span class="way-btn">Undergraduate research</span><div class="way-bubble"><p>Look through MIT's <a href="https://urop.mit.edu/">UROP</a> or <a href="https://oge.mit.edu/msrp/">MSRP</a> programs and contact me or any group member with your CV and interests.</p></div></li>
 </ul></div></section>
@@ -514,7 +514,7 @@ def themes_page():
         qs = "".join(f'<li data-q><span class="qn">{k + 1}</span><span class="qt">{md(q)}</span></li>' for k, q in enumerate(t["q"]))
         rows.append(f"""<article class="theme" id="{t['id']}"><div class="theme-row{' alt' if i % 2 else ''}" data-theme>
 <svg class="theme-lines" aria-hidden="true"></svg>
-<div class="theme-art">{pic(t['img'], t['name'], 'round')}<a class="credit" href="{e(t['credit_url'])}">{e(t['credit'])}</a></div>
+<div class="theme-art">{pic(t['img'], t['name'], 'round')}{f'<a class="credit" href="{e(t["credit_url"])}">{e(t["credit"])}</a>' if t.get("credit_url") else f'<span class="credit">{e(t["credit"])}</span>'}</div>
 <div class="theme-txt"><h2 class="h2" data-reveal>{e(t['name'])}</h2><ol class="tq">{qs}</ol></div>
 </div></article>""")
     body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1><p class="hero-lede" data-hero>These are the <strong>main areas</strong> of our research. For each one, I have listed three broad research questions I am interested in addressing. I am always open to learning new ways to answer these, or, even better, answering newer and better research questions!</p>', h=BANNER_H, cls='shift', pos='13%', tag='Jökulsá á Fjöllum canyon, Iceland, 2017')}
@@ -800,7 +800,7 @@ def contact():
     body = f"""<section class="section contact"><div class="grid contact-grid">
 <div class="c-1-7" data-reveal><h1 class="h2">Get in touch</h1>
 <div class="actions"><a class="btn" href="#" data-m="dWRlLnRpbUBzYWlhZw==">Send me an email <span class="arr" aria-hidden="true">→</span></a><button class="btn line" type="button" id="copy-email" data-m="dWRlLnRpbUBzYWlhZw==">Copy address</button></div>
-<div class="contact-row"><div><h3 class="sub">Lab</h3><p>Green Building<br>Massachusetts Institute of Technology<br>77 Massachusetts Avenue, Cambridge, MA 02139</p></div>
+<div class="contact-row"><div><h3 class="sub">Lab</h3><p class="addr">Green Building<br>Massachusetts Institute of Technology<br>77 Massachusetts Avenue, Cambridge, MA 02139</p></div>
 <div><h3 class="sub">CV</h3><p>My most up-to-date CV.</p>{btn('View & download', media(misc['cv']), 'line')}</div></div></div>
 <div class="c-8-13 contact-art" data-reveal="1">{pic('assets/paper-plane.webp', 'Animated paper airplane', 'cutout', eager=True)}<div class="map"><iframe src="{osm}" title="Map of the MIT Green Building" loading="lazy"></iframe></div></div>
 </div></section>"""

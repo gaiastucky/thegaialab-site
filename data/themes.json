@@ -17,7 +17,7 @@
   "name": "Lakes & Hydrology",
   "img": "https://thegaialab.files.wordpress.com/2022/01/lakes-2.jpeg",
   "credit": "Cronodon.com",
-  "credit_url": "https://cronodon.com/PlanetTech/Titan.html",
+  "credit_url": "",
   "q": [
    "How much water was required to generate lake systems, and for how long did these aqueous systems persist?",
    "What other processes are associated with these systems, such as catastrophic outflow, weathering, and biology?",
@@ -30,7 +30,7 @@
   "name": "Volcanic Terrains",
   "img": "https://thegaialab.files.wordpress.com/2022/01/lava.jpeg",
   "credit": "Wallup.net",
-  "credit_url": "https://wallup.net/lava-nature-photography-5/",
+  "credit_url": "",
   "q": [
    "Where have volcanic processes created new topography that allows us to explore how surfaces form and evolve (i.e., the best <em>natural labs</em>)?",
    "How can we use various dating techniques to provide accurate temporal constraints on surface evolution?",
@@ -81,8 +81,8 @@
   "id": "climate",
   "name": "Climate-Land Links",
   "img": "https://thegaialab.files.wordpress.com/2022/01/climate.jpeg",
-  "credit": "wallup.net",
-  "credit_url": "https://wallup.net/nature-landscape-clouds-sky-lightning-storm-rain-hill-mountain/",
+  "credit": "Wallup.net",
+  "credit_url": "",
   "q": [
    "What role does the climate play in constructing a landscape, and can we say something about future changes?",
    "How is climate expressed in geological hazards such as landslides or coastal environments, among others?",
