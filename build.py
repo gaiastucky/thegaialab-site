@@ -418,7 +418,7 @@ def home():
 </div>
 <div class="story-art gif" data-reveal="1"><img src="{media(U + '2022/01/water_gif-3.gif')}" alt="Animated block diagram of a river cutting through a landscape" loading="lazy"></div>
 <div class="sound-row" data-reveal><p class="sound-label">How about relaxing to some sweet river sounds? Click play below.</p>
-<div class="sound-frame"><iframe title="River sounds on Spotify" loading="lazy" allow="autoplay; encrypted-media" src="https://open.spotify.com/embed/artist/34H7XemCvXS6iDsnPPjMcx?utm_source=generator"></iframe></div></div>
+<div class="sound-frame"><iframe title="River sounds on Spotify" loading="lazy" allow="autoplay; encrypted-media" src="https://open.spotify.com/embed/track/45w3dG5DO6oaA758xUHw61?utm_source=generator"></iframe></div></div>
 </section>
 
 {dots()}
