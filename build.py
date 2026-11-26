@@ -514,7 +514,7 @@ def themes_page():
         qs = "".join(f'<li data-q><span class="qn">{k + 1}</span><span class="qt">{md(q)}</span></li>' for k, q in enumerate(t["q"]))
         rows.append(f"""<article class="theme" id="{t['id']}"><div class="theme-row{' alt' if i % 2 else ''}" data-theme>
 <svg class="theme-lines" aria-hidden="true"></svg>
-<div class="theme-art">{pic(t['img'], t['name'], 'round')}{f'<a class="credit" href="{e(t["credit_url"])}">{e(t["credit"])}</a>' if t.get("credit_url") else f'<span class="credit">{e(t["credit"])}</span>'}</div>
+<div class="theme-art">{pic(t['img'], t['name'], 'round')}<span class="credit">{e(t['credit'])}</span></div>
 <div class="theme-txt"><h2 class="h2" data-reveal>{e(t['name'])}</h2><ol class="tq">{qs}</ol></div>
 </div></article>""")
     body = f"""{window(misc['covers']['themes'], '<h1 data-hero>Research Themes</h1><p class="hero-lede" data-hero>These are the <strong>main areas</strong> of our research. For each one, I have listed three broad research questions I am interested in addressing. I am always open to learning new ways to answer these, or, even better, answering newer and better research questions!</p>', h=BANNER_H, cls='shift', pos='13%', tag='Jökulsá á Fjöllum canyon, Iceland, 2017')}
